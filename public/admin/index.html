@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>DISTORT | پنل مدیریت</title>
+<link rel="icon" href="/assets/logo.png">
+<style>
+:root{--bg:#111;--surface:#1a1a1a;--surface-2:#242424;--line:rgba(245,245,245,.14);--text:#f5f5f5;--muted:#9b9b9b;--accent:#f5f5f5;--on-accent:#111;--danger:#ff6b6b;--ok:#7ee0a0;
+  --font:Vazirmatn,Tahoma,'Segoe UI',system-ui,sans-serif;--r:14px}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg)}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+input,select,textarea{width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:0}
+input[type=checkbox]{width:auto}
+input[type=color]{padding:2px;height:40px;width:56px;cursor:pointer}
+textarea{resize:vertical;min-height:42px}
+label.f{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 18px;border-radius:12px;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--surface);transition:transform .15s,background .2s,border-color .2s}
+.btn:hover{border-color:var(--accent)}.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.danger{color:var(--danger)}.btn.danger:hover{border-color:var(--danger)}
+.btn.sm{padding:5px 12px;font-size:12px;border-radius:10px}
+.btn[disabled]{opacity:.45;cursor:default}
+.muted{color:var(--muted);font-size:13px}
+
+/* login */
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login .box{width:min(380px,100%);background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:30px;text-align:center}
+.login img{width:64px;margin:0 auto 10px;display:block}
+.login h1{font-size:22px;margin-bottom:4px}
+.login form{display:grid;gap:12px;margin-top:20px}
+.err{color:var(--danger);font-size:13px;min-height:20px}
+
+/* shell */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;padding:10px 18px;background:rgba(17,17,17,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top img{width:30px;height:30px}
+.top b{font-size:16px;letter-spacing:.06em}
+.top .sp{flex:1}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 18px 0;scrollbar-width:none}
+.tabs button{white-space:nowrap;padding:9px 16px;border-radius:12px 12px 0 0;color:var(--muted);border-bottom:2px solid transparent;font-weight:600;font-size:14px}
+.tabs button[aria-selected=true]{color:var(--text);border-color:var(--accent);background:var(--surface)}
+main{padding:20px 18px 90px;max-width:1180px;margin:0 auto}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+h2{font-size:20px}
+.head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.tools input,.tools select{width:auto;min-width:130px;flex:1 1 130px;max-width:240px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.stat{padding:8px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.stat b{color:var(--text);font-size:16px;margin-inline-end:4px}
+
+/* product list */
+.plist{display:grid;gap:8px}
+.prow{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line)}
+.thumb{width:56px;height:56px;border-radius:10px;background:var(--surface-2);overflow:hidden;display:grid;place-items:center;border:1px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb i{width:26px;height:26px;border-radius:50%;border:1px solid var(--line)}
+.prow .nm{font-weight:700}
+.prow .meta{font-size:12px;color:var(--muted)}
+.prow .acts{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.pill{display:inline-block;font-size:11px;padding:1px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.pill.on{color:var(--ok);border-color:var(--ok)}
+.pager{display:flex;gap:6px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.pager button{min-width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--surface)}
+.pager button[aria-current=true]{background:var(--accent);color:var(--on-accent)}
+
+/* category rows */
+.crow{display:grid;gap:10px;padding:12px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);margin-bottom:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:end}
+.crow .acts{display:flex;gap:6px;flex-wrap:wrap}
+.crow.new{border-style:dashed}
+.sw{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:inline-block;vertical-align:middle}
+.grad{height:40px;border-radius:10px;border:1px solid var(--line)}
+
+/* modal */
+.ov{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.65);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:24px 12px}
+.modal{width:min(820px,100%);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;animation:pop .25s cubic-bezier(.22,1,.36,1)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.grid2{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.fld{margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);font-size:13px}
+.chip[aria-pressed=true]{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:700}
+.chip.bad[aria-pressed=true]{background:var(--danger);border-color:var(--danger);color:#111}
+.imgs{display:flex;flex-wrap:wrap;gap:10px}
+.im{position:relative;width:104px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2)}
+.im img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.im .bar{display:flex;justify-content:space-between;padding:3px}
+.im .bar button{width:26px;height:24px;border-radius:7px;background:var(--bg);font-size:12px}
+.im .main{position:absolute;top:4px;inset-inline-start:4px;font-size:10px;background:var(--accent);color:var(--on-accent);padding:0 7px;border-radius:8px}
+.drop{width:104px;height:104px;border:1px dashed var(--line);border-radius:12px;display:grid;place-items:center;text-align:center;font-size:12px;color:var(--muted);cursor:pointer}
+.drop:hover{border-color:var(--accent);color:var(--text)}
+.foot{display:flex;gap:10px;justify-content:flex-end;align-items:center;margin-top:16px;flex-wrap:wrap}
+.foot .err{margin-inline-end:auto}
+.sw-row{display:flex;align-items:center;gap:8px}
+.tog{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:13px}
+
+/* texts */
+details.grp{margin-bottom:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+details.grp>summary{cursor:pointer;padding:13px 16px;font-weight:700;list-style:none;display:flex;justify-content:space-between}
+details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary::after{content:"+";font-size:20px;line-height:1}
+details.grp[open]>summary::after{content:"−"}
+.trow{padding:12px 16px;border-top:1px solid var(--line)}
+.trow.changed{background:rgba(255,255,255,.04)}
+.trow .lbl{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.trow .lbl b{font-size:14px}
+.trow code{font-size:11px;color:var(--muted);direction:ltr}
+.cols{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+@media(max-width:700px){.cols{grid-template-columns:1fr}}
+.cols>div>span{display:block;font-size:11px;color:var(--muted);margin-bottom:3px}
+.cols .en textarea,.cols .en input{direction:ltr;text-align:left}
+.qa{display:grid;gap:6px;padding:8px;border:1px solid var(--line);border-radius:10px;margin-bottom:6px}
+.savebar{position:fixed;bottom:14px;inset-inline:14px;margin:auto;max-width:560px;z-index:40;display:flex;align-items:center;gap:12px;justify-content:space-between;padding:10px 14px;border-radius:16px;background:var(--text);color:var(--bg);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.savebar .btn{background:var(--bg);color:var(--text);border-color:var(--bg)}
+.hint{font-size:11px;color:var(--muted)}
+
+.toast{position:fixed;z-index:200;bottom:20px;left:50%;transform:translate(-50%,30px);opacity:0;background:var(--text);color:var(--bg);padding:10px 20px;border-radius:12px;font-weight:600;font-size:14px;transition:.3s;pointer-events:none;max-width:92vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}.toast.bad{background:var(--danger);color:#111}
+.szt{width:100%;border-collapse:collapse}
+.szt td{padding:4px}
+.logo-prev{width:96px;height:96px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+.logo-prev img{max-width:80%;max-height:80%}
+</style>
+</head>
+<body>
+
+<div class="login" id="login" hidden>
+  <div class="box">
+    <img src="/assets/logo.png" alt="">
+    <h1>پنل مدیریت DISTORT</h1>
+    <p class="muted">برای ادامه وارد شوید</p>
+    <form id="loginForm">
+      <input type="password" id="pw" placeholder="رمز عبور" autocomplete="current-password" required>
+      <div class="err" id="loginErr" role="alert"></div>
+      <button class="btn primary" type="submit">ورود</button>
+    </form>
+  </div>
+</div>
+
+<div id="shell" hidden>
+  <div class="top">
+    <img src="/assets/logo.png" alt=""><b>DISTORT</b><span class="muted">پنل مدیریت</span><span class="sp"></span>
+    <a class="btn sm" href="/" target="_blank" rel="noopener">مشاهدهٔ فروشگاه ↗</a>
+    <button class="btn sm" id="logout">خروج</button>
+  </div>
+  <div class="tabs" id="tabs" role="tablist"></div>
+  <main id="view"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+/* ================= helpers ================= */
+const $ = s => document.querySelector(s);
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === false || v == null) continue;
+    if (k === 'class') e.className = v;
+    else if (k === 'style') e.style.cssText = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+    else if (k === 'value') e.value = v;
+    else if (k === 'checked') e.checked = !!v;
+    else if (v === true) e.setAttribute(k, '');
+    else e.setAttribute(k, v);
+  }
+  kids.flat(Infinity).forEach(c => { if (c == null || c === false) return; e.append(c instanceof Node ? c : document.createTextNode(String(c))); });
+  return e;
+}
+const fa = n => Number(n).toLocaleString('fa-IR');
+const nd = s => String(s == null ? '' : s).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٬,\s]/g, '');
+const clone = o => JSON.parse(JSON.stringify(o));
+let toastT;
+function toast(msg, bad) { const t = $('#toast'); t.textContent = msg; t.className = 'toast show' + (bad ? ' bad' : ''); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3000); }
+
+const S = { token: null, data: null, tab: 'products', pq: '', ptype: '', pstyle: '', pstat: '', ppage: 1, eff: null, dirty: false };
+try { S.token = sessionStorage.getItem('ds-admin-token'); } catch (e) {}
+function setToken(t) { S.token = t; try { t ? sessionStorage.setItem('ds-admin-token', t) : sessionStorage.removeItem('ds-admin-token'); } catch (e) {} }
+
+async function api(path, opt = {}) {
+  const r = await fetch(path, { method: opt.method || 'GET', headers: Object.assign({ 'Content-Type': 'application/json' }, S.token ? { Authorization: 'Bearer ' + S.token } : {}),
+    body: opt.body !== undefined ? JSON.stringify(opt.body) : undefined });
+  let j = null; try { j = await r.json(); } catch (e) {}
+  if (r.status === 401 && S.token && path !== '/api/admin/login') { logout(true); throw new Error('نشست شما منقضی شد؛ دوباره وارد شوید'); }
+  if (!r.ok) throw new Error((j && j.error) || ('خطا ' + r.status));
+  return j;
+}
+async function load() { S.data = await api('/api/admin/all'); }
+const D = () => S.data;
+const byId = (list, id) => list.find(x => x.id === id);
+const colorsOf = p => p.colors.map(id => byId(D().colors, id)).filter(Boolean);
+
+/* ================= auth ================= */
+function showLogin() { $('#shell').hidden = true; $('#login').hidden = false; $('#pw').focus(); }
+function logout(silent) { if (S.token && !silent) api('/api/admin/logout', { method: 'POST' }).catch(() => {}); setToken(null); showLogin(); }
+$('#logout').onclick = () => logout();
+$('#loginForm').onsubmit = async e => {
+  e.preventDefault(); $('#loginErr').textContent = '';
+  try { const r = await api('/api/admin/login', { method: 'POST', body: { password: $('#pw').value } }); setToken(r.token); $('#pw').value = ''; await start(); }
+  catch (er) { $('#loginErr').textContent = er.message; }
+};
+
+/* ================= tabs ================= */
+const TABS = [['products', 'محصولات'], ['types', 'مدل‌های لباس'], ['styles', 'طرح‌ها و سبک‌ها'], ['colors', 'رنگ‌ها'], ['texts', 'متن‌های سایت'], ['settings', 'تنظیمات']];
+function renderTabs() {
+  const t = $('#tabs'); t.replaceChildren(...TABS.map(([k, l]) => h('button', { role: 'tab', 'aria-selected': S.tab === k, onclick: () => goTab(k) }, l)));
+}
+function goTab(k) {
+  if (S.tab === 'texts' && S.dirty && k !== 'texts' && !confirm('تغییرات ذخیره‌نشدهٔ متن‌ها از بین می‌رود. ادامه می‌دهید؟')) return;
+  if (S.tab === 'texts' && k !== 'texts') S.dirty = false;
+  S.tab = k; render();
+}
+function render() {
+  renderTabs();
+  const v = $('#view'); v.replaceChildren();
+  ({ products: viewProducts, types: () => viewCats('types'), styles: () => viewCats('styles'), colors: () => viewCats('colors'), texts: viewTexts, settings: viewSettings })[S.tab](v);
+}
+async function start() {
+  try { await load(); } catch (e) { if (S.token) toast(e.message, true); showLogin(); return; }
+  $('#login').hidden = true; $('#shell').hidden = false; render();
+}
+window.addEventListener('beforeunload', e => { if (S.dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+/* ================= products ================= */
+const PAGE = 20;
+function viewProducts(v) {
+  const d = D(), all = d.products;
+  const q = S.pq.trim().toLowerCase();
+  let list = all.filter(p => (!q || [p.fa, p.en, p.code].some(x => (x || '').toLowerCase().includes(q))) && (!S.ptype || p.type === S.ptype) && (!S.pstyle || p.style === S.pstyle)
+    && (!S.pstat || (S.pstat === 'pub' ? p.published : !p.published)));
+  list = list.slice().sort((a, b) => b.createdAt - a.createdAt);
+  const pages = Math.max(1, Math.ceil(list.length / PAGE)); if (S.ppage > pages) S.ppage = pages;
+  const slice = list.slice((S.ppage - 1) * PAGE, S.ppage * PAGE);
+  const opt = (arr, all) => [h('option', { value: '' }, all), ...arr.map(x => h('option', { value: x.id }, x.fa))];
+  const rerender = () => { S.ppage = 1; render(); };
+  v.append(
+    h('div', { class: 'head' }, h('h2', {}, 'محصولات'), h('button', { class: 'btn primary', onclick: () => productForm(null) }, '+ محصول جدید')),
+    h('div', { class: 'stats' },
+      h('span', { class: 'stat' }, h('b', {}, fa(all.length)), 'کل محصولات'),
+      h('span', { class: 'stat' }, h('b', {}, fa(all.filter(p => p.published).length)), 'منتشرشده'),
+      h('span', { class: 'stat' }, h('b', {}, fa(all.filter(p => !p.published).length)), 'پیش‌نویس')),
+    h('div', { class: 'tools' },
+      h('input', { type: 'search', placeholder: 'جست‌وجو در نام یا کد…', value: S.pq, 'aria-label': 'جست‌وجو', onchange: e => { S.pq = e.target.value; rerender(); } }),
+      h('select', { 'aria-label': 'نوع', onchange: e => { S.ptype = e.target.value; rerender(); } }, opt(d.types, 'همهٔ مدل‌ها')),
+      h('select', { 'aria-label': 'سبک', onchange: e => { S.pstyle = e.target.value; rerender(); } }, opt(d.styles, 'همهٔ طرح‌ها')),
+      h('select', { 'aria-label': 'وضعیت', onchange: e => { S.pstat = e.target.value; rerender(); } },
+        [['', 'همهٔ وضعیت‌ها'], ['pub', 'منتشرشده'], ['draft', 'پیش‌نویس']].map(([k, l]) => h('option', { value: k }, l)))));
+  const sels = v.querySelectorAll('.tools select'); sels[0].value = S.ptype; sels[1].value = S.pstyle; sels[2].value = S.pstat;
+  v.append(h('div', { class: 'plist' }, slice.length ? slice.map(p => {
+    const t = byId(d.types, p.type), s = byId(d.styles, p.style), cs = colorsOf(p);
+    return h('div', { class: 'prow' },
+      h('div', { class: 'thumb' }, p.images && p.images[0] ? h('img', { src: p.images[0], alt: '', loading: 'lazy' }) : h('i', { style: 'background:' + (cs[0] ? cs[0].h : '#555') })),
+      h('div', {}, h('div', { class: 'nm' }, p.fa, h('span', { class: 'muted' }, ' · ' + p.en)),
+        h('div', { class: 'meta' }, [p.code, t && t.fa, s && s.fa, fa(p.price) + ' تومان' + (p.oldPrice ? ' (قبل: ' + fa(p.oldPrice) + ')' : ''), 'فروش: ' + fa(p.sold)].filter(Boolean).join(' · '))),
+      h('div', { class: 'acts' },
+        h('button', { class: 'pill' + (p.published ? ' on' : ''), title: 'تغییر وضعیت انتشار', onclick: () => togglePub(p) }, p.published ? 'منتشرشده' : 'پیش‌نویس'),
+        h('button', { class: 'btn sm', onclick: () => productForm(p) }, 'ویرایش'),
+        h('button', { class: 'btn sm danger', onclick: () => delProduct(p) }, 'حذف')));
+  }) : h('div', { class: 'card muted' }, 'محصولی پیدا نشد.')));
+  if (pages > 1) v.append(h('div', { class: 'pager' }, [...Array(pages)].map((_, i) => h('button', { 'aria-current': S.ppage === i + 1, onclick: () => { S.ppage = i + 1; render(); window.scrollTo(0, 0); } }, fa(i + 1)))));
+}
+async function togglePub(p) {
+  try { const body = Object.assign({}, p, { published: !p.published }); await api('/api/admin/products/' + p.id, { method: 'PUT', body }); await load(); render(); toast(body.published ? 'منتشر شد' : 'به پیش‌نویس رفت'); }
+  catch (e) { toast(e.message, true); }
+}
+async function delProduct(p) {
+  if (!confirm('محصول «' + p.fa + '» حذف شود؟ این کار قابل بازگشت نیست.')) return;
+  try { await api('/api/admin/products/' + p.id, { method: 'DELETE' }); await load(); render(); toast('حذف شد'); } catch (e) { toast(e.message, true); }
+}
+
+function modal(title, bodyFn) {
+  const ov = h('div', { class: 'ov', role: 'dialog', 'aria-modal': 'true', 'aria-label': title });
+  const close = () => { ov.remove(); document.body.style.overflow = ''; document.removeEventListener('keydown', esc); };
+  const esc = e => { if (e.key === 'Escape') close(); };
+  document.addEventListener('keydown', esc);
+  const m = h('div', { class: 'modal' }, h('div', { class: 'head' }, h('h2', {}, title), h('button', { class: 'btn sm', onclick: close, 'aria-label': 'بستن' }, '✕')));
+  bodyFn(m, close); ov.append(m); document.body.append(ov); document.body.style.overflow = 'hidden';
+  return close;
+}
+function field(label, input, hint) { return h('div', { class: 'fld' }, h('label', { class: 'f' }, label), input, hint ? h('div', { class: 'hint' }, hint) : null); }
+const dateStr = ms => new Date(ms).toISOString().slice(0, 10);
+
+function productForm(src) {
+  const d = D(), isNew = !src;
+  const f = isNew ? { fa: '', en: '', code: '', type: d.types[0].id, style: d.styles[0].id, price: '', oldPrice: '', colors: [d.colors[0].id], outOfStock: [], sold: 0,
+    createdAt: Date.now(), descFa: '', descEn: '', images: [], published: true } : clone(src);
+  modal(isNew ? 'محصول جدید' : 'ویرایش محصول', (m, close) => {
+    const inp = (key, attrs = {}) => h('input', Object.assign({ value: f[key] == null ? '' : f[key], oninput: e => { f[key] = e.target.value; } }, attrs));
+    const imgBox = h('div', { class: 'imgs' }), colorBox = h('div', { class: 'chips' }), sizeBox = h('div', { class: 'chips' });
+    const drawImgs = () => {
+      const fi = h('input', { type: 'file', accept: 'image/png,image/jpeg,image/webp,image/gif', multiple: true, hidden: true, onchange: async e => {
+        for (const file of e.target.files) {
+          if (file.size > 5 * 1024 * 1024) { toast('«' + file.name + '» بزرگ‌تر از ۵ مگابایت است', true); continue; }
+          if (f.images.length >= 8) { toast('حداکثر ۸ تصویر', true); break; }
+          try { const dataUrl = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(file); });
+            const r = await api('/api/admin/upload', { method: 'POST', body: { dataUrl } }); f.images.push(r.url); drawImgs(); } catch (er) { toast(er.message, true); }
+        }
+      } });
+      imgBox.replaceChildren(...f.images.map((u, i) => h('div', { class: 'im' }, i === 0 ? h('span', { class: 'main' }, 'اصلی') : null, h('img', { src: u, alt: '' }),
+        h('div', { class: 'bar' },
+          h('button', { type: 'button', 'aria-label': 'جلو', disabled: i === 0, onclick: () => { [f.images[i - 1], f.images[i]] = [f.images[i], f.images[i - 1]]; drawImgs(); } }, '→'),
+          h('button', { type: 'button', 'aria-label': 'حذف', onclick: () => { f.images.splice(i, 1); drawImgs(); } }, '✕'),
+          h('button', { type: 'button', 'aria-label': 'عقب', disabled: i === f.images.length - 1, onclick: () => { [f.images[i + 1], f.images[i]] = [f.images[i], f.images[i + 1]]; drawImgs(); } }, '←')))),
+        f.images.length < 8 ? h('div', { class: 'drop', role: 'button', tabindex: 0, onclick: () => fi.click(), onkeydown: e => { if (e.key === 'Enter') fi.click(); } }, 'افزودن\nتصویر') : null, fi);
+    };
+    const drawColors = () => colorBox.replaceChildren(...d.colors.map(c => h('button', { type: 'button', class: 'chip', 'aria-pressed': f.colors.includes(c.id),
+      onclick: () => { f.colors = f.colors.includes(c.id) ? f.colors.filter(x => x !== c.id) : [...f.colors, c.id]; drawColors(); } }, h('span', { class: 'sw', style: 'background:' + c.h }), c.fa)));
+    const drawSizes = () => sizeBox.replaceChildren(...d.settings.sizes.map(z => h('button', { type: 'button', class: 'chip bad', 'aria-pressed': f.outOfStock.includes(z),
+      onclick: () => { f.outOfStock = f.outOfStock.includes(z) ? f.outOfStock.filter(x => x !== z) : [...f.outOfStock, z]; drawSizes(); } }, z)));
+    drawImgs(); drawColors(); drawSizes();
+    const err = h('div', { class: 'err', role: 'alert' });
+    const typeSel = h('select', { onchange: e => { f.type = e.target.value; } }, d.types.map(t => h('option', { value: t.id }, t.fa))); typeSel.value = f.type;
+    const styleSel = h('select', { onchange: e => { f.style = e.target.value; } }, d.styles.map(t => h('option', { value: t.id }, t.fa))); styleSel.value = f.style;
+    m.append(
+      h('div', { class: 'grid2' }, field('نام فارسی *', inp('fa', { maxlength: 120 })), field('نام انگلیسی *', inp('en', { maxlength: 120, dir: 'ltr' }))),
+      h('div', { class: 'grid2' }, field('مدل لباس *', typeSel), field('طرح / سبک *', styleSel)),
+      h('div', { class: 'grid2' },
+        field('قیمت (تومان) *', inp('price', { inputmode: 'numeric', placeholder: 'مثلاً 690000' })),
+        field('قیمت قبل از تخفیف (اختیاری)', inp('oldPrice', { inputmode: 'numeric' }), 'اگر پر شود، نشان تخفیف نمایش داده می‌شود')),
+      h('div', { class: 'grid2' },
+        field('کد محصول', inp('code', { maxlength: 24, dir: 'ltr', placeholder: 'خودکار' })),
+        field('تعداد فروش', inp('sold', { inputmode: 'numeric' }), 'برای مرتب‌سازی «پرفروش‌ترین»'),
+        field('تاریخ افزودن', h('input', { type: 'date', value: dateStr(f.createdAt), onchange: e => { if (e.target.value) f.createdAt = new Date(e.target.value + 'T12:00:00').getTime(); } }), 'برای بخش «تازه‌رسیده‌ها»')),
+      field('رنگ‌های موجود *', colorBox), field('سایزهای ناموجود (انتخاب‌شده‌ها ناموجود می‌شوند)', sizeBox),
+      field('تصاویر (اولین تصویر اصلی است — حداکثر ۸ تصویر، ۵ مگابایت)', imgBox, 'اگر تصویری آپلود نشود، سایت یک پیش‌نمایش گرافیکی نشان می‌دهد.'),
+      h('div', { class: 'grid2' },
+        field('توضیحات فارسی', h('textarea', { rows: 3, maxlength: 2000, value: f.descFa, oninput: e => { f.descFa = e.target.value; } })),
+        field('توضیحات انگلیسی', h('textarea', { rows: 3, maxlength: 2000, dir: 'ltr', value: f.descEn, oninput: e => { f.descEn = e.target.value; } }))),
+      h('label', { class: 'tog' }, h('input', { type: 'checkbox', checked: f.published, onchange: e => { f.published = e.target.checked; } }), 'منتشر شود (در فروشگاه نمایش داده شود)'),
+      h('div', { class: 'foot' }, err, h('button', { class: 'btn', onclick: close }, 'انصراف'),
+        h('button', { class: 'btn primary', id: 'saveProd', onclick: async e => {
+          err.textContent = ''; e.target.disabled = true;
+          try {
+            const body = Object.assign({}, f, { price: nd(f.price), oldPrice: nd(f.oldPrice), sold: nd(f.sold) || 0 });
+            if (isNew) await api('/api/admin/products', { method: 'POST', body }); else await api('/api/admin/products/' + src.id, { method: 'PUT', body });
+            await load(); close(); render(); toast('ذخیره شد');
+          } catch (er) { err.textContent = er.message; e.target.disabled = false; }
+        } }, 'ذخیره')));
+  });
+}
+
+/* ================= categories: types / styles / colors ================= */
+const CAT = {
+  types: { title: 'مدل‌های لباس', hint: 'مدل‌ها همان دسته‌بندی «نوع لباس» در فروشگاه هستند (هودی، دورس، تیشرت و …). «شکل» تعیین می‌کند پیش‌نمایش گرافیکی چه شکلی باشد.', one: 'مدل' },
+  styles: { title: 'طرح‌ها و سبک‌ها', hint: 'طرح‌ها همان دسته‌بندی «سبک طرح» هستند (گیمینگ، انیمه، موسیقی و …). گرادیان اختیاری رنگ کارت سبک را در صفحهٔ اصلی تعیین می‌کند.', one: 'طرح' },
+  colors: { title: 'رنگ‌ها', hint: 'رنگ‌هایی که می‌توان برای محصولات انتخاب کرد.', one: 'رنگ' }
+};
+const SHAPES = [['hoodie', 'هودی (با کلاه)'], ['crewneck', 'دورس / سویشرت'], ['tshirt', 'تیشرت / یقه‌گرد']];
+const MOTIFS = [['gaming', 'گیمینگ'], ['pinterest', 'پینترست'], ['music', 'موسیقی'], ['cinema', 'سینما'], ['anime', 'انیمه'], ['misc', 'متفرقه']];
+function viewCats(col) {
+  const d = D(), info = CAT[col], v = $('#view'), list = d[col];
+  const used = id => d.products.filter(p => col === 'types' ? p.type === id : col === 'styles' ? p.style === id : p.colors.includes(id)).length;
+  v.append(h('div', { class: 'head' }, h('h2', {}, info.title)), h('p', { class: 'muted', style: 'margin-bottom:14px' }, info.hint));
+  const rowFor = (item, isNew) => {
+    const f = clone(item);
+    const sel = (opts, key) => { const s = h('select', { onchange: e => { f[key] = e.target.value; } }, opts.map(([k, l]) => h('option', { value: k }, l))); s.value = f[key]; return s; };
+    const cells = [field('نام فارسی', h('input', { value: f.fa, oninput: e => { f.fa = e.target.value; }, maxlength: 60 })), field('نام انگلیسی', h('input', { value: f.en, dir: 'ltr', oninput: e => { f.en = e.target.value; }, maxlength: 60 }))];
+    if (col === 'types') cells.push(field('شکل پیش‌نمایش', sel(SHAPES, 'shape')));
+    if (col === 'styles') {
+      cells.push(field('نماد طرح', sel(MOTIFS, 'motif')));
+      const gBox = h('div', {});
+      const drawG = () => gBox.replaceChildren(h('label', { class: 'tog' }, h('input', { type: 'checkbox', checked: !!f.g, onchange: e => { f.g = e.target.checked ? (f.g || ['#222222', '#8a8a8a']) : null; drawG(); } }), 'گرادیان سفارشی'),
+        f.g ? h('div', { class: 'sw-row', style: 'margin-top:6px' }, h('input', { type: 'color', value: f.g[0], oninput: e => { f.g[0] = e.target.value; } }), h('input', { type: 'color', value: f.g[1], oninput: e => { f.g[1] = e.target.value; } })) : null);
+      drawG(); cells.push(field('رنگ کارت', gBox));
+    }
+    if (col === 'colors') cells.push(field('رنگ', h('input', { type: 'color', value: f.h, oninput: e => { f.h = e.target.value; } })));
+    const acts = h('div', { class: 'acts' });
+    const save = async e => {
+      e.target.disabled = true;
+      try { if (isNew) await api('/api/admin/' + col, { method: 'POST', body: f }); else await api('/api/admin/' + col + '/' + item.id, { method: 'PUT', body: f }); await load(); render(); toast('ذخیره شد'); }
+      catch (er) { toast(er.message, true); e.target.disabled = false; }
+    };
+    acts.append(h('button', { class: 'btn sm primary', onclick: save }, isNew ? 'افزودن' : 'ذخیره'));
+    if (!isNew) {
+      const i = list.findIndex(x => x.id === item.id), n = used(item.id);
+      const move = async dir => { const ids = list.map(x => x.id); [ids[i], ids[i + dir]] = [ids[i + dir], ids[i]]; try { await api('/api/admin/' + col + '/reorder', { method: 'POST', body: { ids } }); await load(); render(); } catch (er) { toast(er.message, true); } };
+      acts.append(h('button', { class: 'btn sm', disabled: i === 0, 'aria-label': 'بالاتر', onclick: () => move(-1) }, '▲'), h('button', { class: 'btn sm', disabled: i === list.length - 1, 'aria-label': 'پایین‌تر', onclick: () => move(1) }, '▼'),
+        h('button', { class: 'btn sm danger', onclick: async () => { if (!confirm('«' + item.fa + '» حذف شود؟')) return; try { await api('/api/admin/' + col + '/' + item.id, { method: 'DELETE' }); await load(); render(); toast('حذف شد'); } catch (er) { toast(er.message, true); } } }, 'حذف'),
+        h('span', { class: 'hint' }, 'در ' + fa(n) + ' محصول'));
+    }
+    return h('div', { class: 'crow' + (isNew ? ' new' : '') }, cells, acts);
+  };
+  list.forEach(it => v.append(rowFor(it, false)));
+  const blank = col === 'types' ? { fa: '', en: '', shape: 'tshirt' } : col === 'styles' ? { fa: '', en: '', motif: 'misc', g: null } : { fa: '', en: '', h: '#888888' };
+  v.append(h('h3', { style: 'margin:18px 0 8px;font-size:15px' }, 'افزودن ' + info.one + ' جدید'), rowFor(blank, true));
+}
+
+/* ================= texts ================= */
+const GROUPS = [
+  ['هدر و ناوبری', ['title', 'logoAria', 'search', 'login', 'n_cart', 'navAria', 'sPh', 'sAria', 'close', 'switchLang', 'nav_home', 'nav_collections', 'nav_wishlist', 'nav_cart', 'nav_profile']],
+  ['برند و شعار', ['brand', 'tag', 'eyebrow', 'cur', 'copy']],
+  ['صفحهٔ اصلی — هیرو (بالای صفحه)', ['heroP', 'shop', 'makeOwn', 'stDesigns', 'stStyles', 'stTypes', 'mq']],
+  ['صفحهٔ اصلی — بخش‌ها', ['catsT', 'stylesT', 'newT', 'newS', 'newAll', 'hotT', 'hotS', 'hotAll', 'whyT', 'w1t', 'w1d', 'w2t', 'w2d', 'w3t', 'w3d', 'w4t', 'w4d', 'whyNote', 'customT', 'customP', 'customBtn', 'customToast', 'faqT', 'faq', 'supT', 'supP', 'supBtn', 'supToast']],
+  ['فوتر', ['fDesc', 'fShop', 'fAll', 'fCustom', 'fInfo', 'fAbout', 'fContact', 'fFaq', 'fLegal', 'fTerms', 'fPriv', 'fShip']],
+  ['صفحهٔ کالکشن‌ها', ['crHome', 'crColl', 'allProducts', 'all', 'allStyles', 'lblType', 'lblStyle', 'upTo', 'saleOnly', 'sort', 'sNew', 'sHot', 'sCheap', 'sPricey', 'clear', 'noRes', 'noResP', 'pagAria', 'prev', 'next', 'nProducts']],
+  ['صفحهٔ محصول و کارت‌ها', ['pnf', 'pnfP', 'seeProducts', 'imgNote', 'guide', 'gSize', 'gWidth', 'gLen', 'guideNote', 'specs', 'specNote', 'related', 'vFront', 'vBack', 'vDetail', 'code', 'color', 'size', 'qty', 'dec', 'inc', 'addCart', 'buyNow', 'wishAria', 'cNew', 'cHot', 'choose', 'off', 'desc', 'sizesLeft', 'cardAria']],
+  ['سبد خرید، علاقه‌مندی‌ها و پروفایل', ['wlT', 'wlEmpty', 'wlEmptyP', 'cartT', 'cartEmpty', 'cartEmptyP', 'remove', 'subtotal', 'saved', 'shipping', 'shipNext', 'total', 'checkout', 'checkoutToast', 'cartNote', 'profT', 'profH', 'profP', 'profLbl', 'cont']],
+  ['پیام‌ها و جست‌وجو', ['tWishAdd', 'tWishDel', 'tCart', 'tPick', 'sNone', 'sNoneP']]
+];
+const HIDE = new Set(['h1a', 'h1b', 'h1c', 'demo']);
+const LABEL = {
+  title: 'عنوان تب مرورگر', logoAria: 'توضیح لوگو (دسترس‌پذیری)', search: 'برچسب دکمهٔ جست‌وجو', login: 'دکمهٔ ورود', n_cart: 'برچسب آیکون سبد', navAria: 'توضیح نوار پایین', sPh: 'متن راهنمای کادر جست‌وجو', sAria: 'برچسب کادر جست‌وجو', close: 'دکمهٔ بستن', switchLang: 'برچسب دکمهٔ تغییر زبان',
+  nav_home: 'نوار پایین: خانه', nav_collections: 'نوار پایین: کالکشن‌ها', nav_wishlist: 'نوار پایین: علاقه‌مندی', nav_cart: 'نوار پایین: سبد', nav_profile: 'نوار پایین: پروفایل',
+  brand: 'نام برند (صفحهٔ اولیه و فوتر)', tag: 'شعار — تیتر اصلی هیرو', eyebrow: 'متن کوچک بالای تیتر', cur: 'واحد پول', copy: 'متن حق نشر ({y} = سال جاری)',
+  heroP: 'توضیح زیر تیتر', shop: 'دکمهٔ اول هیرو', makeOwn: 'دکمهٔ دوم هیرو', stDesigns: 'آمار: تعداد طرح', stStyles: 'آمار: تعداد سبک', stTypes: 'آمار: تعداد لباس', mq: 'نوار متحرک (هر خط یک کلمه)',
+  catsT: 'تیتر بخش نوع لباس', stylesT: 'تیتر بخش سبک‌ها', newT: 'تیتر تازه‌رسیده‌ها', newS: 'زیرتیتر تازه‌رسیده‌ها', newAll: 'دکمهٔ همهٔ جدیدها', hotT: 'تیتر پرفروش‌ها', hotS: 'زیرتیتر پرفروش‌ها', hotAll: 'دکمهٔ همهٔ پرفروش‌ها',
+  whyT: 'تیتر «چرا ما؟»', whyNote: 'یادداشت زیر «چرا ما؟»', customT: 'تیتر طرح اختصاصی', customP: 'متن طرح اختصاصی', customBtn: 'دکمهٔ طرح اختصاصی', customToast: 'پیام کلیک روی طرح اختصاصی',
+  faqT: 'تیتر سؤالات متداول', faq: 'سؤال‌ها و پاسخ‌ها', supT: 'تیتر پشتیبانی', supP: 'متن پشتیبانی', supBtn: 'دکمهٔ پشتیبانی', supToast: 'پیام کلیک روی پشتیبانی',
+  fDesc: 'توضیح برند در فوتر', fShop: 'فوتر: ستون فروشگاه', fAll: 'فوتر: همهٔ محصولات', fCustom: 'فوتر: طرح اختصاصی', fInfo: 'فوتر: ستون اطلاعات', fAbout: 'فوتر: دربارهٔ ما', fContact: 'فوتر: تماس', fFaq: 'فوتر: سؤالات', fLegal: 'فوتر: ستون قوانین', fTerms: 'فوتر: شرایط', fPriv: 'فوتر: حریم خصوصی', fShip: 'فوتر: ارسال و مرجوعی',
+  nProducts: 'تعداد محصول ({n} = عدد)', off: 'نشان تخفیف ({n} = درصد)', desc: 'توضیح پیش‌فرض محصول ({n} نام، {ty} مدل، {st} طرح)', sizesLeft: 'سایزهای موجود ({n} = عدد)', cardAria: 'توضیح کارت ({n} = نام محصول)',
+  specs: 'عنوان بخش‌های مشخصات (هر خط یکی)', specNote: 'متن داخل بخش مشخصات', guide: 'عنوان راهنمای اندازه', guideNote: 'یادداشت زیر جدول اندازه', imgNote: 'یادداشت زیر تصاویر', related: 'تیتر محصولات مشابه',
+  addCart: 'دکمهٔ افزودن به سبد', buyNow: 'دکمهٔ خرید مستقیم', choose: 'دکمهٔ کارت محصول', checkout: 'دکمهٔ ادامه فرایند خرید', cartNote: 'یادداشت زیر سبد', shipNext: 'متن هزینهٔ ارسال', checkoutToast: 'پیام کلیک روی خرید'
+};
+function viewTexts(v) {
+  const d = D(), def = d.defaults, keys = Object.keys(def.fa);
+  if (!S.eff) { S.eff = { fa: {}, en: {} }; for (const l of ['fa', 'en']) for (const k of keys) S.eff[l][k] = clone(d.texts[l] && d.texts[l][k] !== undefined ? d.texts[l][k] : def[l][k]); }
+  const eq = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  const changedKeys = () => keys.filter(k => ['fa', 'en'].some(l => !eq(S.eff[l][k], def[l][k])));
+  const bar = h('div', { class: 'savebar', hidden: true }), cnt = h('span', {});
+  const mark = () => { S.dirty = changedKeys().length > 0; };
+  const refreshBar = () => { const n = changedKeys().length; bar.hidden = !S.dirty && n === 0; cnt.textContent = fa(n) + ' متن تغییر کرده'; };
+  const saveBtn = h('button', { class: 'btn', onclick: async e => {
+    e.target.disabled = true;
+    try {
+      const out = { fa: {}, en: {} };
+      for (const l of ['fa', 'en']) for (const k of keys) if (!eq(S.eff[l][k], def[l][k])) {
+        let val = S.eff[l][k]; if (Array.isArray(def[l][k]) && Array.isArray(def[l][k][0])) val = val.filter(r => r[0].trim() && r[1].trim());
+        out[l][k] = val;
+      }
+      await api('/api/admin/texts', { method: 'PUT', body: out }); S.dirty = false; S.eff = null; await load(); render(); toast('متن‌ها ذخیره شد و در سایت اعمال می‌شود');
+    } catch (er) { toast(er.message, true); e.target.disabled = false; }
+  } }, 'ذخیره همهٔ تغییرات');
+  bar.append(cnt, saveBtn);
+  const rows = [];
+  const q = h('input', { type: 'search', placeholder: 'جست‌وجو در متن‌ها…', 'aria-label': 'جست‌وجو', oninput: e => { const t = e.target.value.trim().toLowerCase();
+    rows.forEach(r => { r.el.hidden = !!t && !r.text().includes(t); }); document.querySelectorAll('details.grp').forEach(g => { const any = [...g.querySelectorAll('.trow')].some(x => !x.hidden); g.hidden = !any; if (t && any) g.open = true; }); } });
+  v.append(h('div', { class: 'head' }, h('h2', {}, 'متن‌های سایت')),
+    h('p', { class: 'muted', style: 'margin-bottom:12px' }, 'همهٔ متن‌های صفحه (از هدر تا فوتر) به دو زبان اینجا قابل ویرایش است. هر متنی که تغییر دهید پس از «ذخیره» روی سایت اعمال می‌شود؛ با «پیش‌فرض» به متن اولیه برمی‌گردد.'),
+    h('div', { class: 'tools' }, q));
+  const placed = new Set(GROUPS.flatMap(g => g[1])), rest = keys.filter(k => !placed.has(k) && !HIDE.has(k));
+  const groups = rest.length ? [...GROUPS, ['سایر', rest]] : GROUPS;
+  groups.forEach(([title, gk], gi) => {
+    const g = h('details', { class: 'grp', open: gi === 0 }, h('summary', {}, title, h('span', { class: 'muted' }, fa(gk.filter(k => def.fa[k] !== undefined).length))));
+    gk.filter(k => def.fa[k] !== undefined).forEach(k => {
+      const isArr = Array.isArray(def.fa[k]), isPair = isArr && Array.isArray(def.fa[k][0]);
+      const row = h('div', { class: 'trow' });
+      const draw = () => {
+        const ch = ['fa', 'en'].some(l => !eq(S.eff[l][k], def[l][k]));
+        row.className = 'trow' + (ch ? ' changed' : '');
+        const cell = l => {
+          const val = S.eff[l][k], on = fn => e => { fn(e.target.value); mark(); refreshBar(); const c = ['fa', 'en'].some(x => !eq(S.eff[x][k], def[x][k])); row.classList.toggle('changed', c); rst.hidden = !c; };
+          if (isPair) {
+            const box = h('div', {}), drawQA = () => { box.replaceChildren(...S.eff[l][k].map((r, i) => h('div', { class: 'qa' },
+              h('input', { value: r[0], placeholder: 'سؤال', oninput: on(x => { S.eff[l][k][i][0] = x; }) }), h('textarea', { rows: 2, placeholder: 'پاسخ', value: r[1], oninput: on(x => { S.eff[l][k][i][1] = x; }) }),
+              h('button', { class: 'btn sm danger', type: 'button', onclick: () => { S.eff[l][k].splice(i, 1); mark(); refreshBar(); draw(); } }, 'حذف')))); };
+            drawQA(); return h('div', { class: l === 'en' ? 'en' : '' }, h('span', {}, l === 'fa' ? 'فارسی' : 'English'), box,
+              h('button', { class: 'btn sm', type: 'button', onclick: () => { S.eff[l][k].push(['', '']); mark(); refreshBar(); draw(); } }, '+ سؤال جدید'));
+          }
+          const text = isArr ? val.join('\n') : val;
+          return h('div', { class: l === 'en' ? 'en' : '' }, h('span', {}, l === 'fa' ? 'فارسی' : 'English'),
+            h('textarea', { rows: Math.min(6, Math.max(1, Math.ceil(String(text).length / 46) + (isArr ? val.length - 1 : 0))), value: text,
+              oninput: on(x => { S.eff[l][k] = isArr ? x.split('\n').map(s => s.trim()).filter(Boolean) : x; }) }));
+        };
+        const rst = h('button', { class: 'btn sm', type: 'button', hidden: !ch, onclick: () => { S.eff.fa[k] = clone(def.fa[k]); S.eff.en[k] = clone(def.en[k]); mark(); refreshBar(); draw(); } }, 'پیش‌فرض');
+        row.replaceChildren(h('div', { class: 'lbl' }, h('b', {}, LABEL[k] || k), h('span', {}, h('code', {}, k), ' ', rst)), h('div', { class: 'cols' }, cell('fa'), cell('en')));
+      };
+      draw(); g.append(row);
+      rows.push({ el: row, text: () => (k + ' ' + (LABEL[k] || '') + ' ' + JSON.stringify(S.eff.fa[k]) + ' ' + JSON.stringify(S.eff.en[k])).toLowerCase() });
+    });
+    v.append(g);
+  });
+  v.append(bar); refreshBar();
+}
+
+/* ================= settings ================= */
+function viewSettings(v) {
+  const d = D(), s = d.settings;
+  const prev = h('img', { src: s.logo || '/assets/logo.png', alt: '' });
+  const fi = h('input', { type: 'file', accept: 'image/png,image/jpeg,image/webp,image/gif', hidden: true, onchange: async e => {
+    const file = e.target.files[0]; if (!file) return;
+    if (file.size > 5 * 1024 * 1024) return toast('حجم تصویر حداکثر ۵ مگابایت', true);
+    try { const dataUrl = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(file); });
+      const up = await api('/api/admin/upload', { method: 'POST', body: { dataUrl } }); await api('/api/admin/settings', { method: 'PUT', body: { logo: up.url } }); await load(); render(); toast('لوگو تغییر کرد'); }
+    catch (er) { toast(er.message, true); }
+  } });
+  const sizes = h('input', { value: s.sizes.join(', '), dir: 'ltr' });
+  const guide = clone(s.sizeGuide || []);
+  const gBox = h('div', {});
+  const drawG = () => gBox.replaceChildren(h('table', { class: 'szt' }, h('tr', {}, h('td', { class: 'muted' }, 'سایز'), h('td', { class: 'muted' }, 'عرض (cm)'), h('td', { class: 'muted' }, 'قد (cm)'), h('td', {})),
+    guide.map((r, i) => h('tr', {}, [0, 1, 2].map(j => h('td', {}, h('input', { value: r[j], inputmode: j ? 'numeric' : 'text', dir: 'ltr', oninput: e => { guide[i][j] = e.target.value; } }))),
+      h('td', {}, h('button', { class: 'btn sm danger', onclick: () => { guide.splice(i, 1); drawG(); } }, '✕'))))), h('button', { class: 'btn sm', onclick: () => { guide.push(['', '', '']); drawG(); } }, '+ ردیف'));
+  drawG();
+  const cur = h('input', { type: 'password', autocomplete: 'current-password' }), nxt = h('input', { type: 'password', autocomplete: 'new-password' });
+  v.append(h('div', { class: 'head' }, h('h2', {}, 'تنظیمات')),
+    h('div', { class: 'card', style: 'margin-bottom:14px' }, h('h3', { style: 'margin-bottom:10px;font-size:16px' }, 'لوگو'),
+      h('div', { style: 'display:flex;gap:14px;align-items:center;flex-wrap:wrap' }, h('div', { class: 'logo-prev' }, prev),
+        h('div', {}, h('p', { class: 'muted', style: 'margin-bottom:8px' }, 'بهتر است PNG شفاف و روشن (سفید) باشد؛ لوگو روی پس‌زمینهٔ تیره نمایش داده می‌شود.'),
+          h('button', { class: 'btn', onclick: () => fi.click() }, 'آپلود لوگوی جدید'), ' ',
+          s.logo ? h('button', { class: 'btn danger', onclick: async () => { try { await api('/api/admin/settings', { method: 'PUT', body: { logo: null } }); await load(); render(); toast('لوگوی پیش‌فرض برگشت'); } catch (e) { toast(e.message, true); } } }, 'بازگشت به پیش‌فرض') : null, fi))),
+    h('div', { class: 'card', style: 'margin-bottom:14px' }, h('h3', { style: 'margin-bottom:10px;font-size:16px' }, 'سایزها و جدول اندازه'),
+      field('سایزها (با ویرگول جدا کنید)', sizes), field('جدول اندازه در صفحهٔ محصول', gBox),
+      h('button', { class: 'btn primary', onclick: async () => {
+        try { const list = sizes.value.split(',').map(x => x.trim()).filter(Boolean);
+          await api('/api/admin/settings', { method: 'PUT', body: { sizes: list, sizeGuide: guide.filter(r => String(r[0]).trim()).map(r => [String(r[0]).trim(), nd(r[1]) || 0, nd(r[2]) || 0]) } }); await load(); render(); toast('ذخیره شد'); }
+        catch (e) { toast(e.message, true); } } }, 'ذخیره')),
+    h('div', { class: 'card', style: 'margin-bottom:14px' }, h('h3', { style: 'margin-bottom:10px;font-size:16px' }, 'تغییر رمز عبور'),
+      d.envPassword ? h('p', { class: 'muted' }, 'رمز از طریق متغیر محیطی ADMIN_PASSWORD روی سرور تنظیم شده و از اینجا قابل تغییر نیست.') :
+        h('div', {}, h('div', { class: 'grid2' }, field('رمز فعلی', cur), field('رمز جدید (حداقل ۸ کاراکتر)', nxt)),
+          h('button', { class: 'btn primary', onclick: async () => { try { const r = await api('/api/admin/password', { method: 'POST', body: { current: cur.value, next: nxt.value } }); setToken(r.token); cur.value = nxt.value = ''; toast('رمز تغییر کرد'); } catch (e) { toast(e.message, true); } } }, 'تغییر رمز'))),
+    h('div', { class: 'card' }, h('h3', { style: 'margin-bottom:10px;font-size:16px' }, 'پشتیبان‌گیری'),
+      h('p', { class: 'muted', style: 'margin-bottom:10px' }, 'یک نسخهٔ JSON از همهٔ اطلاعات (محصولات، دسته‌ها، متن‌ها و تنظیمات) دانلود می‌شود. تصاویر در پوشهٔ data/uploads سرور هستند.'),
+      h('button', { class: 'btn', onclick: async () => { try { const r = await fetch('/api/admin/export', { headers: { Authorization: 'Bearer ' + S.token } }); if (!r.ok) throw new Error('خطا در دریافت پشتیبان');
+        const a = h('a', { href: URL.createObjectURL(await r.blob()), download: 'distort-backup-' + new Date().toISOString().slice(0, 10) + '.json' }); document.body.append(a); a.click(); a.remove(); } catch (e) { toast(e.message, true); } } }, 'دانلود پشتیبان')));
+}
+
+/* ================= boot ================= */
+(async function () { if (S.token) await start(); else showLogin(); })();
+</script>
+</body>
+</html>

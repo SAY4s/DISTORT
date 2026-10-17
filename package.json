@@ -1,0 +1,10 @@
+{
+  "name": "distort-cms",
+  "version": "1.0.0",
+  "description": "DISTORT storefront + admin panel (zero dependencies)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED",
+  "private": true
+}

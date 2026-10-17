@@ -1,0 +1,704 @@
+{
+ "types": [
+  {
+   "id": "hoodie",
+   "fa": "هودی",
+   "en": "Hoodie",
+   "shape": "hoodie"
+  },
+  {
+   "id": "crewneck",
+   "fa": "دورس",
+   "en": "Crewneck",
+   "shape": "crewneck"
+  },
+  {
+   "id": "tshirt",
+   "fa": "تیشرت",
+   "en": "T-Shirt",
+   "shape": "tshirt"
+  },
+  {
+   "id": "cotton",
+   "fa": "پنبه‌ای",
+   "en": "Cotton",
+   "shape": "tshirt"
+  },
+  {
+   "id": "other",
+   "fa": "سایر لباس‌ها",
+   "en": "Other apparel",
+   "shape": "tshirt"
+  }
+ ],
+ "styles": [
+  {
+   "id": "gaming",
+   "fa": "گیمینگ",
+   "en": "Gaming",
+   "motif": "gaming",
+   "g": null
+  },
+  {
+   "id": "pinterest",
+   "fa": "پینترست",
+   "en": "Pinterest Aesthetic",
+   "motif": "pinterest",
+   "g": null
+  },
+  {
+   "id": "music",
+   "fa": "موسیقی",
+   "en": "Music",
+   "motif": "music",
+   "g": null
+  },
+  {
+   "id": "cinema",
+   "fa": "سینما و فیلم",
+   "en": "Cinema & Movies",
+   "motif": "cinema",
+   "g": null
+  },
+  {
+   "id": "anime",
+   "fa": "انیمه",
+   "en": "Anime",
+   "motif": "anime",
+   "g": null
+  },
+  {
+   "id": "misc",
+   "fa": "متفرقه",
+   "en": "Miscellaneous",
+   "motif": "misc",
+   "g": null
+  }
+ ],
+ "colors": [
+  {
+   "id": "black",
+   "fa": "مشکی",
+   "en": "Black",
+   "h": "#1a1a1a"
+  },
+  {
+   "id": "white",
+   "fa": "سفید",
+   "en": "White",
+   "h": "#f5f5f5"
+  },
+  {
+   "id": "gray",
+   "fa": "طوسی",
+   "en": "Gray",
+   "h": "#8c8c8c"
+  },
+  {
+   "id": "charcoal",
+   "fa": "ذغالی",
+   "en": "Charcoal",
+   "h": "#3d3d3d"
+  },
+  {
+   "id": "silver",
+   "fa": "نقره‌ای",
+   "en": "Silver",
+   "h": "#c4c4c4"
+  },
+  {
+   "id": "graphite",
+   "fa": "گرافیتی",
+   "en": "Graphite",
+   "h": "#2a2a2a"
+  }
+ ],
+ "products": [
+  {
+   "id": "p1",
+   "code": "DS-0001",
+   "fa": "کنترلر پیکسلی",
+   "en": "Pixel Controller",
+   "type": "hoodie",
+   "style": "gaming",
+   "price": 1160000,
+   "oldPrice": 1450000,
+   "colors": [
+    "black",
+    "gray",
+    "silver"
+   ],
+   "outOfStock": [
+    "S"
+   ],
+   "sold": 10,
+   "createdAt": 1792178376686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p2",
+   "code": "DS-0002",
+   "fa": "مرحله آخر",
+   "en": "Final Stage",
+   "type": "crewneck",
+   "style": "gaming",
+   "price": 1200000,
+   "oldPrice": null,
+   "colors": [
+    "white",
+    "charcoal",
+    "graphite"
+   ],
+   "outOfStock": [],
+   "sold": 47,
+   "createdAt": 1791573576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p3",
+   "code": "DS-0003",
+   "fa": "Game Over",
+   "en": "Game Over",
+   "type": "tshirt",
+   "style": "gaming",
+   "price": 790000,
+   "oldPrice": null,
+   "colors": [
+    "gray",
+    "silver",
+    "black"
+   ],
+   "outOfStock": [],
+   "sold": 84,
+   "createdAt": 1790968776686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p4",
+   "code": "DS-0004",
+   "fa": "هشت بیت",
+   "en": "8-Bit",
+   "type": "cotton",
+   "style": "gaming",
+   "price": 770000,
+   "oldPrice": null,
+   "colors": [
+    "charcoal",
+    "graphite",
+    "white"
+   ],
+   "outOfStock": [
+    "XL"
+   ],
+   "sold": 31,
+   "createdAt": 1790363976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p5",
+   "code": "DS-0005",
+   "fa": "رویای بژ",
+   "en": "Beige Dream",
+   "type": "other",
+   "style": "pinterest",
+   "price": 620000,
+   "oldPrice": 780000,
+   "colors": [
+    "silver",
+    "black",
+    "gray"
+   ],
+   "outOfStock": [],
+   "sold": 68,
+   "createdAt": 1791832776686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p6",
+   "code": "DS-0006",
+   "fa": "قاب کولاژ",
+   "en": "Collage Frame",
+   "type": "hoodie",
+   "style": "pinterest",
+   "price": 1500000,
+   "oldPrice": null,
+   "colors": [
+    "graphite",
+    "white",
+    "charcoal"
+   ],
+   "outOfStock": [],
+   "sold": 15,
+   "createdAt": 1791227976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p7",
+   "code": "DS-0007",
+   "fa": "مه صبحگاهی",
+   "en": "Morning Mist",
+   "type": "crewneck",
+   "style": "pinterest",
+   "price": 1250000,
+   "oldPrice": null,
+   "colors": [
+    "black",
+    "gray",
+    "silver"
+   ],
+   "outOfStock": [
+    "M"
+   ],
+   "sold": 52,
+   "createdAt": 1790623176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p8",
+   "code": "DS-0008",
+   "fa": "خط و سایه",
+   "en": "Line & Shadow",
+   "type": "tshirt",
+   "style": "pinterest",
+   "price": 840000,
+   "oldPrice": null,
+   "colors": [
+    "white",
+    "charcoal",
+    "graphite"
+   ],
+   "outOfStock": [],
+   "sold": 89,
+   "createdAt": 1792091976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p9",
+   "code": "DS-0009",
+   "fa": "موج صدا",
+   "en": "Sound Wave",
+   "type": "cotton",
+   "style": "music",
+   "price": 500000,
+   "oldPrice": 620000,
+   "colors": [
+    "gray",
+    "silver",
+    "black"
+   ],
+   "outOfStock": [],
+   "sold": 36,
+   "createdAt": 1791487176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p10",
+   "code": "DS-0010",
+   "fa": "شب آنالوگ",
+   "en": "Analog Night",
+   "type": "other",
+   "style": "music",
+   "price": 830000,
+   "oldPrice": null,
+   "colors": [
+    "charcoal",
+    "graphite",
+    "white"
+   ],
+   "outOfStock": [
+    "XXL"
+   ],
+   "sold": 73,
+   "createdAt": 1790882376686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p11",
+   "code": "DS-0011",
+   "fa": "باس سنگین",
+   "en": "Heavy Bass",
+   "type": "hoodie",
+   "style": "music",
+   "price": 1550000,
+   "oldPrice": null,
+   "colors": [
+    "silver",
+    "black",
+    "gray"
+   ],
+   "outOfStock": [],
+   "sold": 20,
+   "createdAt": 1790277576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p12",
+   "code": "DS-0012",
+   "fa": "نوار کاست",
+   "en": "Cassette Tape",
+   "type": "crewneck",
+   "style": "music",
+   "price": 1300000,
+   "oldPrice": null,
+   "colors": [
+    "graphite",
+    "white",
+    "charcoal"
+   ],
+   "outOfStock": [],
+   "sold": 57,
+   "createdAt": 1791746376686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p13",
+   "code": "DS-0013",
+   "fa": "کلاکت",
+   "en": "Clapperboard",
+   "type": "tshirt",
+   "style": "cinema",
+   "price": 550000,
+   "oldPrice": 690000,
+   "colors": [
+    "black",
+    "gray",
+    "silver"
+   ],
+   "outOfStock": [
+    "L"
+   ],
+   "sold": 94,
+   "createdAt": 1791141576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p14",
+   "code": "DS-0014",
+   "fa": "سکانس آخر",
+   "en": "Final Scene",
+   "type": "cotton",
+   "style": "cinema",
+   "price": 670000,
+   "oldPrice": null,
+   "colors": [
+    "white",
+    "charcoal",
+    "graphite"
+   ],
+   "outOfStock": [],
+   "sold": 41,
+   "createdAt": 1790536776686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p15",
+   "code": "DS-0015",
+   "fa": "فیلم خام",
+   "en": "Raw Film",
+   "type": "other",
+   "style": "cinema",
+   "price": 880000,
+   "oldPrice": null,
+   "colors": [
+    "gray",
+    "silver",
+    "black"
+   ],
+   "outOfStock": [],
+   "sold": 78,
+   "createdAt": 1792005576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p16",
+   "code": "DS-0016",
+   "fa": "پرده نقره‌ای",
+   "en": "Silver Screen",
+   "type": "hoodie",
+   "style": "cinema",
+   "price": 1600000,
+   "oldPrice": null,
+   "colors": [
+    "charcoal",
+    "graphite",
+    "white"
+   ],
+   "outOfStock": [
+    "S"
+   ],
+   "sold": 25,
+   "createdAt": 1791400776686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p17",
+   "code": "DS-0017",
+   "fa": "ستاره شمشیر",
+   "en": "Star Blade",
+   "type": "crewneck",
+   "style": "anime",
+   "price": 920000,
+   "oldPrice": 1150000,
+   "colors": [
+    "silver",
+    "black",
+    "gray"
+   ],
+   "outOfStock": [],
+   "sold": 62,
+   "createdAt": 1790795976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p18",
+   "code": "DS-0018",
+   "fa": "ابر و رعد",
+   "en": "Cloud & Thunder",
+   "type": "tshirt",
+   "style": "anime",
+   "price": 740000,
+   "oldPrice": null,
+   "colors": [
+    "graphite",
+    "white",
+    "charcoal"
+   ],
+   "outOfStock": [],
+   "sold": 99,
+   "createdAt": 1790191176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p19",
+   "code": "DS-0019",
+   "fa": "چشم‌های بزرگ",
+   "en": "Big Eyes",
+   "type": "cotton",
+   "style": "anime",
+   "price": 720000,
+   "oldPrice": null,
+   "colors": [
+    "black",
+    "gray",
+    "silver"
+   ],
+   "outOfStock": [
+    "XL"
+   ],
+   "sold": 46,
+   "createdAt": 1791659976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p20",
+   "code": "DS-0020",
+   "fa": "خط سرعت",
+   "en": "Speed Lines",
+   "type": "other",
+   "style": "anime",
+   "price": 930000,
+   "oldPrice": null,
+   "colors": [
+    "white",
+    "charcoal",
+    "graphite"
+   ],
+   "outOfStock": [],
+   "sold": 83,
+   "createdAt": 1791055176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p21",
+   "code": "DS-0021",
+   "fa": "نویز",
+   "en": "Noise",
+   "type": "hoodie",
+   "style": "misc",
+   "price": 1160000,
+   "oldPrice": 1450000,
+   "colors": [
+    "gray",
+    "silver",
+    "black"
+   ],
+   "outOfStock": [],
+   "sold": 30,
+   "createdAt": 1790450376686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p22",
+   "code": "DS-0022",
+   "fa": "خط‌خطی",
+   "en": "Scribble",
+   "type": "crewneck",
+   "style": "misc",
+   "price": 1200000,
+   "oldPrice": null,
+   "colors": [
+    "charcoal",
+    "graphite",
+    "white"
+   ],
+   "outOfStock": [
+    "M"
+   ],
+   "sold": 67,
+   "createdAt": 1791919176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p23",
+   "code": "DS-0023",
+   "fa": "آشوب مرتب",
+   "en": "Ordered Chaos",
+   "type": "tshirt",
+   "style": "misc",
+   "price": 790000,
+   "oldPrice": null,
+   "colors": [
+    "silver",
+    "black",
+    "gray"
+   ],
+   "outOfStock": [],
+   "sold": 14,
+   "createdAt": 1791314376686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p24",
+   "code": "DS-0024",
+   "fa": "سیگنال گم",
+   "en": "Lost Signal",
+   "type": "cotton",
+   "style": "misc",
+   "price": 770000,
+   "oldPrice": null,
+   "colors": [
+    "graphite",
+    "white",
+    "charcoal"
+   ],
+   "outOfStock": [],
+   "sold": 51,
+   "createdAt": 1790709576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true
+  }
+ ],
+ "texts": {
+  "fa": {},
+  "en": {}
+ },
+ "settings": {
+  "logo": null,
+  "sizes": [
+   "S",
+   "M",
+   "L",
+   "XL",
+   "XXL"
+  ],
+  "sizeGuide": [
+   [
+    "S",
+    50,
+    68
+   ],
+   [
+    "M",
+    52,
+    70
+   ],
+   [
+    "L",
+    54,
+    72
+   ],
+   [
+    "XL",
+    57,
+    74
+   ],
+   [
+    "XXL",
+    60,
+    76
+   ]
+  ]
+ },
+ "nextProductId": 25
+}
