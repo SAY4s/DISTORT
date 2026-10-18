@@ -21,6 +21,31 @@ let db;
 if (fs.existsSync(DB_FILE)) db = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
 else { db = JSON.parse(fs.readFileSync(path.join(ROOT, 'seed.json'), 'utf8')); save(); }
 db.texts = db.texts || { fa: {}, en: {} };
+/* one-time migration: products saved before per-product specs existed get the new fields */
+(function migrateSpecs() {
+  const K = ['fabricFa', 'fabricEn', 'printFa', 'printEn', 'careFa', 'careEn'];
+  let seed = { products: [] }; try { seed = JSON.parse(fs.readFileSync(path.join(ROOT, 'seed.json'), 'utf8')); } catch {}
+  const sp = new Map(seed.products.map(p => [p.id, p]));
+  let changed = false;
+  for (const p of db.products) {
+    if (K.every(k => !(k in p))) {
+      const sd = sp.get(p.id), same = sd && sd.fa === p.fa && sd.en === p.en;   // only untouched sample products get sample text
+      K.forEach(k => { p[k] = same && sd[k] ? sd[k] : ''; }); changed = true;
+    } else K.forEach(k => { if (!(k in p)) { p[k] = ''; changed = true; } });
+  }
+  if (changed) save();
+})();
+/* one-time upgrade: products saved before per-product specs existed get the sample texts (only untouched seed products) or empty fields */
+{
+  const SPEC = ['fabricFa', 'fabricEn', 'printFa', 'printEn', 'careFa', 'careEn'];
+  const seedDb = JSON.parse(fs.readFileSync(path.join(ROOT, 'seed.json'), 'utf8')); let changed = false;
+  for (const p of db.products) {
+    if (p.fabricFa !== undefined) continue;
+    const sp = seedDb.products.find(x => x.id === p.id && x.fa === p.fa);
+    SPEC.forEach(k => { p[k] = sp && sp[k] ? sp[k] : ''; }); changed = true;
+  }
+  if (changed) save();
+}
 function save() {
   const tmp = DB_FILE + '.tmp';
   fs.writeFileSync(tmp, JSON.stringify(db, null, 1));
@@ -102,6 +127,7 @@ const uniqueId = (list, base, prefix) => {
 const imgExists = u => IMG_URL.test(u) && fs.existsSync(path.join(UP, path.basename(u)));
 function referencedImages() {
   const s = new Set(db.products.flatMap(p => p.images || []));
+  db.types.forEach(t => t.image && s.add(t.image)); db.styles.forEach(t => t.image && s.add(t.image));
   if (db.settings.logo) s.add(db.settings.logo);
   return s;
 }
@@ -111,15 +137,17 @@ function dropImages(urls) {
 }
 
 /* ---------- validators ---------- */
+const optImg = v => { if (v == null || v === '') return null; if (!imgExists(v)) throw bad('تصویر نامعتبر است'); return v; };
 const V = {
   types(b, ex) {
-    return { id: ex ? ex.id : null, fa: str(b.fa, 60, 'نام فارسی'), en: str(b.en, 60, 'نام انگلیسی'),
+    return { image: optImg(b.image), id: ex ? ex.id : null, fa: str(b.fa, 60, 'نام فارسی'), en: str(b.en, 60, 'نام انگلیسی'),
       shape: SHAPES.includes(b.shape) ? b.shape : (() => { throw bad('شکل لباس نامعتبر است'); })() };
   },
   styles(b, ex) {
+    const image = optImg(b.image);
     let g = null;
     if (Array.isArray(b.g) && b.g.length === 2) { if (!b.g.every(c => HEX.test(c))) throw bad('رنگ گرادیان نامعتبر است'); g = b.g; }
-    return { id: ex ? ex.id : null, fa: str(b.fa, 60, 'نام فارسی'), en: str(b.en, 60, 'نام انگلیسی'),
+    return { image, id: ex ? ex.id : null, fa: str(b.fa, 60, 'نام فارسی'), en: str(b.en, 60, 'نام انگلیسی'),
       motif: MOTIFS.includes(b.motif) ? b.motif : (() => { throw bad('طرح نمادین نامعتبر است'); })(), g };
   },
   colors(b, ex) {
@@ -144,6 +172,9 @@ const V = {
     return { id: ex ? ex.id : null, code: str(b.code, 24, 'کد محصول', false), fa: str(b.fa, 120, 'نام فارسی'), en: str(b.en, 120, 'نام انگلیسی'),
       type: b.type, style: b.style, price, oldPrice, colors, outOfStock: out, sold: int(b.sold || 0, 0, 1e9, 'تعداد فروش'), createdAt,
       descFa: str(b.descFa, 2000, 'توضیحات فارسی', false), descEn: str(b.descEn, 2000, 'توضیحات انگلیسی', false),
+      fabricFa: str(b.fabricFa, 1000, 'جنس پارچه (فارسی)', false), fabricEn: str(b.fabricEn, 1000, 'جنس پارچه (انگلیسی)', false),
+      printFa: str(b.printFa, 1000, 'مشخصات چاپ (فارسی)', false), printEn: str(b.printEn, 1000, 'مشخصات چاپ (انگلیسی)', false),
+      careFa: str(b.careFa, 1000, 'راهنمای نگهداری (فارسی)', false), careEn: str(b.careEn, 1000, 'راهنمای نگهداری (انگلیسی)', false),
       images, published: b.published !== false };
   }
 };
@@ -177,7 +208,7 @@ function validateTexts(body) {
           : str(x, 200, k)).filter(x => isPair ? true : x);
       } else {
         if (typeof v !== 'string') throw bad('مقدار نامعتبر: ' + k);
-        out[lang][k] = str(v, 2000, k);
+        out[lang][k] = str(v, k.startsWith('pg_') ? 8000 : 2000, k);
       }
     }
   }
@@ -234,7 +265,7 @@ async function api(req, res, url) {
   if (p === '/api/admin/password' && m === 'POST') {
     if (ENV_PASS) throw bad('رمز از طریق متغیر محیطی ADMIN_PASSWORD تنظیم شده و از اینجا قابل تغییر نیست');
     const b = await readBody(req, 10e3);
-    if (!checkPassword(b.current)) throw new HttpError(401, 'رمز فعلی اشتباه است');
+    if (!checkPassword(b.current)) throw bad('رمز فعلی اشتباه است');
     if (typeof b.next !== 'string' || b.next.length < 8 || b.next.length > 100) throw bad('رمز جدید باید حداقل ۸ کاراکتر باشد');
     const salt = crypto.randomBytes(16).toString('hex');
     fs.writeFileSync(ADMIN_FILE, JSON.stringify({ salt, hash: hashPass(b.next, salt) }));
@@ -281,6 +312,7 @@ async function api(req, res, url) {
       if (col === 'products') { item.code = item.code || ex.code; if (db.products.some(x => x.code === item.code && x.id !== ex.id)) throw bad('این کد محصول قبلاً استفاده شده'); }
       db[col][idx] = item; save();
       if (col === 'products') dropImages((ex.images || []).filter(u => !item.images.includes(u)));
+      else if (ex.image && ex.image !== item.image) dropImages([ex.image]);
       return send(res, 200, item);
     }
     if (m === 'DELETE') {
@@ -289,6 +321,7 @@ async function api(req, res, url) {
       if (col !== 'products' && db[col].length <= 1) throw bad('حداقل یک مورد باید باقی بماند');
       const [gone] = db[col].splice(idx, 1); save();
       if (col === 'products') dropImages(gone.images || []);
+      else if (gone.image) dropImages([gone.image]);
       return send(res, 200, { ok: true });
     }
   }

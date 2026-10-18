@@ -82,11 +82,24 @@ h2{font-size:20px}
 .ov{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.65);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:24px 12px}
 .modal{width:min(820px,100%);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;animation:pop .25s cubic-bezier(.22,1,.36,1)}
 @keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.sec-title{font-weight:700;font-size:13px;color:var(--muted,#9b9b9b);margin:16px 0 4px;padding-top:12px;border-top:1px solid var(--line,rgba(255,255,255,.13))}
 .grid2{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .fld{margin-bottom:12px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);font-size:13px}
 .chip[aria-pressed=true]{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:700}
+
+.chip.tg{gap:8px;cursor:pointer;transition:background .2s,color .2s,border-color .2s,opacity .2s,transform .15s}
+.chip.tg:active{transform:scale(.95)}
+.chip.tg .sw{width:14px;height:14px;border-radius:50%;border:1px solid rgba(127,127,127,.6);flex:none}
+.chip.tg[aria-pressed=true]{background:transparent;border-color:var(--text);color:var(--text);font-weight:700;box-shadow:0 0 0 1px var(--text),0 0 14px 2px rgba(255,255,255,.45),0 0 26px 4px rgba(255,255,255,.18)}
+:root[data-theme=light] .chip.tg[aria-pressed=true]{box-shadow:0 0 0 1px var(--text),0 0 14px 2px rgba(0,0,0,.35),0 0 26px 4px rgba(0,0,0,.12)}
+.chip.tg[aria-pressed=false]{opacity:.5;border-style:dashed;box-shadow:none}
+.chip.tg[aria-pressed=false] .nm{text-decoration:line-through}
+.chip.tg[aria-pressed=false] .sw{filter:grayscale(1);opacity:.6}
+.chip.tg .off{font-size:11px;color:var(--muted)}
+.chips .cnt{align-self:center;font-size:12px;color:var(--muted);margin-inline-start:4px}
+.chips .cnt.warn{color:var(--danger,#ff6b6b);font-weight:700}
 .chip.bad[aria-pressed=true]{background:var(--danger);border-color:var(--danger);color:#111}
 .imgs{display:flex;flex-wrap:wrap;gap:10px}
 .im{position:relative;width:104px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2)}
@@ -94,6 +107,10 @@ h2{font-size:20px}
 .im .bar{display:flex;justify-content:space-between;padding:3px}
 .im .bar button{width:26px;height:24px;border-radius:7px;background:var(--bg);font-size:12px}
 .im .main{position:absolute;top:4px;inset-inline-start:4px;font-size:10px;background:var(--accent);color:var(--on-accent);padding:0 7px;border-radius:8px}
+.imgpick{display:flex;align-items:center;gap:10px}
+.imgpick .thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid var(--line);background:var(--surface-2);flex:none}
+.imgpick .thumb.empty{display:grid;place-items:center;font-size:10px;color:var(--muted);text-align:center}
+.imgpick .pbtns{display:flex;flex-direction:column;gap:6px}
 .drop{width:104px;height:104px;border:1px dashed var(--line);border-radius:12px;display:grid;place-items:center;text-align:center;font-size:12px;color:var(--muted);cursor:pointer}
 .drop:hover{border-color:var(--accent);color:var(--text)}
 .foot{display:flex;gap:10px;justify-content:flex-end;align-items:center;margin-top:16px;flex-wrap:wrap}
@@ -290,7 +307,7 @@ const dateStr = ms => new Date(ms).toISOString().slice(0, 10);
 function productForm(src) {
   const d = D(), isNew = !src;
   const f = isNew ? { fa: '', en: '', code: '', type: d.types[0].id, style: d.styles[0].id, price: '', oldPrice: '', colors: [d.colors[0].id], outOfStock: [], sold: 0,
-    createdAt: Date.now(), descFa: '', descEn: '', images: [], published: true } : clone(src);
+    createdAt: Date.now(), descFa: '', descEn: '', fabricFa: '', fabricEn: '', printFa: '', printEn: '', careFa: '', careEn: '', images: [], published: true } : clone(src);
   modal(isNew ? 'محصول جدید' : 'ویرایش محصول', (m, close) => {
     const inp = (key, attrs = {}) => h('input', Object.assign({ value: f[key] == null ? '' : f[key], oninput: e => { f[key] = e.target.value; } }, attrs));
     const imgBox = h('div', { class: 'imgs' }), colorBox = h('div', { class: 'chips' }), sizeBox = h('div', { class: 'chips' });
@@ -310,10 +327,22 @@ function productForm(src) {
           h('button', { type: 'button', 'aria-label': 'عقب', disabled: i === f.images.length - 1, onclick: () => { [f.images[i + 1], f.images[i]] = [f.images[i], f.images[i + 1]]; drawImgs(); } }, '←')))),
         f.images.length < 8 ? h('div', { class: 'drop', role: 'button', tabindex: 0, onclick: () => fi.click(), onkeydown: e => { if (e.key === 'Enter') fi.click(); } }, 'افزودن\nتصویر') : null, fi);
     };
-    const drawColors = () => colorBox.replaceChildren(...d.colors.map(c => h('button', { type: 'button', class: 'chip', 'aria-pressed': f.colors.includes(c.id),
-      onclick: () => { f.colors = f.colors.includes(c.id) ? f.colors.filter(x => x !== c.id) : [...f.colors, c.id]; drawColors(); } }, h('span', { class: 'sw', style: 'background:' + c.h }), c.fa)));
-    const drawSizes = () => sizeBox.replaceChildren(...d.settings.sizes.map(z => h('button', { type: 'button', class: 'chip bad', 'aria-pressed': f.outOfStock.includes(z),
-      onclick: () => { f.outOfStock = f.outOfStock.includes(z) ? f.outOfStock.filter(x => x !== z) : [...f.outOfStock, z]; drawSizes(); } }, z)));
+    const tgl = (on, label, extra) => [extra, h('span', { class: 'nm' }, label)];
+    const drawColors = () => {
+      colorBox.replaceChildren(...d.colors.map(c => { const on = f.colors.includes(c.id);
+        return h('button', { type: 'button', class: 'chip tg', role: 'switch', 'aria-checked': String(on), 'aria-pressed': String(on), title: on ? 'فعال — برای غیرفعال کردن کلیک کنید' : 'غیرفعال — برای فعال کردن کلیک کنید',
+          onclick: () => { f.colors = on ? f.colors.filter(x => x !== c.id) : [...f.colors, c.id]; drawColors(); } },
+          tgl(on, c.fa, h('span', { class: 'sw', style: 'background:' + c.h })), on ? null : h('span', { class: 'off' }, 'غیرفعال')); }),
+        h('span', { class: 'cnt' + (f.colors.length ? '' : ' warn') }, f.colors.length ? fa(f.colors.length) + ' رنگ فعال از ' + fa(d.colors.length) : 'هیچ رنگی فعال نیست (حداقل یک رنگ لازم است)'));
+    };
+    const drawSizes = () => {   // switch ON = in stock, OFF = out of stock (stored as outOfStock)
+      const sizes = d.settings.sizes, inStock = sizes.filter(z => !f.outOfStock.includes(z)).length;
+      sizeBox.replaceChildren(...sizes.map(z => { const on = !f.outOfStock.includes(z);
+        return h('button', { type: 'button', class: 'chip tg', role: 'switch', 'aria-checked': String(on), 'aria-pressed': String(on), title: on ? 'موجود — برای ناموجود کردن کلیک کنید' : 'ناموجود — برای موجود کردن کلیک کنید',
+          onclick: () => { f.outOfStock = on ? [...f.outOfStock, z] : f.outOfStock.filter(x => x !== z); drawSizes(); } },
+          tgl(on, z, null), on ? null : h('span', { class: 'off' }, 'ناموجود')); }),
+        h('span', { class: 'cnt' }, fa(inStock) + ' سایز موجود از ' + fa(sizes.length)));
+    };
     drawImgs(); drawColors(); drawSizes();
     const err = h('div', { class: 'err', role: 'alert' });
     const typeSel = h('select', { onchange: e => { f.type = e.target.value; } }, d.types.map(t => h('option', { value: t.id }, t.fa))); typeSel.value = f.type;
@@ -328,11 +357,21 @@ function productForm(src) {
         field('کد محصول', inp('code', { maxlength: 24, dir: 'ltr', placeholder: 'خودکار' })),
         field('تعداد فروش', inp('sold', { inputmode: 'numeric' }), 'برای مرتب‌سازی «پرفروش‌ترین»'),
         field('تاریخ افزودن', h('input', { type: 'date', value: dateStr(f.createdAt), onchange: e => { if (e.target.value) f.createdAt = new Date(e.target.value + 'T12:00:00').getTime(); } }), 'برای بخش «تازه‌رسیده‌ها»')),
-      field('رنگ‌های موجود *', colorBox), field('سایزهای ناموجود (انتخاب‌شده‌ها ناموجود می‌شوند)', sizeBox),
+      field('رنگ‌ها (روشن = برای این محصول فعال است) *', colorBox, 'روی هر رنگ کلیک کنید تا فعال یا غیرفعال شود'), field('سایزها (روشن = موجود، خاموش = ناموجود)', sizeBox, 'سایز ناموجود در فروشگاه خاکستری و غیرقابل انتخاب می‌شود'),
       field('تصاویر (اولین تصویر اصلی است — حداکثر ۸ تصویر، ۵ مگابایت)', imgBox, 'اگر تصویری آپلود نشود، سایت یک پیش‌نمایش گرافیکی نشان می‌دهد.'),
       h('div', { class: 'grid2' },
         field('توضیحات فارسی', h('textarea', { rows: 3, maxlength: 2000, value: f.descFa, oninput: e => { f.descFa = e.target.value; } })),
         field('توضیحات انگلیسی', h('textarea', { rows: 3, maxlength: 2000, dir: 'ltr', value: f.descEn, oninput: e => { f.descEn = e.target.value; } }))),
+      h('div', { class: 'sec-title' }, 'مشخصات این محصول (هر محصول متن مخصوص خودش را دارد؛ خالی بماند، آن بخش در صفحهٔ محصول نمایش داده نمی‌شود)'),
+      h('div', { class: 'grid2' },
+        field('جنس پارچه (فارسی)', h('textarea', { rows: 2, maxlength: 1000, value: f.fabricFa, oninput: e => { f.fabricFa = e.target.value; } })),
+        field('جنس پارچه (انگلیسی)', h('textarea', { rows: 2, maxlength: 1000, dir: 'ltr', value: f.fabricEn, oninput: e => { f.fabricEn = e.target.value; } }))),
+      h('div', { class: 'grid2' },
+        field('مشخصات چاپ (فارسی)', h('textarea', { rows: 2, maxlength: 1000, value: f.printFa, oninput: e => { f.printFa = e.target.value; } })),
+        field('مشخصات چاپ (انگلیسی)', h('textarea', { rows: 2, maxlength: 1000, dir: 'ltr', value: f.printEn, oninput: e => { f.printEn = e.target.value; } }))),
+      h('div', { class: 'grid2' },
+        field('راهنمای نگهداری (فارسی)', h('textarea', { rows: 2, maxlength: 1000, value: f.careFa, oninput: e => { f.careFa = e.target.value; } })),
+        field('راهنمای نگهداری (انگلیسی)', h('textarea', { rows: 2, maxlength: 1000, dir: 'ltr', value: f.careEn, oninput: e => { f.careEn = e.target.value; } }))),
       h('label', { class: 'tog' }, h('input', { type: 'checkbox', checked: f.published, onchange: e => { f.published = e.target.checked; } }), 'منتشر شود (در فروشگاه نمایش داده شود)'),
       h('div', { class: 'foot' }, err, h('button', { class: 'btn', onclick: close }, 'انصراف'),
         h('button', { class: 'btn primary', id: 'saveProd', onclick: async e => {
@@ -354,6 +393,26 @@ const CAT = {
 };
 const SHAPES = [['hoodie', 'هودی (با کلاه)'], ['crewneck', 'دورس / سویشرت'], ['tshirt', 'تیشرت / یقه‌گرد']];
 const MOTIFS = [['gaming', 'گیمینگ'], ['pinterest', 'پینترست'], ['music', 'موسیقی'], ['cinema', 'سینما'], ['anime', 'انیمه'], ['misc', 'متفرقه']];
+function imageField(f, hint) {
+  const box = h('div', { class: 'imgpick' });
+  const draw = () => {
+    const fi = h('input', { type: 'file', accept: 'image/png,image/jpeg,image/webp,image/gif', hidden: true, onchange: async e => {
+      const file = e.target.files[0]; if (!file) return;
+      if (file.size > 5 * 1024 * 1024) { toast('حجم تصویر بیشتر از ۵ مگابایت است', true); return; }
+      try { const dataUrl = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(file); });
+        const r = await api('/api/admin/upload', { method: 'POST', body: { dataUrl } }); f.image = r.url; draw(); } catch (er) { toast(er.message, true); }
+    } });
+    box.replaceChildren(
+      f.image ? h('img', { src: f.image, alt: '', class: 'thumb' }) : h('div', { class: 'thumb empty' }, 'بدون تصویر'),
+      h('div', { class: 'pbtns' },
+        h('button', { type: 'button', class: 'btn sm', onclick: () => fi.click() }, f.image ? 'تغییر تصویر' : 'انتخاب تصویر'),
+        f.image ? h('button', { type: 'button', class: 'btn sm', onclick: () => { f.image = null; draw(); } }, 'حذف تصویر') : null),
+      fi);
+  };
+  draw();
+  return field('تصویر (اختیاری)', box, hint);
+}
+
 function viewCats(col) {
   const d = D(), info = CAT[col], v = $('#view'), list = d[col];
   const used = id => d.products.filter(p => col === 'types' ? p.type === id : col === 'styles' ? p.style === id : p.colors.includes(id)).length;
@@ -362,8 +421,9 @@ function viewCats(col) {
     const f = clone(item);
     const sel = (opts, key) => { const s = h('select', { onchange: e => { f[key] = e.target.value; } }, opts.map(([k, l]) => h('option', { value: k }, l))); s.value = f[key]; return s; };
     const cells = [field('نام فارسی', h('input', { value: f.fa, oninput: e => { f.fa = e.target.value; }, maxlength: 60 })), field('نام انگلیسی', h('input', { value: f.en, dir: 'ltr', oninput: e => { f.en = e.target.value; }, maxlength: 60 }))];
-    if (col === 'types') cells.push(field('شکل پیش‌نمایش', sel(SHAPES, 'shape')));
+    if (col === 'types') cells.push(imageField(f, 'اگر تصویر بگذاری، به‌جای شکل پیش‌فرض در کارت دسته نمایش داده می‌شود')); 
     if (col === 'styles') {
+      cells.push(imageField(f, 'اگر تصویر بگذاری، پس‌زمینهٔ کارت سبک می‌شود'));
       cells.push(field('نماد طرح', sel(MOTIFS, 'motif')));
       const gBox = h('div', {});
       const drawG = () => gBox.replaceChildren(h('label', { class: 'tog' }, h('input', { type: 'checkbox', checked: !!f.g, onchange: e => { f.g = e.target.checked ? (f.g || ['#222222', '#8a8a8a']) : null; drawG(); } }), 'گرادیان سفارشی'),
@@ -388,7 +448,7 @@ function viewCats(col) {
     return h('div', { class: 'crow' + (isNew ? ' new' : '') }, cells, acts);
   };
   list.forEach(it => v.append(rowFor(it, false)));
-  const blank = col === 'types' ? { fa: '', en: '', shape: 'tshirt' } : col === 'styles' ? { fa: '', en: '', motif: 'misc', g: null } : { fa: '', en: '', h: '#888888' };
+  const blank = col === 'types' ? { fa: '', en: '', shape: 'tshirt', image: null } : col === 'styles' ? { fa: '', en: '', motif: 'misc', g: null, image: null } : { fa: '', en: '', h: '#888888' };
   v.append(h('h3', { style: 'margin:18px 0 8px;font-size:15px' }, 'افزودن ' + info.one + ' جدید'), rowFor(blank, true));
 }
 
@@ -399,6 +459,7 @@ const GROUPS = [
   ['صفحهٔ اصلی — هیرو (بالای صفحه)', ['heroP', 'shop', 'makeOwn', 'stDesigns', 'stStyles', 'stTypes', 'mq']],
   ['صفحهٔ اصلی — بخش‌ها', ['catsT', 'stylesT', 'newT', 'newS', 'newAll', 'hotT', 'hotS', 'hotAll', 'whyT', 'w1t', 'w1d', 'w2t', 'w2d', 'w3t', 'w3d', 'w4t', 'w4d', 'whyNote', 'customT', 'customP', 'customBtn', 'customToast', 'faqT', 'faq', 'supT', 'supP', 'supBtn', 'supToast']],
   ['فوتر', ['fDesc', 'fShop', 'fAll', 'fCustom', 'fInfo', 'fAbout', 'fContact', 'fFaq', 'fLegal', 'fTerms', 'fPriv', 'fShip']],
+  ['صفحه‌های فوتر (درباره ما، تماس، قوانین…)', ['pg_about','pg_contact','ctLEmail','ctEmail','ctLPhone','ctPhone','ctLAddr','ctAddr','ctLHours','ctHours','pg_terms','pg_priv','pg_ship']],
   ['صفحهٔ کالکشن‌ها', ['crHome', 'crColl', 'allProducts', 'all', 'allStyles', 'lblType', 'lblStyle', 'upTo', 'saleOnly', 'sort', 'sNew', 'sHot', 'sCheap', 'sPricey', 'clear', 'noRes', 'noResP', 'pagAria', 'prev', 'next', 'nProducts']],
   ['صفحهٔ محصول و کارت‌ها', ['pnf', 'pnfP', 'seeProducts', 'imgNote', 'guide', 'gSize', 'gWidth', 'gLen', 'guideNote', 'specs', 'specNote', 'related', 'vFront', 'vBack', 'vDetail', 'code', 'color', 'size', 'qty', 'dec', 'inc', 'addCart', 'buyNow', 'wishAria', 'cNew', 'cHot', 'choose', 'off', 'desc', 'sizesLeft', 'cardAria']],
   ['سبد خرید، علاقه‌مندی‌ها و پروفایل', ['wlT', 'wlEmpty', 'wlEmptyP', 'cartT', 'cartEmpty', 'cartEmptyP', 'remove', 'subtotal', 'saved', 'shipping', 'shipNext', 'total', 'checkout', 'checkoutToast', 'cartNote', 'profT', 'profH', 'profP', 'profLbl', 'cont']],
@@ -414,6 +475,7 @@ const LABEL = {
   whyT: 'تیتر «چرا ما؟»', whyNote: 'یادداشت زیر «چرا ما؟»', customT: 'تیتر طرح اختصاصی', customP: 'متن طرح اختصاصی', customBtn: 'دکمهٔ طرح اختصاصی', customToast: 'پیام کلیک روی طرح اختصاصی',
   faqT: 'تیتر سؤالات متداول', faq: 'سؤال‌ها و پاسخ‌ها', supT: 'تیتر پشتیبانی', supP: 'متن پشتیبانی', supBtn: 'دکمهٔ پشتیبانی', supToast: 'پیام کلیک روی پشتیبانی',
   fDesc: 'توضیح برند در فوتر', fShop: 'فوتر: ستون فروشگاه', fAll: 'فوتر: همهٔ محصولات', fCustom: 'فوتر: طرح اختصاصی', fInfo: 'فوتر: ستون اطلاعات', fAbout: 'فوتر: دربارهٔ ما', fContact: 'فوتر: تماس', fFaq: 'فوتر: سؤالات', fLegal: 'فوتر: ستون قوانین', fTerms: 'فوتر: شرایط', fPriv: 'فوتر: حریم خصوصی', fShip: 'فوتر: ارسال و مرجوعی',
+  pg_about: 'صفحهٔ درباره ما (## تیتر، - مورد لیست، خط خالی = بند جدید)', pg_contact: 'صفحهٔ تماس: متن مقدمه', ctLEmail: 'تماس: برچسب ایمیل', ctEmail: 'تماس: آدرس ایمیل', ctLPhone: 'تماس: برچسب تلفن', ctPhone: 'تماس: شمارهٔ تلفن', ctLAddr: 'تماس: برچسب نشانی', ctAddr: 'تماس: نشانی', ctLHours: 'تماس: برچسب ساعات', ctHours: 'تماس: ساعات پاسخ‌گویی', pg_terms: 'صفحهٔ شرایط استفاده', pg_priv: 'صفحهٔ حریم خصوصی', pg_ship: 'صفحهٔ ارسال و مرجوعی',
   nProducts: 'تعداد محصول ({n} = عدد)', off: 'نشان تخفیف ({n} = درصد)', desc: 'توضیح پیش‌فرض محصول ({n} نام، {ty} مدل، {st} طرح)', sizesLeft: 'سایزهای موجود ({n} = عدد)', cardAria: 'توضیح کارت ({n} = نام محصول)',
   specs: 'عنوان بخش‌های مشخصات (هر خط یکی)', specNote: 'متن داخل بخش مشخصات', guide: 'عنوان راهنمای اندازه', guideNote: 'یادداشت زیر جدول اندازه', imgNote: 'یادداشت زیر تصاویر', related: 'تیتر محصولات مشابه',
   addCart: 'دکمهٔ افزودن به سبد', buyNow: 'دکمهٔ خرید مستقیم', choose: 'دکمهٔ کارت محصول', checkout: 'دکمهٔ ادامه فرایند خرید', cartNote: 'یادداشت زیر سبد', shipNext: 'متن هزینهٔ ارسال', checkoutToast: 'پیام کلیک روی خرید'
@@ -423,20 +485,20 @@ function viewTexts(v) {
   if (!S.eff) { S.eff = { fa: {}, en: {} }; for (const l of ['fa', 'en']) for (const k of keys) S.eff[l][k] = clone(d.texts[l] && d.texts[l][k] !== undefined ? d.texts[l][k] : def[l][k]); }
   const eq = (a, b) => JSON.stringify(a) === JSON.stringify(b);
   const changedKeys = () => keys.filter(k => ['fa', 'en'].some(l => !eq(S.eff[l][k], def[l][k])));
-  const bar = h('div', { class: 'savebar', hidden: true }), cnt = h('span', {});
+  const bar = h('div', { class: 'savebar' }), cnt = h('span', {});
   const mark = () => { S.dirty = changedKeys().length > 0; };
-  const refreshBar = () => { const n = changedKeys().length; bar.hidden = !S.dirty && n === 0; cnt.textContent = fa(n) + ' متن تغییر کرده'; };
+  const refreshBar = () => { const n = changedKeys().length; cnt.textContent = n ? fa(n) + ' متن نسبت به پیش‌فرض تغییر کرده' : 'همهٔ متن‌ها پیش‌فرض هستند'; };
   const saveBtn = h('button', { class: 'btn', onclick: async e => {
-    e.target.disabled = true;
+    const btn = e.currentTarget; btn.disabled = true;
     try {
       const out = { fa: {}, en: {} };
       for (const l of ['fa', 'en']) for (const k of keys) if (!eq(S.eff[l][k], def[l][k])) {
         let val = S.eff[l][k]; if (Array.isArray(def[l][k]) && Array.isArray(def[l][k][0])) val = val.filter(r => r[0].trim() && r[1].trim());
         out[l][k] = val;
       }
-      await api('/api/admin/texts', { method: 'PUT', body: out }); S.dirty = false; S.eff = null; await load(); render(); toast('متن‌ها ذخیره شد و در سایت اعمال می‌شود');
-    } catch (er) { toast(er.message, true); e.target.disabled = false; }
-  } }, 'ذخیره همهٔ تغییرات');
+      await api('/api/admin/texts', { method: 'PUT', body: out }); S.dirty = false; S.eff = null; await load(); render(); toast('ذخیره شد');
+    } catch (er) { toast(er.message, true); btn.disabled = false; }
+  } }, 'ذخیره');
   bar.append(cnt, saveBtn);
   const rows = [];
   const q = h('input', { type: 'search', placeholder: 'جست‌وجو در متن‌ها…', 'aria-label': 'جست‌وجو', oninput: e => { const t = e.target.value.trim().toLowerCase();
@@ -465,7 +527,7 @@ function viewTexts(v) {
           }
           const text = isArr ? val.join('\n') : val;
           return h('div', { class: l === 'en' ? 'en' : '' }, h('span', {}, l === 'fa' ? 'فارسی' : 'English'),
-            h('textarea', { rows: Math.min(6, Math.max(1, Math.ceil(String(text).length / 46) + (isArr ? val.length - 1 : 0))), value: text,
+            h('textarea', { rows: Math.min(k.startsWith('pg_') ? 16 : 6, Math.max(1, Math.ceil(String(text).length / 46) + (isArr ? val.length - 1 : 0))), value: text,
               oninput: on(x => { S.eff[l][k] = isArr ? x.split('\n').map(s => s.trim()).filter(Boolean) : x; }) }));
         };
         const rst = h('button', { class: 'btn sm', type: 'button', hidden: !ch, onclick: () => { S.eff.fa[k] = clone(def.fa[k]); S.eff.en[k] = clone(def.en[k]); mark(); refreshBar(); draw(); } }, 'پیش‌فرض');
@@ -482,42 +544,61 @@ function viewTexts(v) {
 /* ================= settings ================= */
 function viewSettings(v) {
   const d = D(), s = d.settings;
-  const prev = h('img', { src: s.logo || '/assets/logo.png', alt: '' });
+  /* everything on this page is edited locally and written by ONE save button that is always available */
+  let logo = s.logo || null;
+  const prev = h('img', { src: logo || '/assets/logo.png', alt: '' });
+  const logoBtns = h('div', {});
   const fi = h('input', { type: 'file', accept: 'image/png,image/jpeg,image/webp,image/gif', hidden: true, onchange: async e => {
     const file = e.target.files[0]; if (!file) return;
     if (file.size > 5 * 1024 * 1024) return toast('حجم تصویر حداکثر ۵ مگابایت', true);
     try { const dataUrl = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(file); });
-      const up = await api('/api/admin/upload', { method: 'POST', body: { dataUrl } }); await api('/api/admin/settings', { method: 'PUT', body: { logo: up.url } }); await load(); render(); toast('لوگو تغییر کرد'); }
+      const up = await api('/api/admin/upload', { method: 'POST', body: { dataUrl } }); logo = up.url; prev.src = logo; drawLogo(); toast('لوگو انتخاب شد؛ برای اعمال، «ذخیرهٔ تنظیمات» را بزنید'); }
     catch (er) { toast(er.message, true); }
+    e.target.value = '';
   } });
+  const drawLogo = () => logoBtns.replaceChildren(
+    h('button', { class: 'btn', type: 'button', onclick: () => fi.click() }, 'انتخاب لوگوی جدید'), ' ',
+    logo ? h('button', { class: 'btn danger', type: 'button', onclick: () => { logo = null; prev.src = '/assets/logo.png'; drawLogo(); } }, 'بازگشت به لوگوی پیش‌فرض') : null, fi);
+  drawLogo();
   const sizes = h('input', { value: s.sizes.join(', '), dir: 'ltr' });
   const guide = clone(s.sizeGuide || []);
   const gBox = h('div', {});
   const drawG = () => gBox.replaceChildren(h('table', { class: 'szt' }, h('tr', {}, h('td', { class: 'muted' }, 'سایز'), h('td', { class: 'muted' }, 'عرض (cm)'), h('td', { class: 'muted' }, 'قد (cm)'), h('td', {})),
     guide.map((r, i) => h('tr', {}, [0, 1, 2].map(j => h('td', {}, h('input', { value: r[j], inputmode: j ? 'numeric' : 'text', dir: 'ltr', oninput: e => { guide[i][j] = e.target.value; } }))),
-      h('td', {}, h('button', { class: 'btn sm danger', onclick: () => { guide.splice(i, 1); drawG(); } }, '✕'))))), h('button', { class: 'btn sm', onclick: () => { guide.push(['', '', '']); drawG(); } }, '+ ردیف'));
+      h('td', {}, h('button', { class: 'btn sm danger', type: 'button', onclick: () => { guide.splice(i, 1); drawG(); } }, '✕'))))), h('button', { class: 'btn sm', type: 'button', onclick: () => { guide.push(['', '', '']); drawG(); } }, '+ ردیف'));
   drawG();
   const cur = h('input', { type: 'password', autocomplete: 'current-password' }), nxt = h('input', { type: 'password', autocomplete: 'new-password' });
+
+  const saveAll = async e => {
+    const btn = e.currentTarget; btn.disabled = true;
+    try {
+      const list = [...new Set(sizes.value.split(',').map(x => x.trim()).filter(Boolean))];
+      if (!list.length) throw new Error('حداقل یک سایز لازم است');
+      const wantPw = !d.envPassword && (cur.value || nxt.value);
+      if (wantPw && (!cur.value || !nxt.value)) throw new Error('برای تغییر رمز، هر دو کادر رمز را پر کنید');
+      if (wantPw) { const r = await api('/api/admin/password', { method: 'POST', body: { current: cur.value, next: nxt.value } }); setToken(r.token); }   // first, so a wrong password stops everything
+      await api('/api/admin/settings', { method: 'PUT', body: { logo, sizes: list, sizeGuide: guide.filter(r => String(r[0]).trim()).map(r => [String(r[0]).trim(), nd(r[1]) || 0, nd(r[2]) || 0]) } });
+      await load(); render(); toast(wantPw ? 'ذخیره شد و رمز تغییر کرد' : 'ذخیره شد');
+    } catch (er) { toast(er.message, true); }
+    finally { btn.disabled = false; }
+  };
+
   v.append(h('div', { class: 'head' }, h('h2', {}, 'تنظیمات')),
+    h('p', { class: 'muted', style: 'margin-bottom:12px' }, 'هر چه در این صفحه تغییر دهید (لوگو، سایزها، جدول اندازه، رمز) با دکمهٔ «ذخیرهٔ تنظیمات» پایین صفحه یک‌جا ذخیره می‌شود.'),
     h('div', { class: 'card', style: 'margin-bottom:14px' }, h('h3', { style: 'margin-bottom:10px;font-size:16px' }, 'لوگو'),
       h('div', { style: 'display:flex;gap:14px;align-items:center;flex-wrap:wrap' }, h('div', { class: 'logo-prev' }, prev),
-        h('div', {}, h('p', { class: 'muted', style: 'margin-bottom:8px' }, 'بهتر است PNG شفاف و روشن (سفید) باشد؛ لوگو روی پس‌زمینهٔ تیره نمایش داده می‌شود.'),
-          h('button', { class: 'btn', onclick: () => fi.click() }, 'آپلود لوگوی جدید'), ' ',
-          s.logo ? h('button', { class: 'btn danger', onclick: async () => { try { await api('/api/admin/settings', { method: 'PUT', body: { logo: null } }); await load(); render(); toast('لوگوی پیش‌فرض برگشت'); } catch (e) { toast(e.message, true); } } }, 'بازگشت به پیش‌فرض') : null, fi))),
+        h('div', {}, h('p', { class: 'muted', style: 'margin-bottom:8px' }, 'بهتر است PNG شفاف و روشن (سفید) باشد؛ لوگو روی پس‌زمینهٔ تیره نمایش داده می‌شود.'), logoBtns))),
     h('div', { class: 'card', style: 'margin-bottom:14px' }, h('h3', { style: 'margin-bottom:10px;font-size:16px' }, 'سایزها و جدول اندازه'),
-      field('سایزها (با ویرگول جدا کنید)', sizes), field('جدول اندازه در صفحهٔ محصول', gBox),
-      h('button', { class: 'btn primary', onclick: async () => {
-        try { const list = sizes.value.split(',').map(x => x.trim()).filter(Boolean);
-          await api('/api/admin/settings', { method: 'PUT', body: { sizes: list, sizeGuide: guide.filter(r => String(r[0]).trim()).map(r => [String(r[0]).trim(), nd(r[1]) || 0, nd(r[2]) || 0]) } }); await load(); render(); toast('ذخیره شد'); }
-        catch (e) { toast(e.message, true); } } }, 'ذخیره')),
+      field('سایزها (با ویرگول جدا کنید)', sizes), field('جدول اندازه در صفحهٔ محصول', gBox)),
     h('div', { class: 'card', style: 'margin-bottom:14px' }, h('h3', { style: 'margin-bottom:10px;font-size:16px' }, 'تغییر رمز عبور'),
       d.envPassword ? h('p', { class: 'muted' }, 'رمز از طریق متغیر محیطی ADMIN_PASSWORD روی سرور تنظیم شده و از اینجا قابل تغییر نیست.') :
         h('div', {}, h('div', { class: 'grid2' }, field('رمز فعلی', cur), field('رمز جدید (حداقل ۸ کاراکتر)', nxt)),
-          h('button', { class: 'btn primary', onclick: async () => { try { const r = await api('/api/admin/password', { method: 'POST', body: { current: cur.value, next: nxt.value } }); setToken(r.token); cur.value = nxt.value = ''; toast('رمز تغییر کرد'); } catch (e) { toast(e.message, true); } } }, 'تغییر رمز'))),
+          h('p', { class: 'muted' }, 'اگر نمی‌خواهید رمز را عوض کنید، این دو کادر را خالی بگذارید.'))),
     h('div', { class: 'card' }, h('h3', { style: 'margin-bottom:10px;font-size:16px' }, 'پشتیبان‌گیری'),
       h('p', { class: 'muted', style: 'margin-bottom:10px' }, 'یک نسخهٔ JSON از همهٔ اطلاعات (محصولات، دسته‌ها، متن‌ها و تنظیمات) دانلود می‌شود. تصاویر در پوشهٔ data/uploads سرور هستند.'),
-      h('button', { class: 'btn', onclick: async () => { try { const r = await fetch('/api/admin/export', { headers: { Authorization: 'Bearer ' + S.token } }); if (!r.ok) throw new Error('خطا در دریافت پشتیبان');
+      h('button', { class: 'btn', type: 'button', onclick: async () => { try { const r = await fetch('/api/admin/export', { headers: { Authorization: 'Bearer ' + S.token } }); if (!r.ok) throw new Error('خطا در دریافت پشتیبان');
         const a = h('a', { href: URL.createObjectURL(await r.blob()), download: 'distort-backup-' + new Date().toISOString().slice(0, 10) + '.json' }); document.body.append(a); a.click(); a.remove(); } catch (e) { toast(e.message, true); } } }, 'دانلود پشتیبان')));
+  v.append(h('div', { class: 'savebar' }, h('span', {}, 'لوگو، سایزها، جدول اندازه و رمز'), h('button', { class: 'btn', id: 'saveSettings', onclick: saveAll }, 'ذخیرهٔ تنظیمات')));
 }
 
 /* ================= boot ================= */

@@ -1,0 +1,784 @@
+{
+ "types": [
+  {
+   "id": "hoodie",
+   "fa": "هودی",
+   "en": "Hoodie",
+   "shape": "hoodie",
+   "image": null
+  },
+  {
+   "id": "crewneck",
+   "fa": "دورس",
+   "en": "Crewneck",
+   "shape": "crewneck"
+  },
+  {
+   "id": "tshirt",
+   "fa": "تیشرت",
+   "en": "T-Shirt",
+   "shape": "tshirt"
+  },
+  {
+   "id": "cotton",
+   "fa": "پنبه‌ای",
+   "en": "Cotton",
+   "shape": "tshirt"
+  },
+  {
+   "id": "irony",
+   "fa": "ایرونی",
+   "en": "Irony",
+   "shape": "tshirt",
+   "image": null
+  }
+ ],
+ "styles": [
+  {
+   "id": "gaming",
+   "fa": "گیمینگ",
+   "en": "Gaming",
+   "motif": "gaming",
+   "g": null,
+   "image": null
+  },
+  {
+   "id": "pinterest",
+   "fa": "پینترست",
+   "en": "Pinterest Aesthetic",
+   "motif": "pinterest",
+   "g": null
+  },
+  {
+   "id": "music",
+   "fa": "موسیقی",
+   "en": "Music",
+   "motif": "music",
+   "g": null
+  },
+  {
+   "id": "cinema",
+   "fa": "سینما و فیلم",
+   "en": "Cinema & Movies",
+   "motif": "cinema",
+   "g": null
+  },
+  {
+   "id": "anime",
+   "fa": "انیمه",
+   "en": "Anime",
+   "motif": "anime",
+   "g": null
+  },
+  {
+   "id": "misc",
+   "fa": "متفرقه",
+   "en": "Miscellaneous",
+   "motif": "misc",
+   "g": null
+  }
+ ],
+ "colors": [
+  {
+   "id": "black",
+   "fa": "مشکی",
+   "en": "Black",
+   "h": "#1a1a1a"
+  },
+  {
+   "id": "white",
+   "fa": "سفید",
+   "en": "White",
+   "h": "#f5f5f5"
+  },
+  {
+   "id": "gray",
+   "fa": "طوسی",
+   "en": "Gray",
+   "h": "#8c8c8c"
+  },
+  {
+   "id": "charcoal",
+   "fa": "ذغالی",
+   "en": "Charcoal",
+   "h": "#3d3d3d"
+  },
+  {
+   "id": "silver",
+   "fa": "نقره‌ای",
+   "en": "Silver",
+   "h": "#c4c4c4"
+  },
+  {
+   "id": "graphite",
+   "fa": "گرافیتی",
+   "en": "Graphite",
+   "h": "#2a2a2a"
+  }
+ ],
+ "products": [
+  {
+   "id": "p1",
+   "code": "DS-0001",
+   "fa": "کنترلر پیکسلی",
+   "en": "Pixel Controller",
+   "type": "hoodie",
+   "style": "gaming",
+   "price": 1170000,
+   "oldPrice": 1450000,
+   "colors": [
+    "black",
+    "gray",
+    "graphite",
+    "silver"
+   ],
+   "outOfStock": [],
+   "sold": 10,
+   "createdAt": 1792178376686,
+   "descFa": "",
+   "descEn": "",
+   "fabricFa": "«کنترلر پیکسلی» در رنگ مشکی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Pixel Controller” in Black: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «کنترلر پیکسلی»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
+   "printEn": "“Pixel Controller” design: Digital print with vivid colors and pixel-sharp detail [sample]",
+   "careFa": "رنگ مشکی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Black: Wash inside out in cold water, no bleach; dry in the shade [sample]",
+   "images": [],
+   "published": true
+  },
+  {
+   "id": "p2",
+   "code": "DS-0002",
+   "fa": "مرحله آخر",
+   "en": "Final Stage",
+   "type": "crewneck",
+   "style": "gaming",
+   "price": 1200000,
+   "oldPrice": null,
+   "colors": [
+    "white",
+    "charcoal",
+    "graphite"
+   ],
+   "outOfStock": [],
+   "sold": 47,
+   "createdAt": 1791573576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«مرحله آخر» در رنگ سفید: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Final Stage” in White: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «مرحله آخر»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
+   "printEn": "“Final Stage” design: Digital print with vivid colors and pixel-sharp detail [sample]",
+   "careFa": "رنگ سفید: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "White: Wash cold; iron only on the reverse side [sample]"
+  },
+  {
+   "id": "p3",
+   "code": "DS-0003",
+   "fa": "Game Over",
+   "en": "Game Over",
+   "type": "tshirt",
+   "style": "gaming",
+   "price": 790000,
+   "oldPrice": null,
+   "colors": [
+    "gray",
+    "silver",
+    "black"
+   ],
+   "outOfStock": [],
+   "sold": 84,
+   "createdAt": 1790968776686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«Game Over» در رنگ طوسی: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Game Over” in Gray: Light, soft cotton [sample]",
+   "printFa": "طرح «Game Over»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
+   "printEn": "“Game Over” design: Digital print with vivid colors and pixel-sharp detail [sample]",
+   "careFa": "رنگ طوسی: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "Gray: Wash warm; do not iron over the print [sample]"
+  },
+  {
+   "id": "p4",
+   "code": "DS-0004",
+   "fa": "هشت بیت",
+   "en": "8-Bit",
+   "type": "cotton",
+   "style": "gaming",
+   "price": 770000,
+   "oldPrice": null,
+   "colors": [
+    "charcoal",
+    "graphite",
+    "white"
+   ],
+   "outOfStock": [
+    "XL"
+   ],
+   "sold": 31,
+   "createdAt": 1790363976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«هشت بیت» در رنگ ذغالی: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“8-Bit” in Charcoal: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «هشت بیت»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
+   "printEn": "“8-Bit” design: Digital print with vivid colors and pixel-sharp detail [sample]",
+   "careFa": "رنگ ذغالی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "Charcoal: Wash up to 30°C; no tumble dry [sample]"
+  },
+  {
+   "id": "p6",
+   "code": "DS-0006",
+   "fa": "قاب کولاژ",
+   "en": "Collage Frame",
+   "type": "hoodie",
+   "style": "pinterest",
+   "price": 1500000,
+   "oldPrice": null,
+   "colors": [
+    "graphite",
+    "white",
+    "charcoal"
+   ],
+   "outOfStock": [],
+   "sold": 15,
+   "createdAt": 1791227976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«قاب کولاژ» در رنگ گرافیتی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Collage Frame” in Graphite: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «قاب کولاژ»: چاپ مات با رنگ‌های خنثی و ملایم [نمونه]",
+   "printEn": "“Collage Frame” design: Matte print in soft neutral tones [sample]",
+   "careFa": "رنگ گرافیتی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Graphite: Wash inside out in cold water, no bleach; dry in the shade [sample]"
+  },
+  {
+   "id": "p7",
+   "code": "DS-0007",
+   "fa": "مه صبحگاهی",
+   "en": "Morning Mist",
+   "type": "crewneck",
+   "style": "pinterest",
+   "price": 1250000,
+   "oldPrice": null,
+   "colors": [
+    "black",
+    "gray",
+    "silver"
+   ],
+   "outOfStock": [
+    "M"
+   ],
+   "sold": 52,
+   "createdAt": 1790623176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«مه صبحگاهی» در رنگ مشکی: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Morning Mist” in Black: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «مه صبحگاهی»: چاپ مات با رنگ‌های خنثی و ملایم [نمونه]",
+   "printEn": "“Morning Mist” design: Matte print in soft neutral tones [sample]",
+   "careFa": "رنگ مشکی: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "Black: Wash cold; iron only on the reverse side [sample]"
+  },
+  {
+   "id": "p8",
+   "code": "DS-0008",
+   "fa": "خط و سایه",
+   "en": "Line & Shadow",
+   "type": "tshirt",
+   "style": "pinterest",
+   "price": 840000,
+   "oldPrice": null,
+   "colors": [
+    "white",
+    "charcoal",
+    "graphite"
+   ],
+   "outOfStock": [],
+   "sold": 89,
+   "createdAt": 1792091976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«خط و سایه» در رنگ سفید: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Line & Shadow” in White: Light, soft cotton [sample]",
+   "printFa": "طرح «خط و سایه»: چاپ مات با رنگ‌های خنثی و ملایم [نمونه]",
+   "printEn": "“Line & Shadow” design: Matte print in soft neutral tones [sample]",
+   "careFa": "رنگ سفید: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "White: Wash warm; do not iron over the print [sample]"
+  },
+  {
+   "id": "p9",
+   "code": "DS-0009",
+   "fa": "موج صدا",
+   "en": "Sound Wave",
+   "type": "cotton",
+   "style": "music",
+   "price": 500000,
+   "oldPrice": 620000,
+   "colors": [
+    "gray",
+    "silver",
+    "black"
+   ],
+   "outOfStock": [],
+   "sold": 36,
+   "createdAt": 1791487176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«موج صدا» در رنگ طوسی: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“Sound Wave” in Gray: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «موج صدا»: چاپ با خطوط تیز و کنتراست بالا [نمونه]",
+   "printEn": "“Sound Wave” design: High-contrast print with sharp lines [sample]",
+   "careFa": "رنگ طوسی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "Gray: Wash up to 30°C; no tumble dry [sample]"
+  },
+  {
+   "id": "p11",
+   "code": "DS-0011",
+   "fa": "باس سنگین",
+   "en": "Heavy Bass",
+   "type": "hoodie",
+   "style": "music",
+   "price": 1550000,
+   "oldPrice": null,
+   "colors": [
+    "silver",
+    "black",
+    "gray"
+   ],
+   "outOfStock": [],
+   "sold": 20,
+   "createdAt": 1790277576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«باس سنگین» در رنگ نقره‌ای: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Heavy Bass” in Silver: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «باس سنگین»: چاپ با خطوط تیز و کنتراست بالا [نمونه]",
+   "printEn": "“Heavy Bass” design: High-contrast print with sharp lines [sample]",
+   "careFa": "رنگ نقره‌ای: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Silver: Wash inside out in cold water, no bleach; dry in the shade [sample]"
+  },
+  {
+   "id": "p12",
+   "code": "DS-0012",
+   "fa": "نوار کاست",
+   "en": "Cassette Tape",
+   "type": "crewneck",
+   "style": "music",
+   "price": 1300000,
+   "oldPrice": null,
+   "colors": [
+    "graphite",
+    "white",
+    "charcoal"
+   ],
+   "outOfStock": [],
+   "sold": 57,
+   "createdAt": 1791746376686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«نوار کاست» در رنگ گرافیتی: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Cassette Tape” in Graphite: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «نوار کاست»: چاپ با خطوط تیز و کنتراست بالا [نمونه]",
+   "printEn": "“Cassette Tape” design: High-contrast print with sharp lines [sample]",
+   "careFa": "رنگ گرافیتی: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "Graphite: Wash cold; iron only on the reverse side [sample]"
+  },
+  {
+   "id": "p13",
+   "code": "DS-0013",
+   "fa": "کلاکت",
+   "en": "Clapperboard",
+   "type": "tshirt",
+   "style": "cinema",
+   "price": 550000,
+   "oldPrice": 690000,
+   "colors": [
+    "black",
+    "gray",
+    "silver"
+   ],
+   "outOfStock": [
+    "L"
+   ],
+   "sold": 94,
+   "createdAt": 1791141576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«کلاکت» در رنگ مشکی: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Clapperboard” in Black: Light, soft cotton [sample]",
+   "printFa": "طرح «کلاکت»: چاپ تک‌رنگ با جزئیات ریز [نمونه]",
+   "printEn": "“Clapperboard” design: Monochrome print with fine detail [sample]",
+   "careFa": "رنگ مشکی: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "Black: Wash warm; do not iron over the print [sample]"
+  },
+  {
+   "id": "p14",
+   "code": "DS-0014",
+   "fa": "سکانس آخر",
+   "en": "Final Scene",
+   "type": "cotton",
+   "style": "cinema",
+   "price": 670000,
+   "oldPrice": null,
+   "colors": [
+    "white",
+    "charcoal",
+    "graphite"
+   ],
+   "outOfStock": [],
+   "sold": 41,
+   "createdAt": 1790536776686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«سکانس آخر» در رنگ سفید: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“Final Scene” in White: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «سکانس آخر»: چاپ تک‌رنگ با جزئیات ریز [نمونه]",
+   "printEn": "“Final Scene” design: Monochrome print with fine detail [sample]",
+   "careFa": "رنگ سفید: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "White: Wash up to 30°C; no tumble dry [sample]"
+  },
+  {
+   "id": "p16",
+   "code": "DS-0016",
+   "fa": "پرده نقره‌ای",
+   "en": "Silver Screen",
+   "type": "hoodie",
+   "style": "cinema",
+   "price": 1600000,
+   "oldPrice": null,
+   "colors": [
+    "charcoal",
+    "graphite",
+    "white"
+   ],
+   "outOfStock": [
+    "S"
+   ],
+   "sold": 25,
+   "createdAt": 1791400776686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«پرده نقره‌ای» در رنگ ذغالی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Silver Screen” in Charcoal: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «پرده نقره‌ای»: چاپ تک‌رنگ با جزئیات ریز [نمونه]",
+   "printEn": "“Silver Screen” design: Monochrome print with fine detail [sample]",
+   "careFa": "رنگ ذغالی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Charcoal: Wash inside out in cold water, no bleach; dry in the shade [sample]"
+  },
+  {
+   "id": "p17",
+   "code": "DS-0017",
+   "fa": "ستاره شمشیر",
+   "en": "Star Blade",
+   "type": "crewneck",
+   "style": "anime",
+   "price": 920000,
+   "oldPrice": 1150000,
+   "colors": [
+    "silver",
+    "black",
+    "gray"
+   ],
+   "outOfStock": [],
+   "sold": 62,
+   "createdAt": 1790795976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«ستاره شمشیر» در رنگ نقره‌ای: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Star Blade” in Silver: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «ستاره شمشیر»: چاپ رنگی با خطوط واضح [نمونه]",
+   "printEn": "“Star Blade” design: Colorful print with clean outlines [sample]",
+   "careFa": "رنگ نقره‌ای: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "Silver: Wash cold; iron only on the reverse side [sample]"
+  },
+  {
+   "id": "p18",
+   "code": "DS-0018",
+   "fa": "ابر و رعد",
+   "en": "Cloud & Thunder",
+   "type": "tshirt",
+   "style": "anime",
+   "price": 740000,
+   "oldPrice": null,
+   "colors": [
+    "graphite",
+    "white",
+    "charcoal"
+   ],
+   "outOfStock": [],
+   "sold": 99,
+   "createdAt": 1790191176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«ابر و رعد» در رنگ گرافیتی: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Cloud & Thunder” in Graphite: Light, soft cotton [sample]",
+   "printFa": "طرح «ابر و رعد»: چاپ رنگی با خطوط واضح [نمونه]",
+   "printEn": "“Cloud & Thunder” design: Colorful print with clean outlines [sample]",
+   "careFa": "رنگ گرافیتی: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "Graphite: Wash warm; do not iron over the print [sample]"
+  },
+  {
+   "id": "p19",
+   "code": "DS-0019",
+   "fa": "چشم‌های بزرگ",
+   "en": "Big Eyes",
+   "type": "cotton",
+   "style": "anime",
+   "price": 720000,
+   "oldPrice": null,
+   "colors": [
+    "black",
+    "gray",
+    "silver"
+   ],
+   "outOfStock": [
+    "XL"
+   ],
+   "sold": 46,
+   "createdAt": 1791659976686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«چشم‌های بزرگ» در رنگ مشکی: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“Big Eyes” in Black: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «چشم‌های بزرگ»: چاپ رنگی با خطوط واضح [نمونه]",
+   "printEn": "“Big Eyes” design: Colorful print with clean outlines [sample]",
+   "careFa": "رنگ مشکی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "Black: Wash up to 30°C; no tumble dry [sample]"
+  },
+  {
+   "id": "p21",
+   "code": "DS-0021",
+   "fa": "نویز",
+   "en": "Noise",
+   "type": "hoodie",
+   "style": "misc",
+   "price": 1160000,
+   "oldPrice": 1450000,
+   "colors": [
+    "gray",
+    "silver",
+    "black"
+   ],
+   "outOfStock": [],
+   "sold": 30,
+   "createdAt": 1790450376686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«نویز» در رنگ طوسی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Noise” in Gray: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «نویز»: چاپ دیجیتال استاندارد [نمونه]",
+   "printEn": "“Noise” design: Standard digital print [sample]",
+   "careFa": "رنگ طوسی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Gray: Wash inside out in cold water, no bleach; dry in the shade [sample]"
+  },
+  {
+   "id": "p22",
+   "code": "DS-0022",
+   "fa": "خط‌خطی",
+   "en": "Scribble",
+   "type": "crewneck",
+   "style": "misc",
+   "price": 1200000,
+   "oldPrice": null,
+   "colors": [
+    "charcoal",
+    "graphite",
+    "white"
+   ],
+   "outOfStock": [
+    "M"
+   ],
+   "sold": 67,
+   "createdAt": 1791919176686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«خط‌خطی» در رنگ ذغالی: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Scribble” in Charcoal: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «خط‌خطی»: چاپ دیجیتال استاندارد [نمونه]",
+   "printEn": "“Scribble” design: Standard digital print [sample]",
+   "careFa": "رنگ ذغالی: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "Charcoal: Wash cold; iron only on the reverse side [sample]"
+  },
+  {
+   "id": "p23",
+   "code": "DS-0023",
+   "fa": "آشوب مرتب",
+   "en": "Ordered Chaos",
+   "type": "tshirt",
+   "style": "misc",
+   "price": 790000,
+   "oldPrice": null,
+   "colors": [
+    "silver",
+    "black",
+    "gray"
+   ],
+   "outOfStock": [],
+   "sold": 14,
+   "createdAt": 1791314376686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«آشوب مرتب» در رنگ نقره‌ای: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Ordered Chaos” in Silver: Light, soft cotton [sample]",
+   "printFa": "طرح «آشوب مرتب»: چاپ دیجیتال استاندارد [نمونه]",
+   "printEn": "“Ordered Chaos” design: Standard digital print [sample]",
+   "careFa": "رنگ نقره‌ای: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "Silver: Wash warm; do not iron over the print [sample]"
+  },
+  {
+   "id": "p24",
+   "code": "DS-0024",
+   "fa": "سیگنال گم",
+   "en": "Lost Signal",
+   "type": "cotton",
+   "style": "misc",
+   "price": 770000,
+   "oldPrice": null,
+   "colors": [
+    "graphite",
+    "white",
+    "charcoal"
+   ],
+   "outOfStock": [],
+   "sold": 51,
+   "createdAt": 1790709576686,
+   "descFa": "",
+   "descEn": "",
+   "images": [],
+   "published": true,
+   "fabricFa": "«سیگنال گم» در رنگ گرافیتی: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“Lost Signal” in Graphite: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «سیگنال گم»: چاپ دیجیتال استاندارد [نمونه]",
+   "printEn": "“Lost Signal” design: Standard digital print [sample]",
+   "careFa": "رنگ گرافیتی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "Graphite: Wash up to 30°C; no tumble dry [sample]"
+  },
+  {
+   "id": "p26",
+   "code": "DS-0026",
+   "fa": "کلیچه نادری",
+   "en": "kalich nadary",
+   "type": "irony",
+   "style": "misc",
+   "price": 850000,
+   "oldPrice": 1900000,
+   "colors": [
+    "black"
+   ],
+   "outOfStock": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+   ],
+   "sold": 1,
+   "createdAt": 1792262005871,
+   "descFa": "",
+   "descEn": "",
+   "fabricFa": "",
+   "fabricEn": "",
+   "printFa": "",
+   "printEn": "",
+   "careFa": "",
+   "careEn": "",
+   "images": [
+    "/uploads/4c068d1ff1f440356c353e0c05a3adaf.png",
+    "/uploads/f61531fe98c3c0bb51ebd4d55a7db70c.jpg",
+    "/uploads/c1ec7050f1465441c0fa4e5a4c9ea4be.jpg"
+   ],
+   "published": true
+  }
+ ],
+ "texts": {
+  "fa": {
+   "specs": [
+    "جنس پارچه",
+    "مشخصات چاپ",
+    "راهنمای‌نگهداری"
+   ]
+  },
+  "en": {}
+ },
+ "settings": {
+  "logo": null,
+  "sizes": [
+   "S",
+   "M",
+   "L",
+   "XL",
+   "XXL",
+   "SEX"
+  ],
+  "sizeGuide": [
+   [
+    "S",
+    50,
+    68
+   ],
+   [
+    "M",
+    52,
+    70
+   ],
+   [
+    "L",
+    54,
+    72
+   ],
+   [
+    "XL",
+    57,
+    74
+   ],
+   [
+    "XXL",
+    60,
+    76
+   ],
+   [
+    "SEX",
+    0,
+    0
+   ]
+  ]
+ },
+ "nextProductId": 27
+}

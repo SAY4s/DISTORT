@@ -136,7 +136,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«کنترلر پیکسلی» در رنگ مشکی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Pixel Controller” in Black: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «کنترلر پیکسلی»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
+   "printEn": "“Pixel Controller” design: Digital print with vivid colors and pixel-sharp detail [sample]",
+   "careFa": "رنگ مشکی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Black: Wash inside out in cold water, no bleach; dry in the shade [sample]"
   },
   {
    "id": "p2",
@@ -158,7 +164,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«مرحله آخر» در رنگ سفید: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Final Stage” in White: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «مرحله آخر»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
+   "printEn": "“Final Stage” design: Digital print with vivid colors and pixel-sharp detail [sample]",
+   "careFa": "رنگ سفید: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "White: Wash cold; iron only on the reverse side [sample]"
   },
   {
    "id": "p3",
@@ -180,7 +192,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«Game Over» در رنگ طوسی: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Game Over” in Gray: Light, soft cotton [sample]",
+   "printFa": "طرح «Game Over»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
+   "printEn": "“Game Over” design: Digital print with vivid colors and pixel-sharp detail [sample]",
+   "careFa": "رنگ طوسی: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "Gray: Wash warm; do not iron over the print [sample]"
   },
   {
    "id": "p4",
@@ -204,7 +222,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«هشت بیت» در رنگ ذغالی: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“8-Bit” in Charcoal: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «هشت بیت»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
+   "printEn": "“8-Bit” design: Digital print with vivid colors and pixel-sharp detail [sample]",
+   "careFa": "رنگ ذغالی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "Charcoal: Wash up to 30°C; no tumble dry [sample]"
   },
   {
    "id": "p5",
@@ -226,7 +250,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«رویای بژ» در رنگ نقره‌ای: ترکیب پنبه و پلی‌استر [نمونه]",
+   "fabricEn": "“Beige Dream” in Silver: Cotton–polyester blend [sample]",
+   "printFa": "طرح «رویای بژ»: چاپ مات با رنگ‌های خنثی و ملایم [نمونه]",
+   "printEn": "“Beige Dream” design: Matte print in soft neutral tones [sample]",
+   "careFa": "رنگ نقره‌ای: مطابق برچسب داخل لباس [نمونه]",
+   "careEn": "Silver: Follow the label inside the garment [sample]"
   },
   {
    "id": "p6",
@@ -248,7 +278,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«قاب کولاژ» در رنگ گرافیتی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Collage Frame” in Graphite: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «قاب کولاژ»: چاپ مات با رنگ‌های خنثی و ملایم [نمونه]",
+   "printEn": "“Collage Frame” design: Matte print in soft neutral tones [sample]",
+   "careFa": "رنگ گرافیتی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Graphite: Wash inside out in cold water, no bleach; dry in the shade [sample]"
   },
   {
    "id": "p7",
@@ -272,7 +308,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«مه صبحگاهی» در رنگ مشکی: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Morning Mist” in Black: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «مه صبحگاهی»: چاپ مات با رنگ‌های خنثی و ملایم [نمونه]",
+   "printEn": "“Morning Mist” design: Matte print in soft neutral tones [sample]",
+   "careFa": "رنگ مشکی: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "Black: Wash cold; iron only on the reverse side [sample]"
   },
   {
    "id": "p8",
@@ -294,7 +336,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«خط و سایه» در رنگ سفید: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Line & Shadow” in White: Light, soft cotton [sample]",
+   "printFa": "طرح «خط و سایه»: چاپ مات با رنگ‌های خنثی و ملایم [نمونه]",
+   "printEn": "“Line & Shadow” design: Matte print in soft neutral tones [sample]",
+   "careFa": "رنگ سفید: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "White: Wash warm; do not iron over the print [sample]"
   },
   {
    "id": "p9",
@@ -316,7 +364,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«موج صدا» در رنگ طوسی: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“Sound Wave” in Gray: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «موج صدا»: چاپ با خطوط تیز و کنتراست بالا [نمونه]",
+   "printEn": "“Sound Wave” design: High-contrast print with sharp lines [sample]",
+   "careFa": "رنگ طوسی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "Gray: Wash up to 30°C; no tumble dry [sample]"
   },
   {
    "id": "p10",
@@ -340,7 +394,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«شب آنالوگ» در رنگ ذغالی: ترکیب پنبه و پلی‌استر [نمونه]",
+   "fabricEn": "“Analog Night” in Charcoal: Cotton–polyester blend [sample]",
+   "printFa": "طرح «شب آنالوگ»: چاپ با خطوط تیز و کنتراست بالا [نمونه]",
+   "printEn": "“Analog Night” design: High-contrast print with sharp lines [sample]",
+   "careFa": "رنگ ذغالی: مطابق برچسب داخل لباس [نمونه]",
+   "careEn": "Charcoal: Follow the label inside the garment [sample]"
   },
   {
    "id": "p11",
@@ -362,7 +422,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«باس سنگین» در رنگ نقره‌ای: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Heavy Bass” in Silver: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «باس سنگین»: چاپ با خطوط تیز و کنتراست بالا [نمونه]",
+   "printEn": "“Heavy Bass” design: High-contrast print with sharp lines [sample]",
+   "careFa": "رنگ نقره‌ای: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Silver: Wash inside out in cold water, no bleach; dry in the shade [sample]"
   },
   {
    "id": "p12",
@@ -384,7 +450,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«نوار کاست» در رنگ گرافیتی: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Cassette Tape” in Graphite: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «نوار کاست»: چاپ با خطوط تیز و کنتراست بالا [نمونه]",
+   "printEn": "“Cassette Tape” design: High-contrast print with sharp lines [sample]",
+   "careFa": "رنگ گرافیتی: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "Graphite: Wash cold; iron only on the reverse side [sample]"
   },
   {
    "id": "p13",
@@ -408,7 +480,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«کلاکت» در رنگ مشکی: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Clapperboard” in Black: Light, soft cotton [sample]",
+   "printFa": "طرح «کلاکت»: چاپ تک‌رنگ با جزئیات ریز [نمونه]",
+   "printEn": "“Clapperboard” design: Monochrome print with fine detail [sample]",
+   "careFa": "رنگ مشکی: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "Black: Wash warm; do not iron over the print [sample]"
   },
   {
    "id": "p14",
@@ -430,7 +508,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«سکانس آخر» در رنگ سفید: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“Final Scene” in White: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «سکانس آخر»: چاپ تک‌رنگ با جزئیات ریز [نمونه]",
+   "printEn": "“Final Scene” design: Monochrome print with fine detail [sample]",
+   "careFa": "رنگ سفید: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "White: Wash up to 30°C; no tumble dry [sample]"
   },
   {
    "id": "p15",
@@ -452,7 +536,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«فیلم خام» در رنگ طوسی: ترکیب پنبه و پلی‌استر [نمونه]",
+   "fabricEn": "“Raw Film” in Gray: Cotton–polyester blend [sample]",
+   "printFa": "طرح «فیلم خام»: چاپ تک‌رنگ با جزئیات ریز [نمونه]",
+   "printEn": "“Raw Film” design: Monochrome print with fine detail [sample]",
+   "careFa": "رنگ طوسی: مطابق برچسب داخل لباس [نمونه]",
+   "careEn": "Gray: Follow the label inside the garment [sample]"
   },
   {
    "id": "p16",
@@ -476,7 +566,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«پرده نقره‌ای» در رنگ ذغالی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Silver Screen” in Charcoal: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «پرده نقره‌ای»: چاپ تک‌رنگ با جزئیات ریز [نمونه]",
+   "printEn": "“Silver Screen” design: Monochrome print with fine detail [sample]",
+   "careFa": "رنگ ذغالی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Charcoal: Wash inside out in cold water, no bleach; dry in the shade [sample]"
   },
   {
    "id": "p17",
@@ -498,7 +594,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«ستاره شمشیر» در رنگ نقره‌ای: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Star Blade” in Silver: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «ستاره شمشیر»: چاپ رنگی با خطوط واضح [نمونه]",
+   "printEn": "“Star Blade” design: Colorful print with clean outlines [sample]",
+   "careFa": "رنگ نقره‌ای: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "Silver: Wash cold; iron only on the reverse side [sample]"
   },
   {
    "id": "p18",
@@ -520,7 +622,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«ابر و رعد» در رنگ گرافیتی: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Cloud & Thunder” in Graphite: Light, soft cotton [sample]",
+   "printFa": "طرح «ابر و رعد»: چاپ رنگی با خطوط واضح [نمونه]",
+   "printEn": "“Cloud & Thunder” design: Colorful print with clean outlines [sample]",
+   "careFa": "رنگ گرافیتی: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "Graphite: Wash warm; do not iron over the print [sample]"
   },
   {
    "id": "p19",
@@ -544,7 +652,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«چشم‌های بزرگ» در رنگ مشکی: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“Big Eyes” in Black: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «چشم‌های بزرگ»: چاپ رنگی با خطوط واضح [نمونه]",
+   "printEn": "“Big Eyes” design: Colorful print with clean outlines [sample]",
+   "careFa": "رنگ مشکی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "Black: Wash up to 30°C; no tumble dry [sample]"
   },
   {
    "id": "p20",
@@ -566,7 +680,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«خط سرعت» در رنگ سفید: ترکیب پنبه و پلی‌استر [نمونه]",
+   "fabricEn": "“Speed Lines” in White: Cotton–polyester blend [sample]",
+   "printFa": "طرح «خط سرعت»: چاپ رنگی با خطوط واضح [نمونه]",
+   "printEn": "“Speed Lines” design: Colorful print with clean outlines [sample]",
+   "careFa": "رنگ سفید: مطابق برچسب داخل لباس [نمونه]",
+   "careEn": "White: Follow the label inside the garment [sample]"
   },
   {
    "id": "p21",
@@ -588,7 +708,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«نویز» در رنگ طوسی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
+   "fabricEn": "“Noise” in Gray: Thick cotton fleece with a soft lining [sample]",
+   "printFa": "طرح «نویز»: چاپ دیجیتال استاندارد [نمونه]",
+   "printEn": "“Noise” design: Standard digital print [sample]",
+   "careFa": "رنگ طوسی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
+   "careEn": "Gray: Wash inside out in cold water, no bleach; dry in the shade [sample]"
   },
   {
    "id": "p22",
@@ -612,7 +738,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«خط‌خطی» در رنگ ذغالی: پنبهٔ متوسط با یقهٔ دوخت‌دار [نمونه]",
+   "fabricEn": "“Scribble” in Charcoal: Mid-weight cotton with a stitched collar [sample]",
+   "printFa": "طرح «خط‌خطی»: چاپ دیجیتال استاندارد [نمونه]",
+   "printEn": "“Scribble” design: Standard digital print [sample]",
+   "careFa": "رنگ ذغالی: شست‌وشو با آب سرد؛ اتو فقط از پشت لباس [نمونه]",
+   "careEn": "Charcoal: Wash cold; iron only on the reverse side [sample]"
   },
   {
    "id": "p23",
@@ -634,7 +766,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«آشوب مرتب» در رنگ نقره‌ای: پنبهٔ سبک و نرم [نمونه]",
+   "fabricEn": "“Ordered Chaos” in Silver: Light, soft cotton [sample]",
+   "printFa": "طرح «آشوب مرتب»: چاپ دیجیتال استاندارد [نمونه]",
+   "printEn": "“Ordered Chaos” design: Standard digital print [sample]",
+   "careFa": "رنگ نقره‌ای: شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید [نمونه]",
+   "careEn": "Silver: Wash warm; do not iron over the print [sample]"
   },
   {
    "id": "p24",
@@ -656,7 +794,13 @@
    "descFa": "",
    "descEn": "",
    "images": [],
-   "published": true
+   "published": true,
+   "fabricFa": "«سیگنال گم» در رنگ گرافیتی: پنبهٔ ممتاز با بافت متراکم [نمونه]",
+   "fabricEn": "“Lost Signal” in Graphite: Premium dense-knit cotton [sample]",
+   "printFa": "طرح «سیگنال گم»: چاپ دیجیتال استاندارد [نمونه]",
+   "printEn": "“Lost Signal” design: Standard digital print [sample]",
+   "careFa": "رنگ گرافیتی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
+   "careEn": "Graphite: Wash up to 30°C; no tumble dry [sample]"
   }
  ],
  "texts": {

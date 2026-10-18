@@ -176,6 +176,9 @@ details p{padding:0 18px 16px;color:var(--muted);font-size:14px}
 .support p{color:var(--muted);margin:6px 0 18px}
 
 /* Footer */
+.doc{max-width:780px;padding-block:96px 40px}.doc h1{font-size:clamp(26px,5vw,38px);margin:6px 0 18px}.doc h3{margin:26px 0 8px;font-size:18px}.doc p,.doc li{color:var(--muted);line-height:1.9}.doc ul{padding-inline-start:22px;margin:6px 0}
+.doc details{border-bottom:1px solid var(--line);padding:12px 0}.doc summary{cursor:pointer;font-weight:700}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:20px}.ct>div{padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}.ct dt{font-size:13px;color:var(--muted)}.ct dd{margin:4px 0 0;font-weight:700;word-break:break-word}
 footer{border-top:1px solid var(--line);padding-block:40px 24px;color:var(--muted);font-size:14px}
 .f-grid{display:grid;gap:28px;grid-template-columns:repeat(2,1fr)}
 @media(min-width:800px){.f-grid{grid-template-columns:1.6fr 1fr 1fr 1fr}}
@@ -534,6 +537,13 @@ html[data-theme="light"] .logo-mark,html[data-theme="light"] .intro-logo,html[da
 .th img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block}
 .pmain .pimg{width:92%;height:92%}
 
+.cat-img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:calc(var(--radius) - 6px);margin:0 auto 8px;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.cat:hover .cat-img{transform:scale(1.06)}
+.style-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.style:hover .style-img{transform:scale(1.07)}
+.style.has-img::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%);z-index:1}
+.style.has-img span{z-index:2}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -616,7 +626,7 @@ fa:{
   ['روش‌های پرداخت چیست؟','پس از انتخاب درگاه پرداخت، این پاسخ تکمیل می‌شود.']],
  supT:'سؤالی داری؟ ما اینجاییم',supP:'راه ارتباطی پشتیبانی (تیکت، چت یا ایمیل) از تنظیمات فروشگاه متصل می‌شود.',supBtn:'ارتباط با پشتیبانی',supToast:'راه ارتباط با پشتیبانی هنوز تنظیم نشده است.',
  fDesc:'فروشگاه لباس‌های طرح‌دار و سفارشی. توضیح برند از تنظیمات قابل ویرایش است.',fShop:'فروشگاه',fAll:'همه محصولات',fCustom:'طرح اختصاصی',fInfo:'اطلاعات',fAbout:'درباره ما',fContact:'تماس با ما',fFaq:'پرسش‌های متداول',
- fLegal:'قوانین',fTerms:'شرایط استفاده',fPriv:'حریم خصوصی',fShip:'ارسال و مرجوعی',
+ fLegal:'قوانین',fTerms:'شرایط استفاده',fPriv:'حریم خصوصی',fShip:'ارسال و مرجوعی',pg_about:"## ما کی هستیم؟\nدیستورت یک برند لباس خیابانی با طرح‌های گرافیکی و چاپ سفارشی است. ایده‌مان ساده است: متفاوت بپوش.\n\n## چه کار می‌کنیم؟\n- طراحی و چاپ طرح‌های اختصاصی روی هودی و لباس‌های راحت\n- امکان چاپ طرح خودت روی لباس\n- انتخاب از میان سبک‌ها و رنگ‌های مختلف\n\n## ارزش‌های ما\nکیفیت پارچه، دقت در چاپ و پشتیبانی سریع. این متن نمونه است و از پنل مدیریت (بخش «صفحه‌های فوتر») قابل ویرایش است.",pg_contact:"راه‌های ارتباط با ما در زیر آمده است. معمولاً در ساعات کاری ظرف یک روز کاری پاسخ می‌دهیم.",ctLEmail:"ایمیل",ctEmail:"support@example.com",ctLPhone:"تلفن",ctPhone:"۰۲۱-۰۰۰۰۰۰۰۰",ctLAddr:"نشانی",ctAddr:"تهران، نشانی فروشگاه (از پنل مدیریت ویرایش کنید)",ctLHours:"ساعات پاسخ‌گویی",ctHours:"شنبه تا چهارشنبه، ۹ تا ۱۷",pg_terms:"## پذیرش شرایط\nبا استفاده از این سایت و ثبت سفارش، شرایط زیر را می‌پذیرید.\n\n## ثبت سفارش و قیمت‌ها\nقیمت‌ها به تومان و شامل تخفیف‌های اعلام‌شده در صفحهٔ محصول است. فروشگاه می‌تواند قیمت‌ها را بدون اطلاع قبلی تغییر دهد؛ قیمت سفارش‌های ثبت‌شده تغییر نمی‌کند.\n\n## طرح‌های اختصاصی\nمسئولیت حقوق مالکیت طرح‌هایی که کاربر بارگذاری می‌کند با خود کاربر است. طرح‌های توهین‌آمیز یا دارای حق نشر دیگران چاپ نخواهد شد.\n\n## مالکیت محتوا\nتصاویر، طرح‌ها و لوگوی سایت متعلق به دیستورت است و بدون اجازه قابل استفاده مجدد نیست.\n\n## تغییر شرایط\nاین شرایط ممکن است به‌روزرسانی شود و نسخهٔ منتشرشده در همین صفحه معتبر است. (متن نمونه؛ پیش از انتشار با مشاور حقوقی بازبینی شود.)",pg_priv:"## اطلاعاتی که جمع‌آوری می‌کنیم\nنام، شماره تماس، نشانی و اطلاعات لازم برای ثبت و ارسال سفارش.\n\n## استفاده از اطلاعات\nفقط برای پردازش سفارش، ارسال و پشتیبانی استفاده می‌شود و به اشخاص ثالث فروخته نمی‌شود.\n\n## نگهداری و امنیت\nاطلاعات با اقدامات امنیتی معقول نگهداری می‌شود. اطلاعات پرداخت از طریق درگاه بانکی انجام می‌شود و در سایت ذخیره نمی‌شود.\n\n## حقوق شما\nمی‌توانید هر زمان درخواست مشاهده، اصلاح یا حذف اطلاعات خود را از راه ایمیل پشتیبانی بدهید. (متن نمونه؛ پیش از انتشار بازبینی شود.)",pg_ship:"## ارسال\nسفارش‌ها معمولاً ظرف ۲ تا ۴ روز کاری آماده و ارسال می‌شوند. سفارش‌های دارای چاپ اختصاصی ممکن است تا ۷ روز کاری زمان ببرند.\n\n## هزینهٔ ارسال\nهزینهٔ ارسال در سبد خرید نمایش داده می‌شود و از مبلغ مشخصی به بالا رایگان است.\n\n## مرجوعی\nاگر لباس سالم، استفاده‌نشده و با برچسب باشد تا ۷ روز پس از دریافت قابل مرجوع است.\n\n## موارد غیرقابل مرجوع\nلباس‌های دارای چاپ اختصاصی با طرح کاربر، مگر در صورت وجود ایراد تولید یا ارسال.\n\n## لباس معیوب یا اشتباه\nاگر محصول معیوب یا اشتباه رسید، با عکس به پشتیبانی اطلاع بدهید تا تعویض یا بازپرداخت شود. (متن نمونه؛ مقادیر را با سیاست فروشگاه خود جایگزین کنید.)",
  crHome:'خانه',crColl:'کالکشن‌ها',allProducts:'همه محصولات',all:'همه',allStyles:'همه سبک‌ها',lblType:'نوع لباس',lblStyle:'سبک طرح',upTo:'تا قیمت',saleOnly:'فقط تخفیف‌دارها',
  sort:'مرتب‌سازی',sNew:'جدیدترین',sHot:'پرفروش‌ترین',sCheap:'ارزان‌ترین',sPricey:'گران‌ترین',clear:'پاک کردن فیلترها',
  noRes:'محصولی پیدا نشد',noResP:'فیلترها را تغییر بده یا همه را پاک کن.',pagAria:'صفحه‌بندی',prev:'قبلی',next:'بعدی',
@@ -660,7 +670,7 @@ en:{
   ['What are the payment methods?','This answer will be completed once a payment gateway is chosen.']],
  supT:'Got a question? We’re here',supP:'The support channel (ticket, chat or email) will be connected from the store settings.',supBtn:'Contact support',supToast:'The support channel hasn’t been set up yet.',
  fDesc:'A store for graphic and custom-printed clothing. Brand text is editable from settings.',fShop:'Shop',fAll:'All products',fCustom:'Custom design',fInfo:'Info',fAbout:'About us',fContact:'Contact us',fFaq:'FAQ',
- fLegal:'Legal',fTerms:'Terms of use',fPriv:'Privacy policy',fShip:'Shipping & returns',
+ fLegal:'Legal',fTerms:'Terms of use',fPriv:'Privacy policy',fShip:'Shipping & returns',pg_about:"## Who we are\nDISTORT is a streetwear brand built around graphic designs and custom printing. The idea is simple: wear differently.\n\n## What we do\n- Design and print original artwork on hoodies and everyday wear\n- Print your own design on a garment\n- Choose from a range of styles and colors\n\n## What we care about\nFabric quality, print precision and fast support. This is sample text and can be edited from the admin panel (“Footer pages” section).",pg_contact:"You can reach us through the channels below. We usually reply within one business day.",ctLEmail:"Email",ctEmail:"support@example.com",ctLPhone:"Phone",ctPhone:"+98 21 0000 0000",ctLAddr:"Address",ctAddr:"Tehran — store address (edit from the admin panel)",ctLHours:"Support hours",ctHours:"Sat–Wed, 9:00–17:00",pg_terms:"## Acceptance\nBy using this site and placing an order you accept the terms below.\n\n## Orders and prices\nPrices are in Toman and include the discounts shown on the product page. We may change prices at any time; the price of a placed order does not change.\n\n## Custom designs\nUsers are responsible for owning the rights to any design they upload. Offensive designs or designs that infringe others’ rights will not be printed.\n\n## Content ownership\nImages, designs and the logo belong to DISTORT and may not be reused without permission.\n\n## Changes\nThese terms may be updated; the version published on this page applies. (Sample text — have it reviewed by legal counsel before launch.)",pg_priv:"## What we collect\nName, phone number, address and the details needed to place and ship an order.\n\n## How we use it\nOnly to process orders, ship them and provide support. We do not sell your data to third parties.\n\n## Storage and security\nData is stored with reasonable security measures. Payments go through the bank gateway and payment details are not stored on this site.\n\n## Your rights\nYou can ask to view, correct or delete your data at any time by emailing support. (Sample text — review before launch.)",pg_ship:"## Shipping\nOrders are usually prepared and shipped within 2–4 business days. Custom-printed orders may take up to 7 business days.\n\n## Shipping cost\nThe cost is shown in the cart and is free above a certain order value.\n\n## Returns\nUnused, undamaged items with tags can be returned within 7 days of delivery.\n\n## Non-returnable items\nGarments printed with a customer’s own design, unless there is a production or shipping fault.\n\n## Damaged or wrong items\nIf an item arrives damaged or wrong, send us a photo and we will replace or refund it. (Sample text — replace the figures with your own policy.)",
  crHome:'Home',crColl:'Collections',allProducts:'All products',all:'All',allStyles:'All styles',lblType:'Garment type',lblStyle:'Design style',upTo:'Up to',saleOnly:'On sale only',
  sort:'Sort',sNew:'Newest',sHot:'Best selling',sCheap:'Price: low to high',sPricey:'Price: high to low',clear:'Clear filters',
  noRes:'No products found',noResP:'Change the filters or clear them all.',pagAria:'Pagination',prev:'Previous',next:'Next',
@@ -707,9 +717,16 @@ const NAMES_EN={gaming:['Pixel Controller','Final Stage','Game Over','8-Bit'],pi
   anime:['Star Blade','Cloud & Thunder','Big Eyes','Speed Lines'],misc:['Noise','Scribble','Ordered Chaos','Lost Signal']};
 const BASE={hoodie:1450000,crewneck:1150000,tshirt:690000,cotton:620000,other:780000};
 const DAY=864e5, NOW=Date.now();
+const SAMPLE_SPEC=(type,style,fa,en,cfa,cen)=>{
+  const F={hoodie:['فوتر پنبه‌ای ضخیم با آستر نرم','Thick cotton fleece with a soft lining'],crewneck:['پنبهٔ متوسط با یقهٔ دوخت‌دار','Mid-weight cotton with a stitched collar'],tshirt:['پنبهٔ سبک و نرم','Light, soft cotton'],cotton:['پنبهٔ ممتاز با بافت متراکم','Premium dense-knit cotton'],other:['ترکیب پنبه و پلی‌استر','Cotton–polyester blend']};
+  const P={gaming:['چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی','Digital print with vivid colors and pixel-sharp detail'],pinterest:['چاپ مات با رنگ‌های خنثی و ملایم','Matte print in soft neutral tones'],music:['چاپ با خطوط تیز و کنتراست بالا','High-contrast print with sharp lines'],cinema:['چاپ تک‌رنگ با جزئیات ریز','Monochrome print with fine detail'],anime:['چاپ رنگی با خطوط واضح','Colorful print with clean outlines'],misc:['چاپ دیجیتال استاندارد','Standard digital print']};
+  const C={hoodie:['شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه','Wash inside out in cold water, no bleach; dry in the shade'],crewneck:['شست‌وشو با آب سرد؛ اتو فقط از پشت لباس','Wash cold; iron only on the reverse side'],tshirt:['شست‌وشو با آب ولرم؛ روی چاپ اتو نکنید','Wash warm; do not iron over the print'],cotton:['شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع','Wash up to 30°C; no tumble dry'],other:['مطابق برچسب داخل لباس','Follow the label inside the garment']};
+  const f=F[type]||F.other,p=P[style]||P.misc,c=C[type]||C.other,tag=[' [نمونه]',' [sample]'];
+  return {fabricFa:'«'+fa+'» در رنگ '+cfa+': '+f[0]+tag[0],fabricEn:'“'+en+'” in '+cen+': '+f[1]+tag[1],printFa:'طرح «'+fa+'»: '+p[0]+tag[0],printEn:'“'+en+'” design: '+p[1]+tag[1],careFa:'رنگ '+cfa+': '+c[0]+tag[0],careEn:cen+': '+c[1]+tag[1]};
+};
 const mapP=p=>{let cols=(p.colors||[]).map(id=>COLORS.find(c=>c.id===id)).filter(Boolean);if(!cols.length)cols=[COLORS[0]];
   return {id:p.id,code:esc(p.code||''),name:esc(p.fa),en:esc(p.en||p.fa),type:p.type,style:p.style,colors:cols,price:p.price,oldPrice:p.oldPrice||null,
-    createdAt:p.createdAt,sold:p.sold||0,outOfStock:p.outOfStock||[],descFa:esc(p.descFa||''),descEn:esc(p.descEn||''),images:(p.images||[]).map(asset)}};
+    createdAt:p.createdAt,sold:p.sold||0,outOfStock:p.outOfStock||[],descFa:esc(p.descFa||''),descEn:esc(p.descEn||''),fabricFa:esc(p.fabricFa||''),fabricEn:esc(p.fabricEn||''),printFa:esc(p.printFa||''),printEn:esc(p.printEn||''),careFa:esc(p.careFa||''),careEn:esc(p.careEn||''),images:(p.images||[]).map(asset)}};
 let PRODUCTS=REMOTE?REMOTE.products.map(mapP):(()=>{const out=[];let i=0;
   for(const s of Object.keys(SL.fa)) NAMES[s].forEach((n,k)=>{
     const t=Object.keys(TL.fa)[i%5], price0=BASE[t]+(i%4)*50000, sale=i%4===0;
@@ -717,10 +734,14 @@ let PRODUCTS=REMOTE?REMOTE.products.map(mapP):(()=>{const out=[];let i=0;
       colors:[0,1,2].map(k=>COLORS[(i+k*2)%6]),
       price:sale?Math.round(price0*.8/1e4)*1e4:price0, oldPrice:sale?price0:null,
       createdAt:NOW-((i*7)%24)*DAY, sold:((i*37)%90)+10,
-      outOfStock: i%3===0?[SIZES[i%5]]:[]});
+      outOfStock: i%3===0?[SIZES[i%5]]:[],...SAMPLE_SPEC(t,s,n,NAMES_EN[s][k],COLORS[i%6].n,COLORS[i%6].e)});
     i++;});
   return out;})();
 const pn=p=>lang==='fa'?p.name:p.en;
+const specsHTML=p=>{const L=lang==='fa'?'Fa':'En',keys=['fabric','print','care'],lab=t('specs'),
+  vals=keys.map(k=>(p[k+L]||'').trim()),any=vals.some(Boolean);
+  if(!any)return '';
+  return keys.map((k,i)=>{if(any&&!vals[i])return '';return `<details><summary>${lab[i]}</summary><p>${vals[i]?vals[i].split(/\n+/).join('<br>'):t('specNote')}</p></details>`}).join('')};
 const _pr=PRODUCTS.map(p=>p.price);
 let PMIN=_pr.length?Math.floor(Math.min(..._pr)/50000)*50000:0,PMAX=_pr.length?Math.ceil(Math.max(..._pr)/50000)*50000:500000;
 if(PMAX<=PMIN)PMAX=PMIN+50000;
@@ -741,18 +762,15 @@ function motif(style,c){
     misc:`<path d="M72 120l14-30 14 30 14-30 14 30" fill="none" stroke="${c}" stroke-width="5" stroke-linejoin="round"/><circle cx="100" cy="76" r="5" fill="${c}"/>`};
   const mk=(STYLE_META[style]&&STYLE_META[style].motif)||style;return m[mk]||m.misc;}
 function garment(type,color,style,extra=''){
-  const orig=type;type=shapeOf(type);
+  /* ONE default model (hoodie) in the product's colour, with the site logo on the chest */
   const fill=color,dark=lum(color)<.5,pc=dark?'#f1f0f6':'#17161d',ln=dark?'rgba(255,255,255,.22)':'rgba(0,0,0,.28)';
-  let body;
-  if(type==='hoodie') body=`<path d="M58 44L82 30Q100 46 118 30L142 44 188 150 160 162 142 112V206H58V112L40 162 12 150z" fill="${fill}" stroke="${ln}" stroke-width="2" stroke-linejoin="round"/>
+  const body=`<path d="M58 44L82 30Q100 46 118 30L142 44 188 150 160 162 142 112V206H58V112L40 162 12 150z" fill="${fill}" stroke="${ln}" stroke-width="2" stroke-linejoin="round"/>
     <path d="M76 32Q100-6 124 32Q100 56 76 32z" fill="${fill}" stroke="${ln}" stroke-width="2"/><path d="M92 54v26M108 54v26" stroke="${pc}" stroke-width="2" opacity=".5"/>
     <path d="M78 168h44v18H78z" fill="none" stroke="${ln}" stroke-width="2"/>`;
-  else if(type==='crewneck') body=`<path d="M58 34L84 24Q100 38 116 24L142 34 188 150 160 162 142 112V206H58V112L40 162 12 150z" fill="${fill}" stroke="${ln}" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M84 24Q100 46 116 24" fill="none" stroke="${pc}" stroke-width="3" opacity=".45"/><path d="M58 196h84" stroke="${ln}" stroke-width="3"/>`;
-  else body=`<path d="M60 22L88 12Q100 30 112 12L140 22 184 58 160 88 142 74V204H58V74L40 88 16 58z" fill="${fill}" stroke="${ln}" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M88 12Q100 34 112 12" fill="none" stroke="${pc}" stroke-width="3" opacity=".45"/>`;
-  const dy=(type==='hoodie'||type==='crewneck')?0:-8;
-  return `<svg viewBox="0 0 200 212" role="img" aria-label="${TYPES[orig]||''}" ${extra}>${body}<g transform="translate(0 ${dy})">${motif(style,pc)}</g></svg>`;
+  /* light garments get the logo drawn dark so it stays visible; the back view has no logo */
+  const defs=dark?'':'<defs><filter id="dsLogoDark" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .07 0 0 0 0 .07 0 0 0 0 .07 0 0 0 1 0"/></filter></defs>';
+  const logo=style==='back'?'':`<image href="${esc(LOGO)}" x="76" y="80" width="48" height="48" preserveAspectRatio="xMidYMid meet"${dark?'':' filter="url(#dsLogoDark)"'}/>`;
+  return `<svg viewBox="0 0 200 212" role="img" aria-label="${esc(TYPES[type]||'')}" ${extra}>${defs}${body}${logo}</svg>`;
 }
 const imgTag=u=>`<img class="pphoto" src="${u}" alt="" loading="lazy">`;
 const art=(p,ci=0)=>(p.images&&p.images.length)?imgTag(p.images[0]):garment(p.type,p.colors[ci].h,p.style);
@@ -805,13 +823,15 @@ home(){
   <section><div class="wrap">${REMOTE?'':`<div class="demo-bar">${t('demo')}</div>`}
     <div class="sec-head"><div><h2>${t('catsT')}</h2></div></div>
     <div class="grid-cats">${Object.entries(TYPES).map(([k,v],ci)=>{
-      return `<button class="cat" data-filter-type="${k}">${garment(k,COLORS[(({hoodie:3,crewneck:4,tshirt:1,cotton:5,other:2})[k]??ci)%COLORS.length].h,'misc')}<b>${v}</b><small>${t('nProducts',PRODUCTS.filter(p=>p.type===k).length)}</small></button>`}).join('')}</div></div></section>
+      const tm=TYPE_META[k],tImg=tm&&tm.image?asset(tm.image):'';
+      return `<button class="cat" data-filter-type="${k}">${tImg?`<img class="cat-img" src="${esc(tImg)}" alt="" loading="lazy">`:garment(k,COLORS[(({hoodie:3,crewneck:4,tshirt:1,cotton:5,other:2})[k]??ci)%COLORS.length].h,'misc')}<b>${v}</b><small>${t('nProducts',PRODUCTS.filter(p=>p.type===k).length)}</small></button>`}).join('')}</div></div></section>
 
   <section><div class="wrap"><div class="sec-head"><h2>${t('stylesT')}</h2></div>
     <div class="grid-styles">${Object.entries(STYLES).map(([k,v],i)=>{
       const sm=STYLE_META[k],G=[['#222222','#6a6a6a'],['#3a3a3a','#a0a0a0'],['#161616','#555555'],['#2e2e2e','#8a8a8a'],['#1c1c1c','#7a7a7a'],['#4a4a4a','#b8b8b8']][i%6],g=(sm&&sm.g&&sm.g.length===2)?sm.g:G;
-      return `<button class="style" data-filter-style="${k}" style="background:linear-gradient(135deg,${g[0]},${g[1]})">
-        <svg class="bgm" viewBox="0 0 200 125" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="translate(40 -20) scale(1.1)" opacity=".35">${motif(k,'#fff')}</g></svg><span>${v}</span></button>`}).join('')}</div></div></section>
+      const sImg=sm&&sm.image?asset(sm.image):'';
+      return `<button class="style${sImg?' has-img':''}" data-filter-style="${k}" style="background:linear-gradient(135deg,${g[0]},${g[1]})">
+        ${sImg?`<img class="style-img" src="${esc(sImg)}" alt="" loading="lazy">`:`<svg class="bgm" viewBox="0 0 200 125" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="translate(40 -20) scale(1.1)" opacity=".35">${motif(k,'#fff')}</g></svg>`}<span>${v}</span></button>`}).join('')}</div></div></section>
 
   <section><div class="wrap"><div class="sec-head"><div><h2>${t('newT')}</h2><p>${t('newS')}</p></div></div>
     <div class="grid-prod">${byNew().slice(0,10).map(p=>card(p,'new')).join('')}</div>
@@ -839,8 +859,8 @@ home(){
   <footer><div class="wrap"><div class="f-grid">
     <div><h4 class="f-brand"><img src="${LOGO}" alt="">${t('brand')}</h4><p><b>${t('tag')}</b></p><p>${t('fDesc')}</p></div>
     <div><h4>${t('fShop')}</h4><ul><li><a href="#/collections">${t('fAll')}</a></li><li><a href="#/collections" data-custom>${t('fCustom')}</a></li></ul></div>
-    <div><h4>${t('fInfo')}</h4><ul><li><a href="#/">${t('fAbout')}</a></li><li><a href="#/">${t('fContact')}</a></li><li><a href="#/">${t('fFaq')}</a></li></ul></div>
-    <div><h4>${t('fLegal')}</h4><ul><li><a href="#/">${t('fTerms')}</a></li><li><a href="#/">${t('fPriv')}</a></li><li><a href="#/">${t('fShip')}</a></li></ul></div></div>
+    <div><h4>${t('fInfo')}</h4><ul><li><a href="#/about">${t('fAbout')}</a></li><li><a href="#/contact">${t('fContact')}</a></li><li><a href="#/faq">${t('fFaq')}</a></li></ul></div>
+    <div><h4>${t('fLegal')}</h4><ul><li><a href="#/terms">${t('fTerms')}</a></li><li><a href="#/privacy">${t('fPriv')}</a></li><li><a href="#/shipping">${t('fShip')}</a></li></ul></div></div>
     <p class="copy">${t('copy').replace('{y}',String(new Date().getFullYear()).replace(/\d/g,d=>lang==='fa'?'۰۱۲۳۴۵۶۷۸۹'[d]:d))}</p></div></footer>`;
 },
 
@@ -880,7 +900,7 @@ product(){
         <details class="guide"><summary>${t('guide')}</summary><table class="szt"><tr><th>${t('gSize')}</th><th>${t('gWidth')}</th><th>${t('gLen')}</th></tr>
           ${(SET.sizeGuide&&SET.sizeGuide.length?SET.sizeGuide:[['S',50,68],['M',52,70],['L',54,72],['XL',57,74],['XXL',60,76]]).map(r=>`<tr><td>${esc(r[0])}</td><td>${fa(r[1])}</td><td>${fa(r[2])}</td></tr>`).join('')}</table>
           <p>${t('guideNote')}</p></details>
-        <div class="pspec">${t('specs').map(x=>`<details><summary>${x}</summary><p>${t('specNote')}</p></details>`).join('')}</div>
+        <div class="pspec">${specsHTML(p)}</div>
       </div></div>
     <section style="padding-inline:0"><div class="sec-head"><h2>${t('related')}</h2></div>
       <div class="grid-prod five">${rel.map(x=>card(x)).join('')}</div></section></div>`;
@@ -918,6 +938,23 @@ profile(){
     <input id="em" disabled placeholder="${t('profLbl')}" style="width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font:inherit;margin-bottom:10px">
     <button class="btn btn-primary" style="width:100%" disabled>${t('cont')}</button></div></div>`;
 }};
+
+
+/* ============ Footer pages ============ */
+function docBody(k){const out=[];let ul=null;
+  for(const raw of String(t(k)||'').split('\n')){const l=raw.trim();
+    if(!l){ul=null;continue}
+    if(l.startsWith('## ')){ul=null;out.push('<h3>'+l.slice(3)+'</h3>')}
+    else if(l.startsWith('- ')){if(!ul){ul=[];out.push(ul)}ul.push('<li>'+l.slice(2)+'</li>')}
+    else{ul=null;out.push('<p>'+l+'</p>')}}
+  return out.map(x=>Array.isArray(x)?'<ul>'+x.join('')+'</ul>':x).join('')}
+function docPage(titleKey,inner){return `<section><div class="wrap doc"><div class="crumbs"><a href="#/">${t('crHome')}</a> / ${t(titleKey)}</div><h1>${t(titleKey)}</h1>${inner}</div></section>`}
+views.about=()=>docPage('fAbout',docBody('pg_about'));
+views.terms=()=>docPage('fTerms',docBody('pg_terms'));
+views.privacy=()=>docPage('fPriv',docBody('pg_priv'));
+views.shipping=()=>docPage('fShip',docBody('pg_ship'));
+views.faq=()=>docPage('fFaq',t('faq').map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join(''));
+views.contact=()=>docPage('fContact',`<p>${t('pg_contact')}</p><dl class="ct">${[['ctLEmail','ctEmail'],['ctLPhone','ctPhone'],['ctLAddr','ctAddr'],['ctLHours','ctHours']].map(([a,b])=>`<div><dt>${t(a)}</dt><dd>${t(b)}</dd></div>`).join('')}</dl>`);
 
 /* ============ Router / render ============ */
 const NAV=[['home','home'],['collections','grid'],['wishlist','heart'],['cart','cart'],['profile','user']];
