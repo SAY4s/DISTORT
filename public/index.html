@@ -179,6 +179,24 @@ details p{padding:0 18px 16px;color:var(--muted);font-size:14px}
 .doc{max-width:780px;padding-block:96px 40px}.doc h1{font-size:clamp(26px,5vw,38px);margin:6px 0 18px}.doc h3{margin:26px 0 8px;font-size:18px}.doc p,.doc li{color:var(--muted);line-height:1.9}.doc ul{padding-inline-start:22px;margin:6px 0}
 .doc details{border-bottom:1px solid var(--line);padding:12px 0}.doc summary{cursor:pointer;font-weight:700}
 .ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:20px}.ct>div{padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}.ct dt{font-size:13px;color:var(--muted)}.ct dd{margin:4px 0 0;font-weight:700;word-break:break-word}
+.pf-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}.pf-head h2{font-size:22px;margin:0}.pf-sub{color:var(--muted);margin:2px 0 0;font-size:14px;direction:ltr;text-align:start}
+.pf-av{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:800;background:var(--surface-2);border:1px solid var(--line);box-shadow:0 0 22px rgba(255,255,255,.12);flex:none}
+.pf-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:14px}.pf-card h3{margin:0 0 12px;font-size:17px}
+.pf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 12px}.pf-f{display:block;margin-bottom:12px}.pf-f span{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}
+.pf-in{width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font:inherit}.pf-in:focus{outline:none;border-color:var(--text);box-shadow:0 0 0 3px rgba(255,255,255,.12)}
+.pf-empty{text-align:center;padding:18px;color:var(--muted)}.pf-empty p{margin:4px 0 0;font-size:14px}
+.pf-links{display:flex;flex-wrap:wrap;gap:10px}.pf-n{margin-inline-start:6px;opacity:.7}.pf-out{width:100%;margin-bottom:24px}
+.pf-wrap{max-width:980px}.pf-layout{display:grid;grid-template-columns:250px 1fr;gap:18px;align-items:start}
+.pf-menu{display:flex;flex-direction:column;gap:4px;padding:10px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);position:sticky;top:calc(var(--header-h) + 16px)}
+.pf-mi{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;color:var(--muted);font:inherit;font-weight:600;text-align:start;transition:background .2s,color .2s}
+.pf-mi svg{width:20px;height:20px;flex:none}.pf-mi span{flex:1}.pf-mi em{font-style:normal;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--surface-2)}
+.pf-mi:hover{background:var(--surface-2);color:var(--text)}.pf-mi.on{background:var(--surface-2);color:var(--text);box-shadow:inset 0 0 0 1px var(--line),0 0 18px rgba(255,255,255,.08)}
+.pf-mi.out{margin-top:6px;border-top:1px solid var(--line);border-radius:0 0 14px 14px;padding-top:16px}
+.pf-body .pf-card{margin-bottom:14px}.pf-av{object-fit:cover}.pf-av.lg{width:84px;height:84px;font-size:34px}
+.pf-photo{display:flex;align-items:center;gap:16px;margin-bottom:18px}.pf-photo p{margin:2px 0 10px;font-size:13px;color:var(--muted)}.btn.sm{padding:8px 14px;font-size:13px}
+.pf-list{display:flex;flex-direction:column;gap:6px}.pf-list a{padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.pf-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+@media(max-width:760px){.pf-layout{grid-template-columns:1fr}.pf-menu{position:static;flex-direction:row;overflow-x:auto;padding:6px;gap:4px;scrollbar-width:none}.pf-mi{flex:none;padding:10px 14px}.pf-mi span{flex:none}.pf-mi.out{display:none;margin:0;border:0}}
 footer{border-top:1px solid var(--line);padding-block:40px 24px;color:var(--muted);font-size:14px}
 .f-grid{display:grid;gap:28px;grid-template-columns:repeat(2,1fr)}
 @media(min-width:800px){.f-grid{grid-template-columns:1.6fr 1fr 1fr 1fr}}
@@ -642,8 +660,8 @@ fa:{
  cartT:'سبد خرید',cartEmpty:'سبد خرید خالی است',cartEmptyP:'محصولی انتخاب کن و رنگ و سایزش را مشخص کن.',remove:'حذف',
  subtotal:'جمع محصولات',saved:'سود شما از تخفیف',shipping:'هزینه ارسال',shipNext:'در مرحله بعد محاسبه می‌شود',total:'مبلغ قابل پرداخت',
  checkout:'ادامه فرایند خرید',checkoutToast:'درگاه پرداخت و ثبت سفارش هنوز به بک‌اند متصل نشده است.',cartNote:'قیمت و موجودی نهایی باید در سمت سرور دوباره بررسی شود.',
- profT:'پروفایل',profH:'ورود و ثبت‌نام',profP:'ورود واقعی به یک سرویس احراز هویت نیاز دارد که در این نمونه متصل نیست؛ فرم زیر فقط ظاهر صفحه است.',
- profLbl:'ایمیل یا شماره تلفن',cont:'ادامه',
+ profT:'پروفایل',
+ profLbl:'ایمیل یا شماره تلفن',profH:"ساخت پروفایل",profP:"اطلاعاتت را وارد کن تا برای خرید بعدی آماده باشد. اطلاعات فقط روی همین دستگاه (مرورگر) ذخیره می‌شود.",pfMenuT:"حساب من",pfTabSet:"تنظیمات",pfPhoto:"تصویر پروفایل",pfPhotoSet:"انتخاب تصویر",pfPhotoDel:"حذف تصویر",pfPhotoBad:"فقط تصویر (حداکثر ۵ مگابایت) انتخاب کن",pfPhotoHint:"تصویر روی همین دستگاه ذخیره می‌شود.",pfBirth:"تاریخ تولد (اختیاری)",pfSetT:"تنظیمات",pfSetLangP:"زبان نمایش سایت",pfDangerT:"پاک‌کردن اطلاعات",pfDangerP:"همهٔ اطلاعات پروفایل از این دستگاه حذف می‌شود.",pfCartEmpty:"سبد خرید خالی است",pfGoWish:"دیدن همهٔ علاقه‌مندی‌ها",pfGoCart:"رفتن به سبد خرید",pfName:"نام و نام خانوادگی",pfPhone:"شماره موبایل",pfEmail:"ایمیل (اختیاری)",pfCity:"شهر",pfAddr:"نشانی کامل",pfPostal:"کد پستی",pfCreate:"ساخت پروفایل",pfSave:"ذخیرهٔ تغییرات",pfSaved:"پروفایل ذخیره شد",pfNeed:"نام و شماره موبایل را وارد کن",pfHi:"سلام، {n}",pfInfoT:"اطلاعات شخصی",pfAddrT:"نشانی ارسال",pfOrdT:"سفارش‌های من",pfOrdEmpty:"هنوز سفارشی ثبت نکرده‌ای",pfOrdEmptyP:"بعد از ثبت اولین سفارش، اینجا نمایش داده می‌شود.",pfLinksT:"دسترسی سریع",pfWish:"علاقه‌مندی‌ها",pfCart:"سبد خرید",pfLangT:"زبان",pfOut:"خروج و پاک‌کردن اطلاعات",pfOutAsk:"اطلاعات پروفایل از این دستگاه پاک شود؟",pfOutDone:"از پروفایل خارج شدی",cont:'ادامه',
  tWishAdd:'به علاقه‌مندی‌ها اضافه شد',tWishDel:'از علاقه‌مندی‌ها حذف شد',tCart:'به سبد خرید اضافه شد',tPick:'ابتدا سایز را انتخاب کن',
  sNone:'نتیجه‌ای پیدا نشد',sNoneP:'عبارت دیگری را امتحان کن.'},
 en:{
@@ -686,8 +704,8 @@ en:{
  cartT:'Cart',cartEmpty:'Your cart is empty',cartEmptyP:'Pick a product and choose its color and size.',remove:'Remove',
  subtotal:'Subtotal',saved:'You save',shipping:'Shipping',shipNext:'Calculated at the next step',total:'Total',
  checkout:'Continue to checkout',checkoutToast:'Payment and order placement aren’t connected to a backend yet.',cartNote:'Final prices and stock must be re-verified on the server.',
- profT:'Profile',profH:'Sign in & sign up',profP:'Real sign-in needs an authentication service that isn’t connected in this demo; the form below is only a visual.',
- profLbl:'Email or phone number',cont:'Continue',
+ profT:'Profile',
+ profLbl:'Email or phone number',profH:"Create your profile",profP:"Enter your details so checkout is ready next time. Details are stored only on this device (browser).",pfMenuT:"My account",pfTabSet:"Settings",pfPhoto:"Profile picture",pfPhotoSet:"Choose picture",pfPhotoDel:"Remove picture",pfPhotoBad:"Choose an image (max 5 MB)",pfPhotoHint:"The picture is stored on this device.",pfBirth:"Birth date (optional)",pfSetT:"Settings",pfSetLangP:"Site language",pfDangerT:"Clear my data",pfDangerP:"All profile data will be removed from this device.",pfCartEmpty:"Your cart is empty",pfGoWish:"See all wishlist items",pfGoCart:"Go to cart",pfName:"Full name",pfPhone:"Mobile number",pfEmail:"Email (optional)",pfCity:"City",pfAddr:"Full address",pfPostal:"Postal code",pfCreate:"Create profile",pfSave:"Save changes",pfSaved:"Profile saved",pfNeed:"Please enter your name and mobile number",pfHi:"Hi, {n}",pfInfoT:"Personal info",pfAddrT:"Shipping address",pfOrdT:"My orders",pfOrdEmpty:"You haven’t placed an order yet",pfOrdEmptyP:"Your orders will appear here after your first purchase.",pfLinksT:"Quick links",pfWish:"Wishlist",pfCart:"Cart",pfLangT:"Language",pfOut:"Sign out & clear my data",pfOutAsk:"Remove your profile data from this device?",pfOutDone:"You’re signed out",cont:'Continue',
  tWishAdd:'Added to wishlist',tWishDel:'Removed from wishlist',tCart:'Added to cart',tPick:'Pick a size first',
  sNone:'No results found',sNoneP:'Try a different term.'}
 };
@@ -802,6 +820,25 @@ const byNew=()=>[...PRODUCTS].sort((a,b)=>b.createdAt-a.createdAt);
 const byHot=()=>[...PRODUCTS].sort((a,b)=>b.sold-a.sold);
 
 /* ============ Views ============ */
+
+/* ============ Profile (stored on this device) ============ */
+function getProf(){try{const p=JSON.parse(localStorage.getItem('ds-profile')||'null');return p&&typeof p.name==='string'?p:null}catch(e){return null}}
+function setProf(p){try{if(p)localStorage.setItem('ds-profile',JSON.stringify(p));else localStorage.removeItem('ds-profile')}catch(e){}}
+document.addEventListener('submit',e=>{const f=e.target.closest('[data-prof-form]');if(!f)return;e.preventDefault();
+  const v=Object.fromEntries(new FormData(f));for(const k in v)v[k]=String(v[k]).trim().slice(0,300);
+  const need=f.dataset.profForm==='create'||f.elements.name&&f.elements.phone;if(need&&(!v.name||!/^[\d+\s۰-۹\-()]{7,20}$/.test(v.phone||''))){toast(t('pfNeed'));return}
+  setProf(Object.assign({},getProf()||{},v));toast(t('pfSaved'));render()});
+function shrink(file){return new Promise((ok,no)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const n=256,c=document.createElement('canvas');c.width=c.height=n;const x=c.getContext('2d'),m=Math.min(im.width,im.height);x.drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,n,n);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',.85))};im.onerror=()=>no();im.src=u})}
+document.addEventListener('change',async e=>{if(e.target.id!=='pfFile')return;const f=e.target.files[0];if(!f)return;
+  if(!/^image\//.test(f.type)||f.size>5*1024*1024){toast(t('pfPhotoBad'));return}
+  try{setProf(Object.assign({},getProf(),{avatar:await shrink(f)}));toast(t('pfSaved'));render()}catch(er){toast(t('pfPhotoBad'))}});
+document.addEventListener('click',e=>{
+  const tb=e.target.closest('[data-prof-tab]');if(tb){state.ptab=tb.dataset.profTab;render();return}
+  if(e.target.closest('[data-prof-pick]')){document.getElementById('pfFile').click();return}
+  if(e.target.closest('[data-prof-delimg]')){const p=getProf();delete p.avatar;setProf(p);render();return}
+  if(e.target.closest('[data-prof-lang]')){setLang(lang==='fa'?'en':'fa');return}
+  if(e.target.closest('[data-prof-out]')){if(confirm(traw('pfOutAsk'))){setProf(null);state.ptab='info';toast(t('pfOutDone'));render()}}});
+
 const views={
 home(){
   const ghostG=garment('hoodie','#e8e8e8','anime');
@@ -932,11 +969,33 @@ cart(){
 },
 
 profile(){
-  return `<div class="wrap page-top" style="max-width:520px"><h2>${t('profT')}</h2><div style="height:16px"></div>
-    <div class="support" style="text-align:start"><h3>${t('profH')}</h3><p>${t('profP')}</p>
-    <label class="sr" for="em">${t('profLbl')}</label>
-    <input id="em" disabled placeholder="${t('profLbl')}" style="width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font:inherit;margin-bottom:10px">
-    <button class="btn btn-primary" style="width:100%" disabled>${t('cont')}</button></div></div>`;
+  const P=getProf(), inp=(id,k,type='text')=>`<label class="pf-f"><span>${t(k)}</span><input class="pf-in" name="${id}" type="${type}" value="${esc(P?P[id]||'':'')}" autocomplete="off"></label>`;
+  if(!P)return `<div class="wrap page-top" style="max-width:520px"><h2>${t('profT')}</h2><div style="height:16px"></div>
+    <form class="support pf-card" data-prof-form="create" style="text-align:start"><h3>${t('profH')}</h3><p>${t('profP')}</p>
+    ${inp('name','pfName')}${inp('phone','pfPhone','tel')}${inp('email','pfEmail','email')}
+    <button class="btn btn-primary" style="width:100%;margin-top:6px" type="submit">${t('pfCreate')}</button></form></div>`;
+  const tab=state.ptab||'info', nw=state.wish.size, nc=state.cart.reduce((s,r)=>s+r.qty,0);
+  const av=(cls='')=>P.avatar&&/^data:image\//.test(P.avatar)?`<img class="pf-av ${cls}" src="${esc(P.avatar)}" alt="">`:`<div class="pf-av ${cls}" aria-hidden="true">${esc([...P.name.trim()][0]||'D')}</div>`;
+  const ico={info:'user',address:'pin',orders:'bag',wishlist:'heart',cart:'cart',settings:'gear'};
+  const svg=n=>({user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',pin:'<path d="M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',bag:'<path d="M5 8h14l-1 12H6zM9 8a3 3 0 016 0"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 9c0 6-8 11-8 11z"/>',cart:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h3l2.5 11h10L21 8H7"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'}[n]);
+  const items=[['info','pfInfoT'],['address','pfAddrT'],['orders','pfOrdT'],['wishlist','pfWish',nw],['cart','pfCart',nc],['settings','pfTabSet']];
+  const menu=`<nav class="pf-menu" aria-label="${t('pfMenuT')}">${items.map(([k,l,n])=>`<button class="pf-mi${k===tab?' on':''}" data-prof-tab="${k}" ${k===tab?'aria-current="page"':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${svg(ico[k])}</svg><span>${t(l)}</span>${n?`<em>${fa(n)}</em>`:''}</button>`).join('')}
+    <button class="pf-mi out" data-prof-out><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H5v16h4M16 8l4 4-4 4M20 12H9"/></svg><span>${t('pfOut')}</span></button></nav>`;
+  let body='';
+  if(tab==='info')body=`<form class="pf-card" data-prof-form="save"><h3>${t('pfInfoT')}</h3>
+    <div class="pf-photo">${av('lg')}<div><b>${t('pfPhoto')}</b><p>${t('pfPhotoHint')}</p>
+      <button type="button" class="btn btn-ghost sm" data-prof-pick>${t('pfPhotoSet')}</button>${P.avatar?` <button type="button" class="btn btn-ghost sm" data-prof-delimg>${t('pfPhotoDel')}</button>`:''}
+      <input type="file" id="pfFile" accept="image/png,image/jpeg,image/webp" hidden></div></div>
+    <div class="pf-grid">${inp('name','pfName')}${inp('phone','pfPhone','tel')}${inp('email','pfEmail','email')}${inp('birth','pfBirth','date')}</div>
+    <button class="btn btn-primary" type="submit">${t('pfSave')}</button></form>`;
+  else if(tab==='address')body=`<form class="pf-card" data-prof-form="save"><h3>${t('pfAddrT')}</h3><div class="pf-grid">${inp('city','pfCity')}${inp('postal','pfPostal')}</div>${inp('addr','pfAddr')}<button class="btn btn-primary" type="submit">${t('pfSave')}</button></form>`;
+  else if(tab==='orders')body=`<div class="pf-card"><h3>${t('pfOrdT')}</h3><div class="pf-empty"><b>${t('pfOrdEmpty')}</b><p>${t('pfOrdEmptyP')}</p></div></div>`;
+  else if(tab==='wishlist'){const w=PRODUCTS.filter(p=>state.wish.has(p.id));body=`<div class="pf-card"><h3>${t('pfWish')}</h3>${w.length?`<div class="pf-list">${w.map(p=>`<a href="#/product/${p.id}">${pn(p)}</a>`).join('')}</div><button class="btn btn-ghost" data-go="wishlist" style="margin-top:12px">${t('pfGoWish')}</button>`:`<div class="pf-empty"><b>${t('wlEmpty')}</b><p>${t('wlEmptyP')}</p></div>`}</div>`}
+  else if(tab==='cart')body=`<div class="pf-card"><h3>${t('pfCart')}</h3>${nc?`<p class="pf-sub" style="direction:inherit">${fa(nc)} × ${t('pfCart')}</p><button class="btn btn-primary" data-go="cart">${t('pfGoCart')}</button>`:`<div class="pf-empty"><b>${t('pfCartEmpty')}</b></div>`}</div>`;
+  else body=`<div class="pf-card"><h3>${t('pfSetT')}</h3><div class="pf-row"><span>${t('pfSetLangP')}</span><button class="btn btn-ghost" data-prof-lang>${lang==='fa'?'English':'فارسی'}</button></div></div>
+    <div class="pf-card"><h3>${t('pfDangerT')}</h3><p class="pf-sub" style="direction:inherit;margin-bottom:12px">${t('pfDangerP')}</p><button class="btn btn-ghost" data-prof-out>${t('pfOut')}</button></div>`;
+  return `<div class="wrap page-top pf-wrap"><div class="pf-head">${av()}<div><h2>${t('pfHi').replace('{n}',esc(P.name))}</h2><p class="pf-sub">${esc(P.phone)}${P.email?' · '+esc(P.email):''}</p></div></div>
+    <div class="pf-layout">${menu}<div class="pf-body">${body}</div></div></div>`;
 }};
 
 
