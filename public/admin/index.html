@@ -454,11 +454,12 @@ function viewCats(col) {
 
 /* ================= texts ================= */
 const GROUPS = [
-  ['هدر و ناوبری', ['title', 'logoAria', 'search', 'login', 'n_cart', 'navAria', 'sPh', 'sAria', 'close', 'switchLang', 'nav_home', 'nav_collections', 'nav_wishlist', 'nav_cart', 'nav_profile']],
+  ['هدر و ناوبری', ['title', 'logoAria', 'search', 'login', 'n_cart', 'navAria', 'sPh', 'sAria', 'close', 'switchLang', 'nav_home', 'nav_coin', 'nav_collections', 'nav_wishlist', 'nav_cart', 'nav_profile']],
   ['برند و شعار', ['brand', 'tag', 'eyebrow', 'cur', 'copy']],
   ['صفحهٔ اصلی — هیرو (بالای صفحه)', ['heroP', 'shop', 'makeOwn', 'stDesigns', 'stStyles', 'stTypes', 'mq']],
   ['صفحهٔ اصلی — بخش‌ها', ['catsT', 'stylesT', 'newT', 'newS', 'newAll', 'hotT', 'hotS', 'hotAll', 'whyT', 'w1t', 'w1d', 'w2t', 'w2d', 'w3t', 'w3d', 'w4t', 'w4d', 'whyNote', 'customT', 'customP', 'customBtn', 'customToast', 'faqT', 'faq', 'supT', 'supP', 'supBtn', 'supToast']],
   ['فوتر', ['fDesc', 'fShop', 'fAll', 'fCustom', 'fInfo', 'fAbout', 'fContact', 'fFaq', 'fLegal', 'fTerms', 'fPriv', 'fShip']],
+  ['دیس‌کوین', ["coinT", "coinSub", "coinBal", "coinEnergy", "coinTap", "coinLvl", "coinNext", "coinMax", "coinDaily", "coinDailyGot", "coinDailyDone", "coinTapHint", "coinNoEnergy", "coinNote", "coinL0", "coinL1", "coinL2", "coinL3", "coinL4"]],
   ['صفحهٔ پروفایل', ["profT", "profH", "profP", "pfName", "pfPhone", "pfEmail", "pfCity", "pfAddr", "pfPostal", "pfCreate", "pfSave", "pfSaved", "pfNeed", "pfHi", "pfInfoT", "pfAddrT", "pfOrdT", "pfOrdEmpty", "pfOrdEmptyP", "pfLinksT", "pfWish", "pfCart", "pfLangT", "pfOut", "pfOutAsk", "pfOutDone", "pfMenuT", "pfTabSet", "pfPhoto", "pfPhotoSet", "pfPhotoDel", "pfPhotoBad", "pfPhotoHint", "pfBirth", "pfSetT", "pfSetLangP", "pfDangerT", "pfDangerP", "pfCartEmpty", "pfGoWish", "pfGoCart"]],
   ['صفحه‌های فوتر (درباره ما، تماس، قوانین…)', ['pg_about','pg_contact','ctLEmail','ctEmail','ctLPhone','ctPhone','ctLAddr','ctAddr','ctLHours','ctHours','pg_terms','pg_priv','pg_ship']],
   ['صفحهٔ کالکشن‌ها', ['crHome', 'crColl', 'allProducts', 'all', 'allStyles', 'lblType', 'lblStyle', 'upTo', 'saleOnly', 'sort', 'sNew', 'sHot', 'sCheap', 'sPricey', 'clear', 'noRes', 'noResP', 'pagAria', 'prev', 'next', 'nProducts']],
@@ -479,6 +480,7 @@ const LABEL = {
   pg_about: 'صفحهٔ درباره ما (## تیتر، - مورد لیست، خط خالی = بند جدید)', pg_contact: 'صفحهٔ تماس: متن مقدمه', ctLEmail: 'تماس: برچسب ایمیل', ctEmail: 'تماس: آدرس ایمیل', ctLPhone: 'تماس: برچسب تلفن', ctPhone: 'تماس: شمارهٔ تلفن', ctLAddr: 'تماس: برچسب نشانی', ctAddr: 'تماس: نشانی', ctLHours: 'تماس: برچسب ساعات', ctHours: 'تماس: ساعات پاسخ‌گویی', pg_terms: 'صفحهٔ شرایط استفاده', pg_priv: 'صفحهٔ حریم خصوصی', pg_ship: 'صفحهٔ ارسال و مرجوعی',
   profH: "پروفایل: تیتر فرم ساخت", profP: "پروفایل: متن زیر تیتر", pfName: "فرم: نام", pfPhone: "فرم: موبایل", pfEmail: "فرم: ایمیل", pfCity: "فرم: شهر", pfAddr: "فرم: نشانی", pfPostal: "فرم: کد پستی", pfCreate: "دکمهٔ ساخت پروفایل", pfSave: "دکمهٔ ذخیره", pfSaved: "پیام ذخیره‌شدن", pfNeed: "پیام خطای فرم", pfHi: "خوش‌آمد ({n} = نام)", pfInfoT: "تیتر اطلاعات شخصی", pfAddrT: "تیتر نشانی", pfOrdT: "تیتر سفارش‌ها", pfOrdEmpty: "سفارش‌ها: عنوان حالت خالی", pfOrdEmptyP: "سفارش‌ها: متن حالت خالی", pfLinksT: "تیتر دسترسی سریع", pfWish: "دکمهٔ علاقه‌مندی", pfCart: "دکمهٔ سبد", pfLangT: "برچسب زبان", pfOut: "دکمهٔ خروج", pfOutAsk: "پرسش تأیید خروج", pfOutDone: "پیام خروج",
   pfMenuT: "منو: عنوان", pfTabSet: "منو: تنظیمات", pfPhoto: "عنوان تصویر پروفایل", pfPhotoSet: "دکمهٔ انتخاب تصویر", pfPhotoDel: "دکمهٔ حذف تصویر", pfPhotoBad: "خطای تصویر", pfPhotoHint: "توضیح تصویر", pfBirth: "فرم: تاریخ تولد", pfSetT: "تیتر تنظیمات", pfSetLangP: "برچسب زبان", pfDangerT: "تیتر پاک‌کردن اطلاعات", pfDangerP: "توضیح پاک‌کردن", pfCartEmpty: "سبد خالی", pfGoWish: "دکمهٔ علاقه‌مندی‌ها", pfGoCart: "دکمهٔ رفتن به سبد",
+  coinT: "دیس‌کوین: عنوان", coinSub: "دیس‌کوین: زیرعنوان", coinBal: "برچسب موجودی", coinEnergy: "برچسب انرژی", coinTap: "متن هر ضربه ({n})", coinLvl: "برچسب سطح", coinNext: "متن تا سطح بعد", coinMax: "متن بالاترین سطح", coinDaily: "دکمهٔ جایزهٔ روزانه", coinDailyGot: "پیام دریافت جایزه ({n})", coinDailyDone: "پیام جایزه گرفته‌شده", coinTapHint: "راهنمای ضربه", coinNoEnergy: "پیام تمام‌شدن انرژی", coinNote: "توضیح پایین صفحه", coinL0: "نام سطح ۱", coinL1: "نام سطح ۲", coinL2: "نام سطح ۳", coinL3: "نام سطح ۴", coinL4: "نام سطح ۵", nav_coin: 'نوار پایین: دیس‌کوین',
   nProducts: 'تعداد محصول ({n} = عدد)', off: 'نشان تخفیف ({n} = درصد)', desc: 'توضیح پیش‌فرض محصول ({n} نام، {ty} مدل، {st} طرح)', sizesLeft: 'سایزهای موجود ({n} = عدد)', cardAria: 'توضیح کارت ({n} = نام محصول)',
   specs: 'عنوان بخش‌های مشخصات (هر خط یکی)', specNote: 'متن داخل بخش مشخصات', guide: 'عنوان راهنمای اندازه', guideNote: 'یادداشت زیر جدول اندازه', imgNote: 'یادداشت زیر تصاویر', related: 'تیتر محصولات مشابه',
   addCart: 'دکمهٔ افزودن به سبد', buyNow: 'دکمهٔ خرید مستقیم', choose: 'دکمهٔ کارت محصول', checkout: 'دکمهٔ ادامه فرایند خرید', cartNote: 'یادداشت زیر سبد', shipNext: 'متن هزینهٔ ارسال', checkoutToast: 'پیام کلیک روی خرید'
@@ -490,7 +492,7 @@ function viewTexts(v) {
   const changedKeys = () => keys.filter(k => ['fa', 'en'].some(l => !eq(S.eff[l][k], def[l][k])));
   const bar = h('div', { class: 'savebar' }), cnt = h('span', {});
   const mark = () => { S.dirty = changedKeys().length > 0; };
-  const refreshBar = () => { const n = changedKeys().length; cnt.textContent = n ? fa(n) + ' متن نسبت به پیش‌فرض تغییر کرده' : 'همهٔ متن‌ها پیش‌فرض هستند'; };
+  const refreshBar = () => { const n = changedKeys().length; cnt.textContent = ''; };
   const saveBtn = h('button', { class: 'btn', onclick: async e => {
     const btn = e.currentTarget; btn.disabled = true;
     try {

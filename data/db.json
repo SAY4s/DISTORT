@@ -4,7 +4,8 @@
    "id": "hoodie",
    "fa": "هودی",
    "en": "Hoodie",
-   "shape": "hoodie"
+   "shape": "hoodie",
+   "image": null
   },
   {
    "id": "crewneck",
@@ -25,10 +26,11 @@
    "shape": "tshirt"
   },
   {
-   "id": "other",
-   "fa": "سایر لباس‌ها",
-   "en": "Other apparel",
-   "shape": "tshirt"
+   "id": "irony",
+   "fa": "ایرونی",
+   "en": "Irony",
+   "shape": "tshirt",
+   "image": null
   }
  ],
  "styles": [
@@ -37,7 +39,8 @@
    "fa": "گیمینگ",
    "en": "Gaming",
    "motif": "gaming",
-   "g": null
+   "g": null,
+   "image": null
   },
   {
    "id": "pinterest",
@@ -121,28 +124,27 @@
    "en": "Pixel Controller",
    "type": "hoodie",
    "style": "gaming",
-   "price": 1160000,
+   "price": 1170000,
    "oldPrice": 1450000,
    "colors": [
     "black",
     "gray",
+    "graphite",
     "silver"
    ],
-   "outOfStock": [
-    "S"
-   ],
+   "outOfStock": [],
    "sold": 10,
    "createdAt": 1792178376686,
    "descFa": "",
    "descEn": "",
-   "images": [],
-   "published": true,
    "fabricFa": "«کنترلر پیکسلی» در رنگ مشکی: فوتر پنبه‌ای ضخیم با آستر نرم [نمونه]",
    "fabricEn": "“Pixel Controller” in Black: Thick cotton fleece with a soft lining [sample]",
    "printFa": "طرح «کنترلر پیکسلی»: چاپ دیجیتال با رنگ‌های زنده و جزئیات پیکسلی [نمونه]",
    "printEn": "“Pixel Controller” design: Digital print with vivid colors and pixel-sharp detail [sample]",
    "careFa": "رنگ مشکی: شست‌وشو وارونه با آب سرد، بدون سفیدکننده؛ خشک‌کردن در سایه [نمونه]",
-   "careEn": "Black: Wash inside out in cold water, no bleach; dry in the shade [sample]"
+   "careEn": "Black: Wash inside out in cold water, no bleach; dry in the shade [sample]",
+   "images": [],
+   "published": true
   },
   {
    "id": "p2",
@@ -229,34 +231,6 @@
    "printEn": "“8-Bit” design: Digital print with vivid colors and pixel-sharp detail [sample]",
    "careFa": "رنگ ذغالی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
    "careEn": "Charcoal: Wash up to 30°C; no tumble dry [sample]"
-  },
-  {
-   "id": "p5",
-   "code": "DS-0005",
-   "fa": "رویای بژ",
-   "en": "Beige Dream",
-   "type": "other",
-   "style": "pinterest",
-   "price": 620000,
-   "oldPrice": 780000,
-   "colors": [
-    "silver",
-    "black",
-    "gray"
-   ],
-   "outOfStock": [],
-   "sold": 68,
-   "createdAt": 1791832776686,
-   "descFa": "",
-   "descEn": "",
-   "images": [],
-   "published": true,
-   "fabricFa": "«رویای بژ» در رنگ نقره‌ای: ترکیب پنبه و پلی‌استر [نمونه]",
-   "fabricEn": "“Beige Dream” in Silver: Cotton–polyester blend [sample]",
-   "printFa": "طرح «رویای بژ»: چاپ مات با رنگ‌های خنثی و ملایم [نمونه]",
-   "printEn": "“Beige Dream” design: Matte print in soft neutral tones [sample]",
-   "careFa": "رنگ نقره‌ای: مطابق برچسب داخل لباس [نمونه]",
-   "careEn": "Silver: Follow the label inside the garment [sample]"
   },
   {
    "id": "p6",
@@ -373,36 +347,6 @@
    "careEn": "Gray: Wash up to 30°C; no tumble dry [sample]"
   },
   {
-   "id": "p10",
-   "code": "DS-0010",
-   "fa": "شب آنالوگ",
-   "en": "Analog Night",
-   "type": "other",
-   "style": "music",
-   "price": 830000,
-   "oldPrice": null,
-   "colors": [
-    "charcoal",
-    "graphite",
-    "white"
-   ],
-   "outOfStock": [
-    "XXL"
-   ],
-   "sold": 73,
-   "createdAt": 1790882376686,
-   "descFa": "",
-   "descEn": "",
-   "images": [],
-   "published": true,
-   "fabricFa": "«شب آنالوگ» در رنگ ذغالی: ترکیب پنبه و پلی‌استر [نمونه]",
-   "fabricEn": "“Analog Night” in Charcoal: Cotton–polyester blend [sample]",
-   "printFa": "طرح «شب آنالوگ»: چاپ با خطوط تیز و کنتراست بالا [نمونه]",
-   "printEn": "“Analog Night” design: High-contrast print with sharp lines [sample]",
-   "careFa": "رنگ ذغالی: مطابق برچسب داخل لباس [نمونه]",
-   "careEn": "Charcoal: Follow the label inside the garment [sample]"
-  },
-  {
    "id": "p11",
    "code": "DS-0011",
    "fa": "باس سنگین",
@@ -515,34 +459,6 @@
    "printEn": "“Final Scene” design: Monochrome print with fine detail [sample]",
    "careFa": "رنگ سفید: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
    "careEn": "White: Wash up to 30°C; no tumble dry [sample]"
-  },
-  {
-   "id": "p15",
-   "code": "DS-0015",
-   "fa": "فیلم خام",
-   "en": "Raw Film",
-   "type": "other",
-   "style": "cinema",
-   "price": 880000,
-   "oldPrice": null,
-   "colors": [
-    "gray",
-    "silver",
-    "black"
-   ],
-   "outOfStock": [],
-   "sold": 78,
-   "createdAt": 1792005576686,
-   "descFa": "",
-   "descEn": "",
-   "images": [],
-   "published": true,
-   "fabricFa": "«فیلم خام» در رنگ طوسی: ترکیب پنبه و پلی‌استر [نمونه]",
-   "fabricEn": "“Raw Film” in Gray: Cotton–polyester blend [sample]",
-   "printFa": "طرح «فیلم خام»: چاپ تک‌رنگ با جزئیات ریز [نمونه]",
-   "printEn": "“Raw Film” design: Monochrome print with fine detail [sample]",
-   "careFa": "رنگ طوسی: مطابق برچسب داخل لباس [نمونه]",
-   "careEn": "Gray: Follow the label inside the garment [sample]"
   },
   {
    "id": "p16",
@@ -661,34 +577,6 @@
    "careEn": "Black: Wash up to 30°C; no tumble dry [sample]"
   },
   {
-   "id": "p20",
-   "code": "DS-0020",
-   "fa": "خط سرعت",
-   "en": "Speed Lines",
-   "type": "other",
-   "style": "anime",
-   "price": 930000,
-   "oldPrice": null,
-   "colors": [
-    "white",
-    "charcoal",
-    "graphite"
-   ],
-   "outOfStock": [],
-   "sold": 83,
-   "createdAt": 1791055176686,
-   "descFa": "",
-   "descEn": "",
-   "images": [],
-   "published": true,
-   "fabricFa": "«خط سرعت» در رنگ سفید: ترکیب پنبه و پلی‌استر [نمونه]",
-   "fabricEn": "“Speed Lines” in White: Cotton–polyester blend [sample]",
-   "printFa": "طرح «خط سرعت»: چاپ رنگی با خطوط واضح [نمونه]",
-   "printEn": "“Speed Lines” design: Colorful print with clean outlines [sample]",
-   "careFa": "رنگ سفید: مطابق برچسب داخل لباس [نمونه]",
-   "careEn": "White: Follow the label inside the garment [sample]"
-  },
-  {
    "id": "p21",
    "code": "DS-0021",
    "fa": "نویز",
@@ -801,10 +689,52 @@
    "printEn": "“Lost Signal” design: Standard digital print [sample]",
    "careFa": "رنگ گرافیتی: شست‌وشو تا ۳۰ درجه؛ خشک‌کن ممنوع [نمونه]",
    "careEn": "Graphite: Wash up to 30°C; no tumble dry [sample]"
+  },
+  {
+   "id": "p26",
+   "code": "DS-0026",
+   "fa": "کلیچه نادری",
+   "en": "kalich nadary",
+   "type": "irony",
+   "style": "misc",
+   "price": 850000,
+   "oldPrice": 1900000,
+   "colors": [
+    "black"
+   ],
+   "outOfStock": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+   ],
+   "sold": 1000,
+   "createdAt": 1792262005871,
+   "descFa": "",
+   "descEn": "",
+   "fabricFa": "",
+   "fabricEn": "",
+   "printFa": "",
+   "printEn": "",
+   "careFa": "",
+   "careEn": "",
+   "images": [
+    "/uploads/4c068d1ff1f440356c353e0c05a3adaf.png",
+    "/uploads/f61531fe98c3c0bb51ebd4d55a7db70c.jpg",
+    "/uploads/c1ec7050f1465441c0fa4e5a4c9ea4be.jpg"
+   ],
+   "published": true
   }
  ],
  "texts": {
-  "fa": {},
+  "fa": {
+   "specs": [
+    "جنس پارچه",
+    "مشخصات چاپ",
+    "راهنمای‌نگهداری"
+   ]
+  },
   "en": {}
  },
  "settings": {
@@ -814,7 +744,8 @@
    "M",
    "L",
    "XL",
-   "XXL"
+   "XXL",
+   "SEX"
   ],
   "sizeGuide": [
    [
@@ -841,8 +772,13 @@
     "XXL",
     60,
     76
+   ],
+   [
+    "SEX",
+    0,
+    0
    ]
   ]
  },
- "nextProductId": 25
+ "nextProductId": 27
 }

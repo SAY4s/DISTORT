@@ -60,10 +60,10 @@ img,svg{display:block;max-width:100%}
 
 /* ---------- Bottom nav ---------- */
 .nav{position:fixed;z-index:50;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);
-  width:min(460px,100% - 24px);height:var(--nav-h);border-radius:26px;display:grid;grid-template-columns:repeat(5,1fr);padding:6px;
+  width:min(540px,100% - 24px);height:var(--nav-h);border-radius:26px;display:grid;grid-template-columns:repeat(6,1fr);padding:6px;
   background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);
   box-shadow:0 12px 40px rgba(0,0,0,.35)}
-.nav button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:20px;
+.nav button{min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:20px;
   font-size:11px;color:var(--muted);transition:color .2s,background .25s}
 .nav button svg{width:22px;height:22px}
 .nav button[aria-current="page"]{color:var(--text);background:var(--surface-2)}
@@ -197,6 +197,15 @@ details p{padding:0 18px 16px;color:var(--muted);font-size:14px}
 .pf-list{display:flex;flex-direction:column;gap:6px}.pf-list a{padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
 .pf-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
 @media(max-width:760px){.pf-layout{grid-template-columns:1fr}.pf-menu{position:static;flex-direction:row;overflow-x:auto;padding:6px;gap:4px;scrollbar-width:none}.pf-mi{flex:none;padding:10px 14px}.pf-mi span{flex:none}.pf-mi.out{display:none;margin:0;border:0}}
+.coin-bal{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0 10px;font-size:44px;font-weight:800}.coin-bal b{font-variant-numeric:tabular-nums}.coin-mini svg{width:34px;height:34px}
+.coin-lv{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin:8px 2px 5px}.coin-lv b{color:var(--text)}
+.coin-bar{height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line)}.coin-bar i{display:block;height:100%;width:0;background:var(--text);border-radius:99px;transition:width .25s}.coin-bar.en i{background:linear-gradient(90deg,#8a8a8a,#fff)}
+.coin-stage{position:relative;display:grid;place-items:center;padding:26px 0 12px;perspective:700px}
+.coin-btn{width:min(70vw,290px);aspect-ratio:1;border-radius:50%;touch-action:manipulation;user-select:none;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 0 34px rgba(255,255,255,.28));transform:rotateX(var(--rx,0)) rotateY(var(--ry,0));transition:transform .15s,filter .2s}
+.coin-btn svg{width:100%;height:100%;pointer-events:none}.coin-btn:active{transform:scale(.95) rotateX(var(--rx,0)) rotateY(var(--ry,0));filter:drop-shadow(0 0 50px rgba(255,255,255,.5))}
+.coin-float{position:absolute;pointer-events:none;font-weight:800;font-size:26px;color:var(--text);text-shadow:0 0 12px rgba(255,255,255,.6);animation:cfloat .8s ease-out forwards;transform:translate(-50%,-50%)}
+@keyframes cfloat{to{transform:translate(-50%,-190%);opacity:0}}
+.coin-note{margin:22px 0 10px;font-size:12.5px;color:var(--muted);line-height:1.9}
 footer{border-top:1px solid var(--line);padding-block:40px 24px;color:var(--muted);font-size:14px}
 .f-grid{display:grid;gap:28px;grid-template-columns:repeat(2,1fr)}
 @media(min-width:800px){.f-grid{grid-template-columns:1.6fr 1fr 1fr 1fr}}
@@ -623,7 +632,7 @@ const D={
 fa:{
  title:'DISTORT | متفاوت بپوش!',tag:'متفاوت بپوش!',brand:'DISTORT',eyebrow:'DISTORT REALITY',copy:'© {y} DISTORT',logoAria:'DISTORT - صفحه اصلی',search:'جست‌وجو',login:'ورود / ثبت‌نام',n_cart:'سبد خرید',navAria:'ناوبری اصلی',
  sPh:'نام محصول، سبک یا نوع لباس…',sAria:'عبارت جست‌وجو',close:'بستن',switchLang:'English',cur:'تومان',
- nav_home:'خانه',nav_collections:'کالکشن‌ها',nav_wishlist:'علاقه‌مندی',nav_cart:'سبد خرید',nav_profile:'پروفایل',
+ nav_home:'خانه',nav_collections:'کالکشن‌ها',nav_wishlist:'علاقه‌مندی',nav_cart:'سبد خرید',nav_profile:'پروفایل',nav_coin:"دیس‌کوین",coinT:"DisCoin",coinSub:"ضربه بزن، کوین جمع کن",coinBal:"موجودی شما",coinEnergy:"انرژی",coinTap:"+{n} هر ضربه",coinLvl:"سطح",coinNext:"تا سطح بعد",coinMax:"بالاترین سطح",coinDaily:"جایزهٔ روزانه",coinDailyGot:"+{n} DisCoin گرفتی!",coinDailyDone:"جایزهٔ امروز را گرفته‌ای",coinTapHint:"روی سکه بزن",coinNoEnergy:"انرژی تمام شد؛ کمی صبر کن",coinNote:"DisCoin قرار است در آینده به ارز دیجیتال تبدیل شود. ارزش و زمان انتشار هنوز اعلام نشده است. فعلاً موجودی فقط روی همین دستگاه ذخیره می‌شود.",coinL0:"تازه‌وارد",coinL1:"خیابانی",coinL2:"طرح‌باز",coinL3:"استاد",coinL4:"افسانه",
  h1a:'لباسی که',h1b:'شبیه',h1c:'هیچ‌کس نیست',heroP:'هودی، دورس و تیشرت با طرح‌های آماده؛ یا طرح خودت را بفرست تا روی لباس چاپ شود.',
  shop:'مشاهده محصولات',makeOwn:'طرح خودت را بساز',stDesigns:'طرح آماده',stStyles:'سبک طرح',stTypes:'نوع لباس',
  mq:['هودی','دورس','تیشرت','گیمینگ','انیمه','موسیقی','سینما','پینترست','طرح اختصاصی'],
@@ -667,7 +676,7 @@ fa:{
 en:{
  title:'DISTORT | Wear differently',tag:'WEAR DIFFERENTLY',brand:'DISTORT',eyebrow:'DISTORT REALITY',copy:'© {y} DISTORT',logoAria:'DISTORT - Home',search:'Search',login:'Sign in / Sign up',n_cart:'Cart',navAria:'Main navigation',
  sPh:'Product name, style or garment type…',sAria:'Search term',close:'Close',switchLang:'فارسی',cur:'Toman',
- nav_home:'Home',nav_collections:'Collections',nav_wishlist:'Wishlist',nav_cart:'Cart',nav_profile:'Profile',
+ nav_home:'Home',nav_collections:'Collections',nav_wishlist:'Wishlist',nav_cart:'Cart',nav_profile:'Profile',nav_coin:"DisCoin",coinT:"DisCoin",coinSub:"Tap to earn coins",coinBal:"Your balance",coinEnergy:"Energy",coinTap:"+{n} per tap",coinLvl:"Level",coinNext:"to next level",coinMax:"Top level",coinDaily:"Daily reward",coinDailyGot:"You got +{n} DisCoin!",coinDailyDone:"You already claimed today’s reward",coinTapHint:"Tap the coin",coinNoEnergy:"Out of energy — wait a bit",coinNote:"DisCoin is planned to become a digital currency in the future. Its value and launch date have not been announced. For now your balance is stored only on this device.",coinL0:"Newcomer",coinL1:"Streeter",coinL2:"Designer",coinL3:"Master",coinL4:"Legend",
  h1a:'Clothes that',h1b:'look like',h1c:'no one else',heroP:'Hoodies, crewnecks and tees with ready-made art — or send us your own design and we’ll print it.',
  shop:'Shop all',makeOwn:'Design your own',stDesigns:'ready designs',stStyles:'design styles',stTypes:'garment types',
  mq:['Hoodie','Crewneck','T-Shirt','Gaming','Anime','Music','Cinema','Pinterest','Custom print'],
@@ -801,7 +810,8 @@ const ic={
   grid:'<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/>',
   heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
   cart:'<path d="M5 7h14l-1.3 12H6.3z"/><path d="M9 7a3 3 0 0 1 6 0"/>',
-  user:'<circle cx="12" cy="8" r="4"/><path d="M4 20c1-4 4-6 8-6s7 2 8 6"/>'};
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 20c1-4 4-6 8-6s7 2 8 6"/>',
+  coin:'<circle cx="12" cy="12" r="8"/><path d="M12 7.5v9M9.5 10c0-1 1.2-1.7 2.5-1.7s2.5.7 2.5 1.7-1.2 1.6-2.5 1.9-2.5.9-2.5 1.9 1.2 1.7 2.5 1.7 2.5-.7 2.5-1.7"/>'};
 const svgI=(k,extra='')=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ${extra}>${ic[k]}</svg>`;
 
 /* ============ Components ============ */
@@ -838,6 +848,35 @@ document.addEventListener('click',e=>{
   if(e.target.closest('[data-prof-delimg]')){const p=getProf();delete p.avatar;setProf(p);render();return}
   if(e.target.closest('[data-prof-lang]')){setLang(lang==='fa'?'en':'fa');return}
   if(e.target.closest('[data-prof-out]')){if(confirm(traw('pfOutAsk'))){setProf(null);state.ptab='info';toast(t('pfOutDone'));render()}}});
+
+
+/* ============ DisCoin (tap to earn, stored on this device) ============ */
+const COIN_MAX=1000,COIN_LV=[0,1000,5000,25000,100000],COIN_DAILY=500;
+function coinLoad(){let c;try{c=JSON.parse(localStorage.getItem('ds-coin')||'null')}catch(e){}
+  c=Object.assign({bal:0,en:COIN_MAX,ts:Date.now(),day:''},c||{});
+  const dt=Math.max(0,(Date.now()-c.ts)/1000);c.en=Math.min(COIN_MAX,c.en+dt);c.ts=Date.now();return c}
+function coinSave(c){try{localStorage.setItem('ds-coin',JSON.stringify(c))}catch(e){}}
+const coinLevel=b=>{let i=0;COIN_LV.forEach((v,k)=>{if(b>=v)i=k});return i};
+function coinPaint(c){const r=document.getElementById('coinRoot');if(!r)return false;
+  const lv=coinLevel(c.bal),nx=COIN_LV[lv+1],pr=nx?(c.bal-COIN_LV[lv])/(nx-COIN_LV[lv]):1;
+  r.querySelector('[data-coin-bal]').textContent=fa(Math.floor(c.bal));
+  r.querySelector('[data-coin-en]').textContent=fa(Math.floor(c.en))+' / '+fa(COIN_MAX);
+  r.querySelector('[data-coin-enbar]').style.width=(c.en/COIN_MAX*100)+'%';
+  r.querySelector('[data-coin-lvname]').textContent=t('coinL'+lv);
+  r.querySelector('[data-coin-lvbar]').style.width=(pr*100)+'%';
+  r.querySelector('[data-coin-next]').textContent=nx?fa(nx-Math.floor(c.bal))+' '+t('coinNext'):t('coinMax');return true}
+let coinTimer=0;
+function coinStart(){clearInterval(coinTimer);coinTimer=setInterval(()=>{if(!coinPaint(coinLoad()))clearInterval(coinTimer)},1000)}
+document.addEventListener('pointerdown',e=>{const b=e.target.closest('[data-coin-tap]');if(!b)return;e.preventDefault();
+  const c=coinLoad(),r=b.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+  if(c.en<1){toast(t('coinNoEnergy'));return}
+  c.en-=1;c.bal+=1;coinSave(c);coinPaint(c);
+  b.style.setProperty('--rx',((y/r.height-.5)*-22)+'deg');b.style.setProperty('--ry',((x/r.width-.5)*22)+'deg');b.classList.remove('hit');void b.offsetWidth;b.classList.add('hit');
+  const f=document.createElement('span');f.className='coin-float';f.textContent='+1';f.style.left=x+'px';f.style.top=y+'px';b.parentElement.appendChild(f);setTimeout(()=>f.remove(),800);
+  try{navigator.vibrate&&navigator.vibrate(8)}catch(er){}});
+document.addEventListener('click',e=>{if(!e.target.closest('[data-coin-daily]'))return;
+  const c=coinLoad(),d=new Date().toDateString();if(c.day===d){toast(t('coinDailyDone'));return}
+  c.day=d;c.bal+=COIN_DAILY;coinSave(c);toast(t('coinDailyGot').replace('{n}',fa(COIN_DAILY)));render()});
 
 const views={
 home(){
@@ -968,6 +1007,21 @@ cart(){
     <p class="note">${t('cartNote')}</p></div>`;
 },
 
+coin(){
+  const c=coinLoad(),done=c.day===new Date().toDateString();coinSave(c);setTimeout(()=>{coinPaint(coinLoad());coinStart()},0);
+  return `<div class="wrap page-top" id="coinRoot" style="max-width:520px;text-align:center">
+    <h2>${t('coinT')}</h2><p class="pf-sub" style="direction:inherit">${t('coinSub')}</p>
+    <div class="coin-bal"><span class="coin-mini">${svgI('coin')}</span><b data-coin-bal>0</b></div>
+    <div class="coin-lv"><span>${t('coinLvl')}: <b data-coin-lvname></b></span><span data-coin-next></span></div><div class="coin-bar"><i data-coin-lvbar></i></div>
+    <div class="coin-stage"><button class="coin-btn" data-coin-tap aria-label="${t('coinTapHint')}">
+      <svg viewBox="0 0 200 200"><defs><radialGradient id="cg" cx="35%" cy="30%"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#cfcfcf"/><stop offset="1" stop-color="#6b6b6b"/></radialGradient></defs>
+      <circle cx="100" cy="100" r="96" fill="#1a1a1a" stroke="#f5f5f5" stroke-width="2"/><circle cx="100" cy="100" r="86" fill="url(#cg)"/><circle cx="100" cy="100" r="70" fill="none" stroke="#111" stroke-opacity=".35" stroke-width="2" stroke-dasharray="3 5"/>
+      <image href="${esc(LOGO)}" x="56" y="56" width="88" height="88" style="filter:brightness(0)"/></svg></button></div>
+    <p class="pf-sub" style="direction:inherit"><span>${t('coinTapHint')}</span> <bdi>(${t('coinTap').replace('{n}',fa(1))})</bdi></p>
+    <div class="coin-lv"><span>${t('coinEnergy')}</span><span data-coin-en></span></div><div class="coin-bar en"><i data-coin-enbar></i></div>
+    <button class="btn ${done?'btn-ghost':'btn-primary'}" data-coin-daily style="margin-top:18px">${done?t('coinDailyDone'):t('coinDaily')+' · +'+fa(COIN_DAILY)}</button>
+    <p class="coin-note">${t('coinNote')}</p></div>`;
+},
 profile(){
   const P=getProf(), inp=(id,k,type='text')=>`<label class="pf-f"><span>${t(k)}</span><input class="pf-in" name="${id}" type="${type}" value="${esc(P?P[id]||'':'')}" autocomplete="off"></label>`;
   if(!P)return `<div class="wrap page-top" style="max-width:520px"><h2>${t('profT')}</h2><div style="height:16px"></div>
@@ -1016,7 +1070,7 @@ views.faq=()=>docPage('fFaq',t('faq').map(([q,a])=>`<details><summary>${q}</summ
 views.contact=()=>docPage('fContact',`<p>${t('pg_contact')}</p><dl class="ct">${[['ctLEmail','ctEmail'],['ctLPhone','ctPhone'],['ctLAddr','ctAddr'],['ctLHours','ctHours']].map(([a,b])=>`<div><dt>${t(a)}</dt><dd>${t(b)}</dd></div>`).join('')}</dl>`);
 
 /* ============ Router / render ============ */
-const NAV=[['home','home'],['collections','grid'],['wishlist','heart'],['cart','cart'],['profile','user']];
+const NAV=[['home','home'],['collections','grid'],['wishlist','heart'],['coin','coin'],['cart','cart'],['profile','user']];
 let view='home';
 function route(){
   const parts=(location.hash.replace(/^#\/?/,'')||'home').split('?')[0].split('/'),h=parts[0];
